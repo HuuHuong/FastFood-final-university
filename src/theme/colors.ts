@@ -1,0 +1,15 @@
+export const colors = {
+  mainColor: '#F8774A',
+  secondMainColor: '#FF785B',
+  black: '#0A191E',
+  gray: '#F1F1F1',
+  orange_83: '#838383',
+  white: '#FFFFFF',
+  orange_F8: '#F88922',
+  gray_A7: '#A7A7A7',
+  primary_subTitle: '#707070',
+  gray_99: '#999999',
+  gray_C8: '#C8C8C8',
+  green_E6: '#E6B64E',
+  line_gray: '#AFAFAF',
+};
