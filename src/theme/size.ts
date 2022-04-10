@@ -168,6 +168,10 @@ export const FontSize = {
     RFPercentage(BASE_FONT_SIZE + ReduceTextFor18_9(4.5)),
     45,
   ),
+  Font55: calculateFontsize(
+    RFPercentage(BASE_FONT_SIZE + ReduceTextFor18_9(5.5)),
+    45,
+  ),
 };
 
 export const Spacing = {
@@ -381,6 +385,7 @@ export const Spacing = {
   width243: sizeWidth(243),
   width262: sizeWidth(262),
   width275: sizeWidth(275),
+  width288: sizeWidth(288),
   width289: sizeWidth(289),
   width299: sizeWidth(299),
   width302: sizeWidth(302),

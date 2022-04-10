@@ -4,4 +4,5 @@ export interface ScreenWrapperProps {
   reload?: () => void;
   backgroundColor?: string;
   scroll?: boolean;
+  back: boolean;
 }

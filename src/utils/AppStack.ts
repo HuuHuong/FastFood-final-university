@@ -1,4 +1,4 @@
-import {LoginScreen} from '@screens/App/LoginScreen/LoginScreen';
+import {LoginScreen} from '@screens/Auth/LoginApp/LoginScreen';
 import {SplashScreen} from '@screens/Auth/Splash/SplashScreen';
 import {SwiperAuth} from '@screens/Auth/Splash/SwiperAuth';
 import {SCREEN_ROUTER_APP} from './constants';

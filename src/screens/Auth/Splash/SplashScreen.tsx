@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {NavigationUtils} from '@navigation';
 import {SCREEN_ROUTER_APP} from '@utils';
 import FastImage from 'react-native-fast-image';
-import {images} from '@assets';
+import {Images} from '@assets';
 
 export const SplashScreen = () => {
   useEffect(() => {
@@ -14,7 +14,7 @@ export const SplashScreen = () => {
   return (
     <View style={{flex: 1}}>
       <FastImage
-        source={images.img_splash}
+        source={Images.img_splash}
         style={{width: '100%', height: '100%'}}
       />
     </View>

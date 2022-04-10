@@ -12,4 +12,6 @@ export const colors = {
   gray_C8: '#C8C8C8',
   green_E6: '#E6B64E',
   line_gray: '#AFAFAF',
+  blue: '#1877F2',
+  gray_B3: '#B3B3B3',
 };

@@ -1,4 +1,4 @@
-import {colors} from '@theme';
+import {colors, Poppins, Spacing} from '@theme';
 import UIHelper from '@utils/UIHelper';
 import debounce from 'lodash.debounce';
 import React from 'react';
@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   TouchableWithoutFeedbackProps,
+  View,
 } from 'react-native';
 import Animated from 'react-native-reanimated';
 import {ButtonProps} from './Button.props';
@@ -15,16 +16,16 @@ import {ButtonProps} from './Button.props';
 const styles = StyleSheet.create({
   btnPrimary: {
     backgroundColor: colors.mainColor,
-    paddingVertical: 12,
+    paddingVertical: Spacing.height16,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginHorizontal: 20,
-    borderRadius: 30,
+    // marginHorizontal: 20,
+    borderRadius: Spacing.width30,
   },
   txtTitle: {
+    ...Poppins.Bold_Poppins_600,
     color: colors.white,
-    // ...NotoSansFont.Bold_NotoSans_700,
-    fontSize: 20,
+    fontSize: 18,
   },
   loading: {position: 'absolute', top: 12, right: 10},
 });
@@ -107,6 +108,7 @@ export const MainButtonApp = React.memo(
     disabled,
     isLine,
     titleStyle,
+    socialIcon,
     ...props
   }: ButtonProps & TouchableWithoutFeedbackProps) => {
     return (
@@ -125,7 +127,13 @@ export const MainButtonApp = React.memo(
         onPress={onPress}
         disabled={isLoading || disabled}
         children={
-          <>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            {socialIcon}
             <Text
               style={[
                 styles.txtTitle,
@@ -134,10 +142,11 @@ export const MainButtonApp = React.memo(
               ]}
               children={title}
             />
+
             {isLoading && (
               <ActivityIndicator color="white" style={styles.loading} />
             )}
-          </>
+          </View>
         }
       />
     );
