@@ -1,5 +1,9 @@
 export const Images = {
   ic_logo: require('./images/ic_logo.png'),
+  ic_home: require('./images/ic_home.png'),
+  ic_offers: require('./images/ic_offers.png'),
+  ic_cart: require('./images/ic_cart.png'),
+  ic_user: require('./images/ic_user.png'),
 
   img_splash: require('./images/img_splash.png'),
   img_google_logo: require('./images/img_google_logo.png'),

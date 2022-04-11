@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     marginBottom: Spacing.height20,
   },
   footer_tittle: {
-    width: '40%',
+    width: '42%',
     ...Nunitos.Normal_Nunitos_400,
     fontSize: FontSize.Font16,
     color: colors.gray_B3,

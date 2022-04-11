@@ -100,7 +100,7 @@ export const TabSignUp = () => {
                   title={'Sign-up'}
                 />
                 <AppText style={styles.footer_tittle}>
-                  {'Already a\nMember?'}{' '}
+                  {'Already a\nMember? '}
                   <AppText style={{...Nunitos.Bold_Nunitos_400}}>
                     {'Login'}
                   </AppText>

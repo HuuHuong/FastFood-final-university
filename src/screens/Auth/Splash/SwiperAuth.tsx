@@ -14,7 +14,7 @@ export const SwiperAuth = () => {
   const dataSwipper = [
     {
       id: 1,
-      title: 'Save Food with our new Feature!',
+      title: 'Save Food with our\nnew Feature!',
       img: Images.splash_1,
     },
     {
@@ -41,12 +41,14 @@ export const SwiperAuth = () => {
         <FastImage source={item.img} style={styles.image_swipper} />
         {index === 2 && (
           <MainButtonApp
-            style={{backgroundColor: colors.white}}
+            style={{
+              backgroundColor: colors.white,
+              marginHorizontal: Spacing.width40,
+            }}
             onPress={onStart}
             title={'Get started!'}
             titleStyle={{
               color: colors.mainColor,
-              paddingVertical: Spacing.height8,
             }}
           />
         )}
@@ -78,7 +80,6 @@ export const SwiperAuth = () => {
             itemWidth={deviceWidth}
             onSnapToItem={index => setIndex(index)}
           />
-
           <Pagination
             dotsLength={3}
             activeDotIndex={index}

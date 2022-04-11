@@ -16,7 +16,7 @@ import {ButtonProps} from './Button.props';
 const styles = StyleSheet.create({
   btnPrimary: {
     backgroundColor: colors.mainColor,
-    paddingVertical: Spacing.height16,
+    paddingVertical: Spacing.height12,
     flexDirection: 'row',
     justifyContent: 'center',
     // marginHorizontal: 20,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   txtTitle: {
     ...Poppins.Bold_Poppins_600,
     color: colors.white,
-    fontSize: 18,
+    fontSize: Spacing.width16,
   },
   loading: {position: 'absolute', top: 12, right: 10},
 });

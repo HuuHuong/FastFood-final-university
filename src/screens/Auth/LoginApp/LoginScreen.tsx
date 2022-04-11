@@ -17,12 +17,12 @@ export const LoginScreen = () => {
       <AppTabView
         // reviewNumber={tutorDetail?.tutor?.reviews?.data?.length}
         screenRoutes={[
-          {key: 'introduce', title: 'Login'},
-          {key: 'review', title: 'Sign-up'},
+          {key: 'TabLogin', title: 'Login'},
+          {key: 'TabSignUp', title: 'Sign-up'},
         ]}
         components={{
-          introduce: () => <TabLogin />,
-          review: () => <TabSignUp />,
+          TabLogin: () => <TabLogin />,
+          TabSignUp: () => <TabSignUp />,
         }}
       />
     </View>

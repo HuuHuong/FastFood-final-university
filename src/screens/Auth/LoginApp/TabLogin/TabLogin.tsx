@@ -21,10 +21,10 @@ export const TabLogin = () => {
           marginVertical: Spacing.height28,
         }}>
         <AppInput
-          onValueChange={formik.handleChange('email')}
-          value={formik.values.email}
-          placeholder="Email"
-          error={formik.errors.email}
+          onValueChange={formik.handleChange('phone_number')}
+          value={formik.values.phone_number}
+          placeholder="Mobile phone"
+          error={formik.errors.phone_number}
           maxLength={LENGTH_TEXT.MAX_255}
           containerStyle={styles.form_input}
         />
@@ -36,10 +36,10 @@ export const TabLogin = () => {
           maxLength={LENGTH_TEXT.MAX_30}
           containerStyle={styles.form_input}
         />
-        <AppText onPress={() => {}} style={styles.forgot_password}>
-          {'Forgot password?'}
-        </AppText>
-        <MainButtonApp onPress={() => {}} title={'Login'} />
+        <DebounceButton activeOpacity={0.5} onPress={() => {}}>
+          <AppText style={styles.forgot_password}>{'Forgot password?'}</AppText>
+        </DebounceButton>
+        <MainButtonApp onPress={() => formik.handleSubmit()} title={'Login'} />
         <AppText style={styles.or}>{'Or'}</AppText>
         <MainButtonApp
           style={{

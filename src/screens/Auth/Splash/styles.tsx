@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginHorizontal: Spacing.width20,
     opacity: 0.6,
+    marginTop: Spacing.height20,
   },
   skip: {
     ...Nunitos.Bold_Nunitos_700,
@@ -28,10 +29,11 @@ export const styles = StyleSheet.create({
     fontSize: FontSize.Font28,
     color: colors.white,
     textAlign: 'center',
+    // position: 'absolute',
   },
   image_swipper: {
-    width: deviceWidth - Spacing.width20,
-    height: deviceWidth - Spacing.width20,
+    width: deviceWidth - Spacing.width40,
+    height: deviceWidth - Spacing.width40,
     alignSelf: 'center',
   },
   dot: {

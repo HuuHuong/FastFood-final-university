@@ -1,14 +1,4 @@
-import {
-  Alert,
-  Dimensions,
-  Image,
-  ImageSourcePropType,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import {
   BottomTabBar,
   createBottomTabNavigator,
@@ -16,10 +6,12 @@ import {
 import React, {useEffect} from 'react';
 import {
   jsonToArray,
+  MAIN_TAB_BAR,
   SCREEN_ROUTER_APP,
+  TAB_BAR,
   // TAB_BAR,
 } from '@utils';
-import {colors, DEVICE, NotoSansFont, Spacing} from '@theme';
+import {colors, DEVICE, NotoSansFont, Nunitos, Spacing} from '@theme';
 import {NavigationUtils} from '@navigation/NavigationUtils';
 import {DebounceButton} from '@components/Button/Button';
 interface History {
@@ -46,13 +38,6 @@ interface RouteProps {
   state: State;
 }
 const height = Dimensions.get('window').height;
-// console.log(MAIN_TAB_BAR.HOME)
-const USER_FEATURES = [
-  SCREEN_ROUTER_APP.HOME,
-  SCREEN_ROUTER_APP.OFFERS,
-  SCREEN_ROUTER_APP.CART,
-  SCREEN_ROUTER_APP.PROFILE,
-];
 const Tab = createBottomTabNavigator();
 const renderTabScreens = () => {
   const tabArray = jsonToArray(TAB_BAR);
@@ -69,13 +54,13 @@ const renderTabScreens = () => {
 const getTabTitle = (route: string) => {
   switch (route) {
     case SCREEN_ROUTER_APP.HOME:
-      return 'Home';
+      return 'HOME';
     case SCREEN_ROUTER_APP.OFFERS:
-      return 'Title';
+      return 'OFFERS';
     case SCREEN_ROUTER_APP.CART:
-      return 'Cart';
+      return 'CART';
     case SCREEN_ROUTER_APP.PROFILE:
-      return 'Profile';
+      return 'USER';
     default:
       break;
   }
@@ -88,35 +73,33 @@ const renderTabButtons = (
   return (
     <DebounceButton
       onPress={() => {
-        onHandleNavigation(title);
+        NavigationUtils.navigate(title);
       }}>
-      <View style={[styles.bottomBtn]}>
-        <Image
-          style={[
-            styles.vTabBarIcon,
-            {
-              tintColor: tintColor,
-            },
-          ]}
-          //@ts-ignore
-          source={TAB_BAR[title].icon}
-        />
-        <Text
-          style={[styles.buttonTittle, focused && styles.focusedTitle]}
-          children={getTabTitle(title)}
-        />
-        {focused && <View style={styles.focusedBtn} />}
+      <View style={styles.bottomBtn}>
+        <View
+          style={{
+            backgroundColor: focused ? colors.mainColor : undefined,
+            marginTop: 10,
+            padding: 4,
+            borderRadius: 30,
+          }}>
+          <Image
+            style={[
+              styles.vTabBarIcon,
+              {
+                tintColor: tintColor,
+              },
+            ]}
+            //@ts-ignore
+            source={TAB_BAR[title].icon}
+          />
+        </View>
+        {focused && (
+          <Text style={styles.buttonTittle} children={getTabTitle(title)} />
+        )}
       </View>
     </DebounceButton>
   );
-};
-const onHandleNavigation = async (name: string) => {
-  if (USER_FEATURES.includes(name)) {
-    isUser(() => {
-      NavigationUtils.navigate(name);
-    });
-    return;
-  } else NavigationUtils.navigate(name);
 };
 const BottomTab = ({route}: {route: RouteProps}) => {
   return (
@@ -126,7 +109,7 @@ const BottomTab = ({route}: {route: RouteProps}) => {
         tabBarStyle: styles.barStyle,
         tabBarShowLabel: false,
         tabBarIcon: ({focused}) => {
-          const tintColor = focused ? colors.BLACK_2 : colors.C4C4C4;
+          const tintColor = focused ? colors.white : colors.black;
           return renderTabButtons(route.name, tintColor, focused);
         },
       })}>
@@ -142,7 +125,6 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     resizeMode: 'contain',
-    marginTop: 10,
   },
   navigatorContainer: {},
   barStyle: {
@@ -150,24 +132,21 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
   },
   buttonTittle: {
-    marginTop: 7,
-    // ...NotoSansFont.Normal_NotoSans_400,
-    // marginBottom: Spacing.height30,
-    color: colors.blackA2,
-  },
-  focusedTitle: {
-    color: colors.BLACK_2,
+    marginTop: 8,
+    marginLeft: Spacing.width4,
+    ...Nunitos.Bold_Nunitos_600,
+    fontSize: Spacing.width14,
+    color: colors.mainColor,
   },
   bottomBtn: {
     justifyContent: 'center',
     alignItems: 'center',
-    // flex: 1
     width: DEVICE.width / 5,
-    paddingBottom: Spacing.width34,
-    paddingTop: Spacing.width12,
+    // paddingBottom: Spacing.width34,
+    // paddingTop: Spacing.width12,
+    flexDirection: 'row',
   },
   focusedBtn: {
-    backgroundColor: colors.BLACK_2,
     height: 5,
     width: DEVICE.width / 5,
     position: 'absolute',
