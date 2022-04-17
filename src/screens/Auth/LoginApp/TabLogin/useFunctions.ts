@@ -21,8 +21,8 @@ interface FakeAuthen {
 }
 export const useFunctions = () => {
   const initialValues = {
-    phone_number: '',
-    password: '',
+    phone_number: __DEV__ ? '0978589470' : '',
+    password: __DEV__ ? '123456789a' : '',
   };
   const validationSchema = yup.object().shape({
     phone_number: validators().mobile_number,
@@ -49,7 +49,7 @@ export const useFunctions = () => {
             item.phone_number === values.phone_number &&
             item.password === values.password,
         ) != -1;
-      if (isLogin) NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN);
+      if (isLogin) NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
       else console.log('Your phone number or password is invalid');
     },
   });

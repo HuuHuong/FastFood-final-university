@@ -24,6 +24,7 @@ export const AppLoading = React.memo(() => {
         zIndex: 99,
       }}>
       <LottieView
+        progress={0}
         ref={animation}
         style={{
           width: Spacing.width200,

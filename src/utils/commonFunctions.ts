@@ -1,6 +1,6 @@
 import {NavigationUtils} from '@navigation';
 // import AsyncStorageService from '@services/AsyncStorage/AsyncStorageService';
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Alert, Platform} from 'react-native';
 import {SCREEN_ROUTER_APP} from './constants';
@@ -77,7 +77,7 @@ export const showConfirm = (
     {cancelable: false},
   );
 };
-const isUser = async (action: () => void) => {
+export const isUser = async (action: () => void) => {
   // const token = await AsyncStorageService.getToken();
   // if (!token) {
   //   showConfirm(
@@ -94,5 +94,13 @@ const isUser = async (action: () => void) => {
   // }
   // action();
 };
-
-export default isUser;
+export function useDebounce<T>(value: T, delay?: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+  useEffect(() => {
+    const timer: any = setTimeout(() => setDebouncedValue(value), delay || 250);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+  return debouncedValue;
+}

@@ -31,4 +31,5 @@ export interface IAppInput {
   maxLength?: number;
   callBackOnFocus?: (focus: boolean) => void;
   onEndEditing?: (name?: string) => void;
+  onFilter?: (val: string) => void;
 }

@@ -1,4 +1,3 @@
-import IndicatorLoading from '@components/IndicatorLoading';
 import {enhance} from '@utils';
 import React, {memo, useMemo} from 'react';
 import isEqual from 'react-fast-compare';
@@ -6,13 +5,14 @@ import {
   KeyboardAvoidingView,
   Platform,
   SafeAreaView as RNSafeArea,
+  TouchableWithoutFeedback,
   ScrollView,
   StyleSheet,
   Keyboard,
-  TouchableOpacity,
 } from 'react-native';
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Block} from '../Block/Block';
+import IndicatorLoading from '../IndicatorLoading';
 import LoadingProgress from '../LoadingProgress';
 import {ScreenWrapperProps} from './ScreenWrapper.props';
 
@@ -44,22 +44,26 @@ const isIos = Platform.OS === 'ios';
 
 const DismissKeyboard = ({children}: {children: React.ReactNode}) => {
   return (
-    <TouchableOpacity
+    <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
       }}>
       {children}
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 function ScreenWithoutScrolling(props: ScreenWrapperProps) {
   const inset = useSafeAreaInsets();
   const style = props.style || {};
   const {
+    statusColor = 'red',
+    bottomInsetColor = '#ffffff',
     forceInset,
     unsafe = true,
     children,
     backgroundColor,
+    leftInsetColor = '#ffffff',
+    rightInsetColor = '#ffffff',
     needAvoiding = true,
   } = props;
 
@@ -74,6 +78,49 @@ function ScreenWithoutScrolling(props: ScreenWrapperProps) {
       style={[styles.outer]}
       behavior={isIos ? 'padding' : undefined}
       keyboardVerticalOffset={-10000}>
+      {!unsafe &&
+        (!forceInset || (forceInset && forceInset.includes('top'))) &&
+        isIos && (
+          <Block
+            color={statusColor}
+            position={'absolute'}
+            height={inset.top}
+            width={'100%'}
+          />
+        )}
+      {!unsafe &&
+        (!forceInset || (forceInset && forceInset.includes('left'))) &&
+        isIos && (
+          <Block
+            color={leftInsetColor}
+            position={'absolute'}
+            style={[styles.insetLeft]}
+            width={inset.left}
+            height={'100%'}
+          />
+        )}
+      {!unsafe &&
+        (!forceInset || (forceInset && forceInset.includes('right'))) &&
+        isIos && (
+          <Block
+            color={rightInsetColor}
+            position={'absolute'}
+            style={[styles.insetRight]}
+            width={inset.right}
+            height={'100%'}
+          />
+        )}
+      {!unsafe &&
+        (!forceInset || (forceInset && forceInset.includes('bottom'))) &&
+        isIos && (
+          <Block
+            color={bottomInsetColor}
+            style={[styles.insetBottom]}
+            position={'absolute'}
+            height={inset.bottom}
+            width={'100%'}
+          />
+        )}
       <Wrapper
         edges={forceInset ?? undefined}
         style={[styles.inner, style, backgroundStyle]}>
@@ -88,11 +135,15 @@ function ScreenWithScrolling(props: ScreenWrapperProps) {
   const {
     showHorizontal = false,
     showVertical = false,
+    statusColor = undefined,
+    bottomInsetColor = '#ffffff',
     backgroundColor,
     style = {},
     forceInset = ['left'],
     unsafe = false,
     children,
+    leftInsetColor = '#ffffff',
+    rightInsetColor = '#ffffff',
     scrollEnabled = true,
   } = props;
   const backgroundStyle = useMemo(
@@ -106,6 +157,49 @@ function ScreenWithScrolling(props: ScreenWrapperProps) {
       style={[styles.root]}
       behavior={isIos ? 'padding' : undefined}
       keyboardVerticalOffset={0}>
+      {!unsafe &&
+        // (!forceInset || (forceInset && forceInset.includes('top'))) &&
+        isIos && (
+          <Block
+            color={statusColor}
+            position={'absolute'}
+            height={inset.top}
+            width={'100%'}
+          />
+        )}
+      {/* {!unsafe &&
+        // (!forceInset || (forceInset && forceInset.includes('left'))) &&
+        isIos && (
+          <Block
+            color={leftInsetColor}
+            position={'absolute'}
+            style={[styles.insetLeft]}
+            width={inset.left}
+            height={'100%'}
+          />
+        )}
+      {!unsafe &&
+        // (!forceInset || (forceInset && forceInset.includes('right'))) &&
+        isIos && (
+          <Block
+            color={rightInsetColor}
+            position={'absolute'}
+            style={[styles.insetRight]}
+            width={inset.right}
+            height={'100%'}
+          />
+        )}
+      {!unsafe &&
+        // (!forceInset || (forceInset && forceInset.includes('bottom'))) &&
+        isIos && (
+          <Block
+            color={bottomInsetColor}
+            style={[styles.insetBottom]}
+            position={'absolute'}
+            height={inset.bottom}
+            width={'100%'}
+          />
+        )} */}
       <Wrapper edges={forceInset ?? undefined} style={[styles.inner]} block>
         <Block block>
           <ScrollView
@@ -124,10 +218,36 @@ function ScreenWithScrolling(props: ScreenWrapperProps) {
 }
 
 function ScreenWrapperComponent(props: ScreenWrapperProps) {
-  const {scroll = false, dialogLoading, unsafe} = props;
+  const {
+    scroll = false,
+    titleHeader,
+    rightComponent,
+    borderBottomHeader = 'white',
+    leftComponent,
+    back = false,
+    color,
+    dialogLoading,
+    backgroundHeader,
+    unsafe,
+    onPressRight,
+    placementHeader,
+    iconRight,
+    centerComponent,
+    header,
+    isTextHeader,
+    isColorHeader = false,
+  } = props;
   const renderBody = () => {
     const {isLoading, isError, reload} = props;
     if (isLoading) return <IndicatorLoading />;
+    // if (isError)
+    //   return (
+    //     <Error
+    //       reload={() => {
+    //         if (reload) reload()
+    //       }}
+    //     />
+    //   )
     return (
       <>
         {scroll ? (
@@ -143,6 +263,26 @@ function ScreenWrapperComponent(props: ScreenWrapperProps) {
   return (
     <Block style={[styles.root]} color={props.backgroundColor}>
       <>
+        {/* {!!header && header}
+        {(!!titleHeader || centerComponent || leftComponent || back) && (
+          <RNHeader
+            //@ts-ignore
+            placementHeader={placementHeader}
+            titleHeader={titleHeader || ''}
+            titleFont={titleFont}
+            back={back}
+            color={color}
+            rightComponent={rightComponent}
+            borderBottomHeader={borderBottomHeader}
+            leftComponent={leftComponent}
+            centerComponent={centerComponent}
+            backgroundHeader={backgroundHeader}
+            iconRight={iconRight}
+            onPressRight={onPressRight}
+            isTextHeader={isTextHeader}
+            isColorHeader={isColorHeader}
+          />
+        )} */}
         {!unsafe ? (
           <RNSafeArea style={{flex: 1}}>{renderBody()}</RNSafeArea>
         ) : (

@@ -14,6 +14,9 @@ const SCREEN_ROUTER_APP = {
   PROFILE: 'PROFILE',
   LOGIN: 'LOGIN',
   SWIPER_AUTH: 'SWIPER_AUTH',
+  LIST_FOOD: 'LIST_FOOD',
+  ORDER_AGAIN: 'ORDER_AGAIN',
+  DETAIL_FOOD: 'DETAIL_FOOD',
 };
 const MAIN_TAB_BAR = {
   HOME: 'HOME',
@@ -47,4 +50,42 @@ const TAB_BAR = {
     title: 'ACCOUNT',
   },
 };
-export {APP_STACK, SCREEN_ROUTER_APP, TAB_BAR, MAIN_TAB_BAR};
+const BANNER_HOME = [
+  {
+    id: 1,
+    content: 'Select Preferences',
+    img: Images.img_banner1,
+    title: 'You can now order from multiple restaurants at the same time!',
+  },
+  {
+    id: 2,
+    content: 'Select Preferences',
+    img: Images.img_banner1,
+    title: 'You can now order from multiple restaurants at the same time!',
+  },
+  {
+    id: 3,
+    content: 'Select Preferences',
+    img: Images.img_banner1,
+    title: 'You can now order from multiple restaurants at the same time!',
+  },
+];
+const USER = [
+  {
+    id: 1,
+    name: 'User 1',
+  },
+  {
+    id: 2,
+    name: 'User 2',
+  },
+  {
+    id: 3,
+    name: 'User 3',
+  },
+  {
+    id: 4,
+    name: 'User 4',
+  },
+];
+export {APP_STACK, SCREEN_ROUTER_APP, TAB_BAR, MAIN_TAB_BAR, BANNER_HOME, USER};

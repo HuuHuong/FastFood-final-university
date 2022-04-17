@@ -59,17 +59,7 @@ export const AppInput = (props: IAppInput) => {
       ? stylesBase
       : {...stylesBase, ...stylesLinear};
 
-  const viewStyle: any = [
-    // styles.inputWrap,
-    // {
-    //   borderColor: error
-    //     ? colors.rose
-    //     : isFocused
-    //     ? colors.violet
-    //     : colors.inputBg,
-    // },
-    style,
-  ];
+  const viewStyle: any = [style];
 
   const ipStyle: any = [
     styles.input,
