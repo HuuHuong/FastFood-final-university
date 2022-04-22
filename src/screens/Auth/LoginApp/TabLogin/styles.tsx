@@ -6,9 +6,10 @@ export const styles = StyleSheet.create({
     marginTop: Spacing.height16,
   },
   forgot_password: {
-    ...commonStyles.commonText14_Bold,
+    ...commonStyles.commonText600_14,
     marginTop: Spacing.height16,
     marginBottom: Spacing.height24,
+    color: colors.mainColor,
   },
 
   or: {

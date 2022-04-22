@@ -1,5 +1,5 @@
-import {View, Text, ImageBackground, Image} from 'react-native';
-import React from 'react';
+import {View, Animated, Image} from 'react-native';
+import React, {useRef} from 'react';
 import {AppLoading} from '@components/Loading';
 import {AppSearch, AppText, DebounceButton} from '@components';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
@@ -12,17 +12,20 @@ import {
   IconHome2,
   IconNext,
   IconPencil,
+  IconSearch,
   Images,
   LIST_TYPE_FASTFOOD,
   RESTAURANTS,
 } from '@assets';
-import {colors, commonStyles, deviceWidth, Spacing} from '@theme';
+import {colors, commonStyles, DEVICE, deviceWidth, Spacing} from '@theme';
 import {styles} from './styles';
 import {useFunctions} from './useFunctions';
 import {VirtualList} from '@components/Flatlist';
 import {BANNER_HOME, USER} from '@utils';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import LinearGradient from 'react-native-linear-gradient';
+
+const AnimationVirtualist = Animated.createAnimatedComponent(VirtualList);
 
 export const HomeScreen = () => {
   const {
@@ -34,7 +37,16 @@ export const HomeScreen = () => {
     isCarousel,
     onDetailFood,
     onNavigateOrderAgain,
+    onNavigateListFood,
+    translateX,
   } = useFunctions();
+  const refWidht = useRef(DEVICE.width);
+
+  const animatedScrollX = translateX.interpolate({
+    inputRange: [0, refWidht.current],
+    outputRange: [0, Spacing.width70],
+    extrapolate: 'clamp',
+  });
   const renderBanner = ({item, index}: any) => {
     return (
       <LinearGradient
@@ -68,7 +80,7 @@ export const HomeScreen = () => {
   const renderUser = ({item, index}: any) => {
     return (
       <DebounceButton onPress={() => {}} viewStyle={styles.item_user}>
-        <AppText>{item.name}</AppText>
+        <AppText style={styles.name_user}>{item.name}</AppText>
         <IconArrowRight />
       </DebounceButton>
     );
@@ -265,17 +277,14 @@ export const HomeScreen = () => {
             </AppText>
           </View>
         </View>
-        <FastImage
-          source={Images.img_heart}
-          style={{width: Spacing.width52, height: Spacing.width52}}
-        />
       </View>
-      <AppSearch
-        style={styles.form_search}
-        onValueChange={setText}
-        value={text}
-        onFilter={onFilter}
-      />
+      <DebounceButton
+        activeOpacity={0.5}
+        onPress={onNavigateListFood}
+        viewStyle={styles.view_search}>
+        <IconSearch />
+        <AppText style={styles.search_food}>{'Search food'}</AppText>
+      </DebounceButton>
       <Carousel
         layout="default"
         layoutCardOffset={0}
@@ -339,21 +348,34 @@ export const HomeScreen = () => {
         <AppText numberOfLines={2} style={styles.description_time_zone}>
           {"Here's what you might like to taste"}
         </AppText>
-        <VirtualList
+        <AnimationVirtualist
           data={DATA_BREAKFAST}
           renderItem={renderFoodTimeZone}
           horizontal
+          onContentSizeChange={(width: number) => {
+            refWidht.current = width;
+          }}
           style={styles.list_food_time_zone}
+          onScroll={Animated.event(
+            [{nativeEvent: {contentOffset: {x: translateX}}}],
+            {
+              useNativeDriver: true,
+            },
+          )}
         />
         <View style={{width: Spacing.width84, height: Spacing.height2}}>
           <View style={styles.line_length_food}></View>
-          <View style={styles.line_animation}></View>
+          <Animated.View
+            style={[
+              styles.line_animation,
+              {transform: [{translateX: animatedScrollX}]},
+            ]}></Animated.View>
         </View>
       </View>
       <View style={styles.session_main}>
         <View>
           <AppText style={styles.content_session}>{'Order Again'}</AppText>
-          <AppText style={styles.title_session}>
+          <AppText numberOfLines={2} style={styles.title_session}>
             {'You Ordered from 17 Restaurants'}
           </AppText>
         </View>
@@ -361,7 +383,7 @@ export const HomeScreen = () => {
           activeOpacity={1}
           onPress={onNavigateOrderAgain}
           viewStyle={styles.view_btn_all}>
-          <AppText>{'All'}</AppText>
+          <AppText style={styles.all_txt}>{'All'}</AppText>
           <IconArrowRight />
         </DebounceButton>
       </View>
@@ -382,7 +404,7 @@ export const HomeScreen = () => {
           activeOpacity={1}
           onPress={() => {}}
           viewStyle={styles.view_btn_all}>
-          <AppText>{'All'}</AppText>
+          <AppText style={styles.all_txt}>{'All'}</AppText>
           <IconArrowRight />
         </DebounceButton>
       </View>

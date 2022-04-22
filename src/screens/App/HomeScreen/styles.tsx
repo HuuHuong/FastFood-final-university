@@ -17,9 +17,21 @@ export const styles = StyleSheet.create({
     ...commonStyles.commonText400_16,
     color: colors.gray_B2,
   },
-  form_search: {
-    marginTop: Spacing.height16,
+  view_search: {
+    backgroundColor: colors.gray_F3,
+    borderRadius: Spacing.width14,
+    paddingVertical: Spacing.height10,
+    marginHorizontal: Spacing.width20,
     marginBottom: Spacing.height20,
+    marginTop: Spacing.height16,
+    paddingHorizontal: Spacing.width24,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  search_food: {
+    ...commonStyles.commonText600_16,
+    color: colors.gray_4F,
+    marginLeft: Spacing.width10,
   },
   dot: {
     width: Spacing.width10,
@@ -198,7 +210,8 @@ export const styles = StyleSheet.create({
     width: Spacing.width20,
   },
   session_main: {
-    ...commonStyles.row_center_space_between,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginHorizontal: Spacing.width20,
     marginTop: Spacing.height32,
   },
@@ -209,6 +222,7 @@ export const styles = StyleSheet.create({
   title_session: {
     ...commonStyles.commonText400_16,
     color: colors.gray_99,
+    width: '70%',
   },
   view_btn_all: {
     ...commonStyles.row_align_center,
@@ -216,6 +230,7 @@ export const styles = StyleSheet.create({
     borderWidth: Spacing.width1,
     borderColor: colors.gray_C8,
     borderRadius: Spacing.width14,
+    marginTop: Spacing.height4,
   },
   img_restaurant: {
     width: Spacing.width64,
@@ -275,5 +290,13 @@ export const styles = StyleSheet.create({
     ...commonStyles.nunito_600_16,
     color: colors.orange_F8,
     marginLeft: Spacing.width8,
+  },
+  all_txt: {
+    ...commonStyles.nunito_600_14,
+    color: colors.primary_subTitle,
+  },
+  name_user: {
+    ...commonStyles.commonText600_16,
+    color: colors.black,
   },
 });

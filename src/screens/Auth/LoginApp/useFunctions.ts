@@ -2,6 +2,7 @@ import {FAKE_AUTHEN} from '@assets';
 import {NavigationUtils} from '@navigation';
 import {SCREEN_ROUTER_APP, validators} from '@utils';
 import {useFormik} from 'formik';
+import {useState} from 'react';
 import * as yup from 'yup';
 // import {
 //   GoogleSignin,
@@ -20,6 +21,7 @@ interface FakeAuthen {
   password: string;
 }
 export const useFunctions = () => {
+  const [showDialog, setShowDialog] = useState<boolean>(false);
   const initialValues = {
     phone_number: __DEV__ ? '0978589470' : '',
     password: __DEV__ ? '123456789a' : '',
@@ -49,8 +51,13 @@ export const useFunctions = () => {
             item.phone_number === values.phone_number &&
             item.password === values.password,
         ) != -1;
-      if (isLogin) NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
-      else console.log('Your phone number or password is invalid');
+      if (isLogin) {
+        setShowDialog(true);
+        NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
+        setTimeout(() => {
+          setShowDialog(false);
+        }, 2000);
+      }
     },
   });
 
@@ -155,5 +162,5 @@ export const useFunctions = () => {
   //   Settings.initializeSDK();
   //   configGoogleSignIn();
   // }, []);
-  return {formik};
+  return {formik, showDialog};
 };

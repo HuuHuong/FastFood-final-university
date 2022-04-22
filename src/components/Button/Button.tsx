@@ -1,3 +1,5 @@
+import {IconBack} from '@assets/icons/icon_back';
+import {NavigationUtils} from '@navigation';
 import {colors, Poppins, Spacing} from '@theme';
 import UIHelper from '@utils/UIHelper';
 import debounce from 'lodash.debounce';
@@ -152,3 +154,11 @@ export const MainButtonApp = React.memo(
     );
   },
 );
+
+export const BackButton = () => {
+  return (
+    <DebounceButton onPress={() => NavigationUtils.goBack()}>
+      <IconBack strokeColor={colors.black} />
+    </DebounceButton>
+  );
+};

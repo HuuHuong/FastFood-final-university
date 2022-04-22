@@ -8,9 +8,13 @@ import {TabLogin} from './TabLogin/TabLogin';
 import {TabSignUp} from './TabSignUp/TabSignUp';
 import {TabView, SceneMap} from 'react-native-tab-view';
 import AppTabView from '@components/AppTabView/AppTabView';
+import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
+import {useFunctions} from './useFunctions';
 export const LoginScreen = () => {
+  const {showDialog} = useFunctions();
+  const onLogin = () => {};
   return (
-    <View style={{flex: 1}}>
+    <ScreenWrapper dialogLoading={showDialog} style={{flex: 1}}>
       <View style={{width: '100%', backgroundColor: colors.white}}>
         <FastImage source={Images.ic_logo} style={styles.logo} />
       </View>
@@ -25,6 +29,6 @@ export const LoginScreen = () => {
           TabSignUp: () => <TabSignUp />,
         }}
       />
-    </View>
+    </ScreenWrapper>
   );
 };

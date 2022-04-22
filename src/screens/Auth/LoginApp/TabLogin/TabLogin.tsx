@@ -2,16 +2,17 @@ import {View, Text, ScrollView} from 'react-native';
 import React from 'react';
 import {colors, Spacing} from '@theme';
 import {AppInput, AppText, DebounceButton, MainButtonApp} from '@components';
-import {useFunctions} from './useFunctions';
+import {useFunctions} from '../useFunctions';
 import {LENGTH_TEXT} from '@utils';
 import {styles} from './styles';
 import {IconFacebook, IconGoogle} from '@assets';
+import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 
 export const TabLogin = () => {
   const {formik} = useFunctions();
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
+    <ScreenWrapper
+      unsafe
       style={{
         flex: 1,
       }}>
@@ -63,6 +64,6 @@ export const TabLogin = () => {
           titleStyle={styles.login_google}
         />
       </View>
-    </ScrollView>
+    </ScreenWrapper>
   );
 };

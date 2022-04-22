@@ -12,8 +12,10 @@ import {
   ViewStyle,
   FlatList,
   TextStyle,
+  Animated,
 } from 'react-native';
 import {FlatList as ListForDrag} from 'react-native-gesture-handler';
+const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList);
 interface VirtualListProps {
   renderItem: ListRenderItem<any> | null | undefined;
   onRefresh?: () => void;
@@ -47,6 +49,10 @@ interface VirtualListProps {
   ListEmptyComponent?: any;
   ListFooterComponent?: any;
   inverted?: boolean;
+  bounces?: boolean;
+  onLayout?: any;
+  isAnimation?: any;
+  onContentSizeChange?: any;
 }
 
 const VirtualList = React.memo(
@@ -68,6 +74,9 @@ const VirtualList = React.memo(
       emptyText,
       styleEmtyText,
       inverted,
+      isAnimation,
+      onLayout,
+      onContentSizeChange,
     } = props;
     const [isFirst, setFirst] = React.useState(true);
 
@@ -75,7 +84,11 @@ const VirtualList = React.memo(
       if (isFirst && !isLoading) setFirst(false);
     }, [isFirst, isLoading]);
 
-    const NEW_LIST = type === 'RN' ? FlatList : ListForDrag;
+    const NEW_LIST = isAnimation
+      ? AnimatedFlatlist
+      : type === 'RN'
+      ? Animated.FlatList
+      : ListForDrag;
 
     const ListHeaderComponent = React.useCallback(() => {
       if (!isLoading && data?.length < 1) {
@@ -117,6 +130,8 @@ const VirtualList = React.memo(
           </View>
         )}
         <NEW_LIST
+          onContentSizeChange={onContentSizeChange}
+          bounces={props.bounces}
           ListHeaderComponent={props.ListHeaderComponent || ListHeaderComponent}
           contentContainerStyle={props.contentContainerStyle}
           style={props.style}
@@ -168,6 +183,7 @@ const VirtualList = React.memo(
           onScroll={props.onScroll}
           ListEmptyComponent={props.ListEmptyComponent}
           inverted={inverted}
+          onLayout={onLayout}
         />
       </View>
     );

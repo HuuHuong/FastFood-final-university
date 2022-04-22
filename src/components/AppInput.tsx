@@ -90,7 +90,7 @@ export const AppInput = (props: IAppInput) => {
         ))}
       <View style={viewStyle}>
         <TextInput
-          style={[ipStyle, {}]}
+          style={[ipStyle, {color: colors.black}]}
           editable={editable}
           placeholder={placeholder}
           placeholderTextColor={'rgba(160, 160, 160, 0.6)'}
@@ -190,7 +190,7 @@ const stylesLinear = StyleSheet.create({
   input: {
     // flex: 1,
     // height: '100%',
-    // color: colors.primary,
+    // color: colors.black,
     // fontSize: SIZE.base_size + 1,
     // ...fontFamily.Proxima600,
     // paddingBottom: SIZE.padding,
