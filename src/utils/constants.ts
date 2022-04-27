@@ -24,6 +24,10 @@ const MAIN_TAB_BAR = {
   CART: 'CART',
   PROFILE: 'PROFILE',
 };
+const SOCIAL_NETWORK = {
+  GOOGLE: 'google',
+  FACEBOOK: 'facebook',
+};
 const TAB_BAR = {
   HOME: {
     name: SCREEN_ROUTER_APP.HOME,
@@ -49,6 +53,11 @@ const TAB_BAR = {
     route: ProfileScreen,
     title: 'ACCOUNT',
   },
+};
+const GOOGLE_CONFIG = {
+  CLIENT_ID:
+    '178946544364-sb94rpoafoe1geoq2tnd3m3kufg724kf.apps.googleusercontent.com',
+  PROFILE_IMAGE_SIZE: 120,
 };
 const BANNER_HOME = [
   {
@@ -88,4 +97,13 @@ const USER = [
     name: 'User 4',
   },
 ];
-export {APP_STACK, SCREEN_ROUTER_APP, TAB_BAR, MAIN_TAB_BAR, BANNER_HOME, USER};
+export {
+  APP_STACK,
+  SCREEN_ROUTER_APP,
+  TAB_BAR,
+  MAIN_TAB_BAR,
+  BANNER_HOME,
+  USER,
+  SOCIAL_NETWORK,
+  GOOGLE_CONFIG,
+};

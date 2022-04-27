@@ -8,11 +8,13 @@ import {styles} from './styles';
 import {IconFacebook, IconGoogle} from '@assets';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 
-export const TabLogin = () => {
+export const TabLogin = (props: any) => {
   const {formik} = useFunctions();
+  const {signInFacebook, signInGoogle} = props;
   return (
     <ScreenWrapper
       unsafe
+      scroll
       style={{
         flex: 1,
       }}>
@@ -48,19 +50,18 @@ export const TabLogin = () => {
             marginBottom: Spacing.height16,
           }}
           socialIcon={<IconFacebook />}
-          onPress={() => {}}
+          onPress={signInFacebook}
           title={'Log In with Facebook'}
           titleStyle={styles.login_face}
         />
-
         <MainButtonApp
           style={{
             backgroundColor: colors.white,
             marginBottom: Spacing.height16,
           }}
           socialIcon={<IconGoogle />}
-          onPress={() => {}}
-          title={'Log In with Facebook'}
+          onPress={signInGoogle}
+          title={'Log In with Google'}
           titleStyle={styles.login_google}
         />
       </View>

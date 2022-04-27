@@ -11,10 +11,9 @@ import AppTabView from '@components/AppTabView/AppTabView';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 import {useFunctions} from './useFunctions';
 export const LoginScreen = () => {
-  const {showDialog} = useFunctions();
-  const onLogin = () => {};
+  const {showDialog, signInFacebook, signInGoogle} = useFunctions();
   return (
-    <ScreenWrapper dialogLoading={showDialog} style={{flex: 1}}>
+    <ScreenWrapper unsafe dialogLoading={showDialog} style={{flex: 1}}>
       <View style={{width: '100%', backgroundColor: colors.white}}>
         <FastImage source={Images.ic_logo} style={styles.logo} />
       </View>
@@ -25,7 +24,12 @@ export const LoginScreen = () => {
           {key: 'TabSignUp', title: 'Sign-up'},
         ]}
         components={{
-          TabLogin: () => <TabLogin />,
+          TabLogin: () => (
+            <TabLogin
+              signInFacebook={signInFacebook}
+              signInGoogle={signInGoogle}
+            />
+          ),
           TabSignUp: () => <TabSignUp />,
         }}
       />

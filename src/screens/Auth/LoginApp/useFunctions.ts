@@ -1,9 +1,26 @@
 import {FAKE_AUTHEN} from '@assets';
 import {NavigationUtils} from '@navigation';
-import {SCREEN_ROUTER_APP, validators} from '@utils';
+import {
+  GOOGLE_CONFIG,
+  SCREEN_ROUTER_APP,
+  SOCIAL_NETWORK,
+  validators,
+} from '@utils';
 import {useFormik} from 'formik';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import {
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager,
+  LoginManager,
+  Settings,
+} from 'react-native-fbsdk-next';
 import * as yup from 'yup';
+import {SocialUserInfo} from './SignInGeneric';
 // import {
 //   GoogleSignin,
 //   statusCodes,
@@ -61,88 +78,86 @@ export const useFunctions = () => {
     },
   });
 
-  // const signInGoogle = async () => {
-  //   try {
-  //     await GoogleSignin.hasPlayServices();
-  //     const res = await GoogleSignin.signIn();
-  //     const socialUserInfo: SocialUserInfo = {
-  //       social_type: SOCIAL_NETWORK.FACEBOOK,
-  //       social_id: res?.user?.id,
-  //       type_model: TUTORS_ROLE,
-  //       name: res?.user?.name as string,
-  //       avatar: res?.user?.photo as string,
-  //       email: res?.user?.email,
-  //     };
-  //     reactotron.log!(res);
-  //     loginWithThirdParty(socialUserInfo);
-  //   } catch (error: any) {
-  //     // console.log(error, 'ndh');
-  //     console.log(error.code);
-  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-  //       // user cancelled the login flow
-  //     } else if (error.code === statusCodes.IN_PROGRESS) {
-  //       // operation (f.e. sign in) is in progress already
-  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-  //       // play services not available or outdated
-  //     } else {
-  //       // some other error happened
-  //     }
-  //   }
-  // };
-  // const signInFacebook = async () => {
-  //   LoginManager.logOut();
-  //   try {
-  //     let result = await LoginManager.logInWithPermissions([
-  //       'public_profile',
-  //       'email',
-  //     ]);
-  //     if (!result.isCancelled) {
-  //       AccessToken.getCurrentAccessToken()
-  //         .then(data => {
-  //           getInfoFromToken(data?.accessToken);
-  //         })
-  //         .catch(error => {
-  //           console.log(error);
-  //         });
-  //     } else {
-  //     }
-  //   } catch (error) {
-  //     console.log(error, 'ndh');
-  //   }
-  // };
-  // const getInfoFromToken = (token?: string) => {
-  //   const profileRequest = new GraphRequest(
-  //     '/me?fields=name,first_name,last_name,picture.width(400),email,gender',
-  //     {accessToken: token},
-  //     async (error, result) => {
-  //       if (error) {
-  //         reactotron.log!('login info has error: ' + JSON.stringify(error));
-  //       } else {
-  //         const socialUserInfo: SocialUserInfo = {
-  //           social_type: SOCIAL_NETWORK.FACEBOOK,
-  //           social_id: result?.id as string,
-  //           type_model: TUTORS_ROLE,
-  //           name: result?.name as string,
-  //           //@ts-ignore
-  //           avatar: result?.picture?.data?.url,
-  //           email: result?.email as string,
-  //         };
-  //         reactotron.log!(result, 'result');
-  //         loginWithThirdParty(socialUserInfo);
-  //       }
-  //     },
-  //   );
-  //   new GraphRequestManager().addRequest(profileRequest).start();
-  // };
-  // const configGoogleSignIn = () => {
-  //   GoogleSignin.configure({
-  //     // webClientId: GOOGLE_CONFIG.CLIENT_ID, // client ID of type WEB for your server (needed to verify user ID and offline access)
-  //     webClientId:
-  //       '505166124985-usvjuso48b4bi55da852is6o7d7hec10.apps.googleusercontent.com',
-  //     offlineAccess: false, // if you want to access Google API on behalf of the user FROM YOUR SERVER
-  //     profileImageSize: GOOGLE_CONFIG.PROFILE_IMAGE_SIZE, // [iOS] The desired height (and width) of the profile image. Defaults to 120px
-  //   });
-  // };
+  const signInGoogle = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const res = await GoogleSignin.signIn();
+      const socialUserInfo: SocialUserInfo = {
+        social_type: SOCIAL_NETWORK.FACEBOOK,
+        social_id: res?.user?.id,
+        name: res?.user?.name as string,
+        avatar: res?.user?.photo as string,
+        email: res?.user?.email,
+      };
+      console.log({res});
+      NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN);
+    } catch (error: any) {
+      console.log(error.code);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (f.e. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
+  const signInFacebook = async () => {
+    LoginManager.logOut();
+    try {
+      let result = await LoginManager.logInWithPermissions([
+        'public_profile',
+        'email',
+      ]);
+      if (!result.isCancelled) {
+        AccessToken.getCurrentAccessToken()
+          .then(data => {
+            getInfoFromToken(data?.accessToken);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+      }
+    } catch (error) {
+      console.log(error, 'ndh');
+    }
+  };
+  const getInfoFromToken = (token?: string) => {
+    const profileRequest = new GraphRequest(
+      '/me?fields=name,first_name,last_name,picture.width(400),email,gender',
+      {accessToken: token},
+      async (error, result) => {
+        if (error) {
+          // reactotron.log!('login info has error: ' + JSON.stringify(error));
+        } else {
+          const socialUserInfo: SocialUserInfo = {
+            social_type: SOCIAL_NETWORK.FACEBOOK,
+            social_id: result?.id as string,
+            // type_model: TUTORS_ROLE,
+            name: result?.name as string,
+            //@ts-ignore
+            avatar: result?.picture?.data?.url,
+            email: result?.email as string,
+          };
+          console.log!(result, 'result');
+          NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN);
+          // loginWithThirdParty(socialUserInfo);
+        }
+      },
+    );
+    new GraphRequestManager().addRequest(profileRequest).start();
+  };
+  const configGoogleSignIn = () => {
+    GoogleSignin.configure({
+      webClientId:
+        '178946544364-sb94rpoafoe1geoq2tnd3m3kufg724kf.apps.googleusercontent.com',
+      offlineAccess: false,
+      profileImageSize: GOOGLE_CONFIG.PROFILE_IMAGE_SIZE,
+    });
+  };
   // const loginWithThirdParty = async (userInfo: SocialUserInfo) => {
   //   try {
   //     setDialogLoading(true);
@@ -158,9 +173,9 @@ export const useFunctions = () => {
   //     console.log({error});
   //   }
   // };
-  // useEffect(() => {
-  //   Settings.initializeSDK();
-  //   configGoogleSignIn();
-  // }, []);
-  return {formik, showDialog};
+  useEffect(() => {
+    Settings.initializeSDK();
+    configGoogleSignIn();
+  }, []);
+  return {formik, showDialog, signInFacebook, signInGoogle};
 };

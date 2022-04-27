@@ -126,7 +126,7 @@ const VirtualList = React.memo(
               alignItems: 'center',
               width: '100%',
             }}>
-            <ActivityIndicator size="large" color={colors.rose} />
+            <ActivityIndicator size="large" color={colors.mainColor} />
           </View>
         )}
         <NEW_LIST
@@ -149,7 +149,7 @@ const VirtualList = React.memo(
               <RefreshControl
                 refreshing={(isLoading && data.length > 1) || false}
                 onRefresh={onRefresh}
-                tintColor={colors.rose}
+                tintColor={colors.mainColor}
               />
             )
           }
@@ -166,7 +166,7 @@ const VirtualList = React.memo(
               data?.length >= 4 ? null : null // <ViewMore onPress={onPress} customViewMore={customViewMore} />
             ) : data && data?.length > perPage - 1 && isLoading ? (
               <View>
-                <ActivityIndicator size={'small'} color={colors.rose} />
+                <ActivityIndicator size={'small'} color={colors.mainColor} />
               </View>
             ) : null
           }

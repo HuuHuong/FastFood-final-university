@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>178946544364-hmtbq5m8e6mhvbuom9rd0gk4d5islih4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.178946544364-hmtbq5m8e6mhvbuom9rd0gk4d5islih4</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>178946544364-6ng6t1agg782a2i45vssdrb2u4g0forv.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAGU_Mr8q-Asur9nfNqxrZiIpjpWeyqKh8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>178946544364</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fastfood</string>
+	<key>PROJECT_ID</key>
+	<string>fastfood-debf7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fastfood-debf7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:178946544364:ios:1523ff55a37daf0f83cbc9</string>
+</dict>
+</plist>
