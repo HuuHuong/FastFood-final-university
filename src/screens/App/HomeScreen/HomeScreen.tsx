@@ -44,7 +44,7 @@ export const HomeScreen = () => {
 
   const animatedScrollX = translateX.interpolate({
     inputRange: [0, refWidht.current],
-    outputRange: [0, Spacing.width70],
+    outputRange: [0, 80],
     extrapolate: 'clamp',
   });
   const renderBanner = ({item, index}: any) => {
@@ -75,14 +75,6 @@ export const HomeScreen = () => {
           </View>
         </View>
       </LinearGradient>
-    );
-  };
-  const renderUser = ({item, index}: any) => {
-    return (
-      <DebounceButton onPress={() => {}} viewStyle={styles.item_user}>
-        <AppText style={styles.name_user}>{item.name}</AppText>
-        <IconArrowRight />
-      </DebounceButton>
     );
   };
   const ListMenu = React.memo(() => {
@@ -309,36 +301,6 @@ export const HomeScreen = () => {
         animatedDuration={50}
         animatedFriction={4}
       />
-      <View
-        style={{
-          marginHorizontal: Spacing.width20,
-          borderBottomColor: colors.line_gray,
-          borderBottomWidth: Spacing.width1,
-          paddingBottom: Spacing.height20,
-        }}>
-        <View
-          style={{
-            ...commonStyles.row_center_space_between,
-            marginBottom: Spacing.height16,
-          }}>
-          <AppText style={styles.session_content}>{'Your Preferences'}</AppText>
-          <DebounceButton
-            activeOpacity={1}
-            onPress={() => {}}
-            viewStyle={{...commonStyles.row_align_center}}>
-            <AppText style={styles.edit}>{'Edit'}</AppText>
-            <IconPencil />
-          </DebounceButton>
-        </View>
-        <AppText style={styles.title_now_order}>
-          {'Now order user specific food directly below!'}
-        </AppText>
-        <VirtualList
-          data={USER}
-          renderItem={renderUser}
-          contentContainerStyle={{marginTop: Spacing.height24}}
-        />
-      </View>
       <ListMenu />
       <View style={styles.view_looking_for}>
         <AppText style={styles.looking_for_content}>
@@ -363,7 +325,7 @@ export const HomeScreen = () => {
             },
           )}
         />
-        <View style={{width: Spacing.width84, height: Spacing.height2}}>
+        <View style={{width: 75, height: Spacing.height2}}>
           <View style={styles.line_length_food}></View>
           <Animated.View
             style={[

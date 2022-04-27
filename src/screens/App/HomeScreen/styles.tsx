@@ -207,7 +207,7 @@ export const styles = StyleSheet.create({
     borderRadius: Spacing.width14,
     height: '100%',
     position: 'absolute',
-    width: Spacing.width20,
+    width: 20,
   },
   session_main: {
     flexDirection: 'row',

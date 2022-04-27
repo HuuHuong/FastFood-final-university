@@ -157,7 +157,9 @@ export const MainButtonApp = React.memo(
 
 export const BackButton = () => {
   return (
-    <DebounceButton onPress={() => NavigationUtils.goBack()}>
+    <DebounceButton
+      style={{alignSelf: 'baseline'}}
+      onPress={() => NavigationUtils.goBack()}>
       <IconBack strokeColor={colors.black} />
     </DebounceButton>
   );
