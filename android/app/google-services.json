@@ -14,11 +14,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "178946544364-64orok5qs6cg66ltqaaf1sgtl5m4h35l.apps.googleusercontent.com",
+          "client_id": "178946544364-6ng6t1agg782a2i45vssdrb2u4g0forv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.fastfood",
             "certificate_hash": "aae9e19fcea0939af3a526c3c0851935e96b2bab"
+          }
+        },
+        {
+          "client_id": "178946544364-cags6c9pdhb3kds5vnbsjgiqvmushcod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fastfood",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },
         {
