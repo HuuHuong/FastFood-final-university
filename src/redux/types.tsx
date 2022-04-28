@@ -3,6 +3,7 @@ export interface accountInterface {
   userProfile: any;
   dataUser: any;
   localLang: string;
+  listTextSearched: any;
 }
 export interface ChatState {
   conversationListState: {

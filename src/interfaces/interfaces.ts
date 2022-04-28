@@ -1,5 +1,10 @@
 import {FormikErrors} from 'formik';
-import {KeyboardTypeOptions, TextStyle, ViewStyle} from 'react-native';
+import {
+  KeyboardTypeOptions,
+  ReturnKeyTypeOptions,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 export interface IAppInput {
   label?: string;
@@ -32,4 +37,7 @@ export interface IAppInput {
   callBackOnFocus?: (focus: boolean) => void;
   onEndEditing?: (name?: string) => void;
   onFilter?: (val: string) => void;
+  returnKeyType?: ReturnKeyTypeOptions | undefined;
+  onForcus?: () => void;
+  onBlur?: () => void;
 }

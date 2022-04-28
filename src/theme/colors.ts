@@ -15,6 +15,7 @@ export const colors = {
   gray_4F: '#4F4F4F',
   gray_F3: '#F3F3F3',
   gray_7C: '#7C7C7C',
+  gray_7D: '#7D7D7D',
   green_E6: '#E6B64E',
   line_gray: '#AFAFAF',
   line_length: '#EFEAD6',

@@ -21,7 +21,7 @@ export const useFunctions = () => {
     NavigationUtils.navigate(SCREEN_ROUTER_APP.ORDER_AGAIN);
   };
   const onNavigateListFood = () => {
-    NavigationUtils.navigate(SCREEN_ROUTER_APP.LIST_FOOD);
+    NavigationUtils.navigate(SCREEN_ROUTER_APP.LIST_FOOD, {autoFocus: true});
   };
   let translateX = useRef(new Animated.Value(0)).current;
 

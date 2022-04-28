@@ -7,7 +7,7 @@ export interface ButtonProps {
   styleText?: StyleProp<ViewStyle>;
   icon?: JSX.Element;
   disabled?: number | boolean;
-  onPress: () => void;
+  onPress?: () => void;
   children?: any;
   textStyle?: any;
   activeOpacity?: number;

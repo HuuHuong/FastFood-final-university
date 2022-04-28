@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">FastFood</string>
-    <string name="facebook_app_id">771242113852578</string>
+   
+<string name="facebook_app_id">771242113852578</string>
+<string name="fb_login_protocol_scheme">fb771242113852578</string>
+<string name="facebook_client_token">43b592007b1010e3fa510b65c38a383a</string>
+
+
 </resources>

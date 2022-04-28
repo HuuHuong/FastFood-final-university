@@ -127,3 +127,73 @@ export const RESTAURANTS = [
     img: Images.img_madchef,
   },
 ];
+export const LIST_FOOD_APP = [
+  {
+    id: 1,
+    img: Images.img_coffee,
+    name: 'Cappuccino',
+    restaurant: 'Suhani Restaurant',
+    realPrice: 20000,
+    freeDelivery: false,
+  },
+  {
+    id: 2,
+    img: Images.img_rice_egg,
+    name: 'Egg and cheese sandwich',
+    restaurant: "Mehfil's Place",
+    realPrice: 20000,
+    freeDelivery: false,
+    discount: '25%',
+  },
+  {
+    id: 3,
+    img: Images.img_coffee,
+    name: 'Cappuccino',
+    restaurant: 'Suhani Restaurant',
+    realPrice: 20000,
+    freeDelivery: false,
+    nutritional_value: {
+      Protein: '2.5g',
+      Carbohydrates: '14.7g',
+      Fat: '0,5%',
+    },
+  },
+  {
+    id: 4,
+    img: Images.img_rice_egg,
+    name: 'Egg and cheese sandwich',
+    restaurant: "Mehfil's Place",
+    realPrice: 20000,
+    freeDelivery: false,
+  },
+  {
+    id: 5,
+    img: Images.img_coffee,
+    name: 'Cappuccino',
+    restaurant: 'Suhani Restaurant',
+    realPrice: 20000,
+    freeDelivery: false,
+  },
+  {
+    id: 6,
+    img: Images.img_rice1,
+    name: 'Fried rice',
+    restaurant: 'Pista House',
+    description:
+      'Our fried rice is made from the finest ingredients and veggies. single dish is made with fresh vegetables, rescued.',
+    title_offer:
+      'Left over food and supplies are gathered and sold for 50% off!',
+    // type: ['Rescued', 'Vegan'],
+    nutritional_value: {
+      Protein: '2.5g',
+      Carbohydrates: '14.7g',
+      Sodium: '19%',
+      Potassium: '5%',
+    },
+    calo: 145,
+    ingredients: [],
+    offers: 50,
+    realPrice: 40000,
+    star: 4.5,
+  },
+];

@@ -27,6 +27,9 @@ export const Images = {
   img_madchef: require('./images/img_madchef.png'),
   img_mehfil_coffee: require('./images/img_mehfil_coffee.png'),
 
+  img_rice1: require('./images/img_rice1.png'),
+  img_rice2: require('./images/img_rice2.png'),
+
   splash_1: require('./images/splash_1.png'),
   splash_2: require('./images/splash_2.png'),
   splash_3: require('./images/splash_3.png'),

@@ -8,3 +8,6 @@ export * from './icon_filter';
 export * from './icon_next';
 export * from './icon_pencil';
 export * from './icon_discount';
+export * from './icon_delete';
+export * from './icon_star';
+export * from './icon_fire';

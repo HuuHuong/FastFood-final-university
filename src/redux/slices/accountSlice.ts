@@ -7,6 +7,7 @@ const initialState = {
   userProfile: {},
   dataUser: [],
   localLang: '',
+  listTextSearched: [],
 } as accountInterface;
 
 const accountSlice = createSlice({
@@ -16,12 +17,15 @@ const accountSlice = createSlice({
     setAccountToken(state, action) {
       state.token = action.payload;
     },
-
     setDataProfile(state, action) {
       state.dataUser = action.payload;
+    },
+    setItemSearch(state, action) {
+      state.listTextSearched = action.payload;
     },
   },
 });
 
-export const {setAccountToken, setDataProfile} = accountSlice.actions;
+export const {setAccountToken, setDataProfile, setItemSearch} =
+  accountSlice.actions;
 export default accountSlice.reducer;

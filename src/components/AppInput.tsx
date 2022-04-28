@@ -33,6 +33,9 @@ export const AppInput = (props: IAppInput) => {
     maxLength,
     callBackOnFocus,
     onEndEditing,
+    returnKeyType,
+    onForcus,
+    onBlur,
   } = props;
   const [isFocused, setIsFocused] = React.useState(false);
   const [hidePasssWord, setHidePassWord] = React.useState(true);
@@ -96,8 +99,8 @@ export const AppInput = (props: IAppInput) => {
           placeholderTextColor={'rgba(160, 160, 160, 0.6)'}
           value={value}
           multiline={multiline}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          onFocus={onForcus || handleFocus}
+          onBlur={onBlur || handleBlur}
           numberOfLines={numberOfLines}
           onChangeText={onChangeText}
           secureTextEntry={hidePasssWord && secureTextEntry}
@@ -105,7 +108,7 @@ export const AppInput = (props: IAppInput) => {
           autoFocus={autoFocus}
           maxLength={maxLength}
           onEndEditing={onEndEditingInput}
-          returnKeyType={'done'}
+          returnKeyType={returnKeyType || 'done'}
           blurOnSubmit={!multiline}
           textAlignVertical={multiline ? 'top' : 'center'}
         />
