@@ -8,9 +8,17 @@ import {deviceWidth, Nunitos, Spacing} from '@theme';
 import isEqual from 'react-fast-compare';
 import {Formik} from 'formik';
 import {useFunctions} from './useFunctions';
+import {ModalVerifyCode} from './ModalVerifyCode';
 
 export const TabSignUp = () => {
-  const {initialValues, validationSchema, onSubmit} = useFunctions();
+  const {
+    initialValues,
+    validationSchema,
+    onSubmit,
+    verifyCode,
+    isVisible,
+    setIsVisible,
+  } = useFunctions();
   const SocialLogin = React.memo(() => {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -86,30 +94,20 @@ export const TabSignUp = () => {
                 // maxLength={LENGTH_TEXT.MAX_255}
                 containerStyle={styles.form_input}
               />
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  width: deviceWidth - Spacing.width96,
-                  marginTop: Spacing.height20,
-                }}>
-                <MainButtonApp
-                  style={{width: '55%'}}
-                  onPress={() => {}}
-                  title={'Sign-up'}
-                />
-                <AppText style={styles.footer_tittle}>
-                  {'Already a\nMember? '}
-                  <AppText style={{...Nunitos.Bold_Nunitos_400}}>
-                    {'Login'}
-                  </AppText>
-                </AppText>
-              </View>
+              <MainButtonApp
+                style={{width: '55%'}}
+                onPress={handleSubmit}
+                title={'Sign-up'}
+              />
             </>
           )}
         </Formik>
       </View>
+      <ModalVerifyCode
+        isVisible={isVisible}
+        verifyCode={verifyCode}
+        close={() => setIsVisible(false)}
+      />
     </ScrollView>
   );
 };

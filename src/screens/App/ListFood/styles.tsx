@@ -121,4 +121,20 @@ export const styles = StyleSheet.create({
     marginVertical: Spacing.height8,
     marginHorizontal: Spacing.width24,
   },
+  view_discount: {
+    position: 'absolute',
+    top: '50%',
+    left: -Spacing.width6,
+  },
+  img_discount: {
+    width: Spacing.width80,
+    height: Spacing.height28,
+  },
+  num_discount: {
+    ...commonStyles.nunito_600_12,
+    color: colors.white,
+    position: 'absolute',
+    top: Spacing.height4,
+    left: Spacing.width8,
+  },
 });

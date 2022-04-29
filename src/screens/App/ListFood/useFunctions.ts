@@ -1,5 +1,6 @@
+import {NavigationUtils} from '@navigation';
 import {setItemSearch} from '@redux/slices/accountSlice';
-import {useDebounce} from '@utils';
+import {SCREEN_ROUTER_APP, useDebounce} from '@utils';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -30,7 +31,9 @@ export const useFunctions = (props: any) => {
     );
     dispacth(setItemSearch(newList));
   };
-  console.log({focusSearch});
+  const onDetailFood = (item: any) => {
+    NavigationUtils.navigate(SCREEN_ROUTER_APP.DETAIL_FOOD, {foodDetail: item});
+  };
   return {
     text,
     setText,
@@ -40,5 +43,6 @@ export const useFunctions = (props: any) => {
     listTextSearched,
     onDeleteTextSearch,
     setFocusSearch,
+    onDetailFood,
   };
 };

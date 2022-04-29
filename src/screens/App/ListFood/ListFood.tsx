@@ -18,6 +18,7 @@ import {
   IconFire,
   IconSearch,
   IconStar,
+  Images,
   LIST_FOOD_APP,
 } from '@assets';
 import {NavigationUtils} from '@navigation';
@@ -34,15 +35,26 @@ export const ListFood = (props: any) => {
     listTextSearched,
     onDeleteTextSearch,
     setFocusSearch,
+    onDetailFood,
   } = useFunctions(props);
   const renderListFood = ({item, index}: any) => {
     return (
       <DebounceButton
         activeOpacity={1}
-        onPress={() => {}}
+        onPress={() => onDetailFood(item)}
         viewStyle={styles.view_item_food}>
         <View>
           <FastImage source={item.img} style={styles.img_food} />
+          {item.offers && (
+            <View style={styles.view_discount}>
+              <FastImage
+                source={Images.img_discount}
+                style={styles.img_discount}
+              />
+              <AppText
+                style={styles.num_discount}>{`${item.offers}% OFF`}</AppText>
+            </View>
+          )}
         </View>
         <View style={styles.view_info}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>

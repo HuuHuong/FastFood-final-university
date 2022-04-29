@@ -3,6 +3,7 @@ import {CartScreen} from '@screens/App/CartScreen/CartScreen';
 import {HomeScreen} from '@screens/App/HomeScreen/HomeScreen';
 import {ProfileScreen} from '@screens/App/ProfileScreen/ProfileScreen';
 import {StarScreen} from '@screens/App/StarScreen/StarScreen';
+import {Platform} from 'react-native';
 import {APP_STACK} from './AppStack';
 
 const SCREEN_ROUTER_APP = {
@@ -59,6 +60,19 @@ const GOOGLE_CONFIG = {
     '178946544364-sb94rpoafoe1geoq2tnd3m3kufg724kf.apps.googleusercontent.com',
   PROFILE_IMAGE_SIZE: 120,
 };
+const CREDENTIALS = {
+  clientId: 'AIzaSyDxKmTyiBDzoNiPYrnCwiE3F23QRGa_CfE',
+  appId:
+    Platform.OS === 'android'
+      ? '1:178946544364:android:2c4f956e5f0888e783cbc9'
+      : '1:178946544364:ios:1523ff55a37daf0f83cbc9',
+  apiKey: 'AIzaSyDxKmTyiBDzoNiPYrnCwiE3F23QRGa_CfE',
+  databaseURL:
+    'https://fastfood-debf7-default-rtdb.asia-southeast1.firebasedatabase.app/',
+  storageBucket: '',
+  messagingSenderId: '',
+  projectId: 'fastfood-debf7',
+};
 const BANNER_HOME = [
   {
     id: 1,
@@ -106,4 +120,5 @@ export {
   USER,
   SOCIAL_NETWORK,
   GOOGLE_CONFIG,
+  CREDENTIALS,
 };

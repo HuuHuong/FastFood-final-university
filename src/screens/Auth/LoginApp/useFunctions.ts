@@ -1,6 +1,7 @@
 import {FAKE_AUTHEN} from '@assets';
 import {NavigationUtils} from '@navigation';
 import {
+  CREDENTIALS,
   GOOGLE_CONFIG,
   SCREEN_ROUTER_APP,
   SOCIAL_NETWORK,
@@ -21,17 +22,9 @@ import {
 } from 'react-native-fbsdk-next';
 import * as yup from 'yup';
 import {SocialUserInfo} from './SignInGeneric';
-// import {
-//   GoogleSignin,
-//   statusCodes,
-// } from '@react-native-google-signin/google-signin';
-// import {
-//   AccessToken,
-//   GraphRequest,
-//   GraphRequestManager,
-//   LoginManager,
-//   Settings,
-// } from 'react-native-fbsdk-next';
+import auth from '@react-native-firebase/auth';
+import firebase from '@react-native-firebase/app';
+import {getDataUser, loginFirebase} from '@services/firebase/firebase_config';
 interface FakeAuthen {
   id: number;
   phone_number: string;
@@ -40,7 +33,7 @@ interface FakeAuthen {
 export const useFunctions = () => {
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const initialValues = {
-    phone_number: __DEV__ ? '0978589470' : '',
+    phone_number: __DEV__ ? '+84978589470' : '',
     password: __DEV__ ? '123456789a' : '',
   };
   const validationSchema = yup.object().shape({
@@ -52,32 +45,35 @@ export const useFunctions = () => {
     validationSchema: validationSchema,
     enableReinitialize: true,
     onSubmit: values => {
-      const isLogin =
-        FAKE_AUTHEN.findIndex(
-          (item: FakeAuthen) =>
-            // if (
-            //   item.phone_number !== values.email ||
-            //   item.password !== values.password
-            // )
-            //   console.log('Your phone number or password is invalid');
-            // else if (
-            //   item.phone_number === values.email &&
-            //   item.password === values.password
-            // )
-            //   console.log('Login Success');
-            item.phone_number === values.phone_number &&
-            item.password === values.password,
-        ) != -1;
-      if (isLogin) {
-        setShowDialog(true);
-        NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
-        setTimeout(() => {
-          setShowDialog(false);
-        }, 2000);
-      }
+      // const isLogin =
+      //   FAKE_AUTHEN.findIndex(
+      //     (item: FakeAuthen) =>
+      //       item.phone_number === values.phone_number &&
+      //       item.password === values.password,
+      //   ) != -1;
+      // if (isLogin) {
+      //   setShowDialog(true);
+      //   NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
+      //   setTimeout(() => {
+      //     setShowDialog(false);
+      //   }, 2000);
+      // }
+      onLogin(values);
     },
   });
-
+  const onLogin = async (values: any) => {
+    try {
+      // console.log(11111111111);
+      // const response = await auth().signInWithPhoneNumber(values.phone_number);
+      // console.log({response});
+      loginFirebase({
+        phoneNumber: values.phone_number,
+        password: values.password,
+      });
+    } catch (error) {
+      console.log({error});
+    }
+  };
   const signInGoogle = async () => {
     try {
       await GoogleSignin.hasPlayServices();
@@ -131,7 +127,6 @@ export const useFunctions = () => {
       {accessToken: token},
       async (error, result) => {
         if (error) {
-          // reactotron.log!('login info has error: ' + JSON.stringify(error));
         } else {
           const socialUserInfo: SocialUserInfo = {
             social_type: SOCIAL_NETWORK.FACEBOOK,
@@ -173,9 +168,14 @@ export const useFunctions = () => {
   //     console.log({error});
   //   }
   // };
+  const configFirebase = async () => {
+    const response = await firebase.initializeApp(CREDENTIALS, 'FastFood');
+    console.log({response});
+  };
   useEffect(() => {
     Settings.initializeSDK();
     configGoogleSignIn();
+    configFirebase;
   }, []);
   return {formik, showDialog, signInFacebook, signInGoogle};
 };
