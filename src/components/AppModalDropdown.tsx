@@ -1,6 +1,6 @@
 // import { iconActiveCheckBox, iconBack } from '@images';
 // import R from '@assets/R';
-import {NotoSansFont, Spacing} from '@theme';
+import {colors, NotoSansFont, Spacing} from '@theme';
 // import { colors } from '@utils/colors';
 import React, {ReactElement, useRef, useState} from 'react';
 import {

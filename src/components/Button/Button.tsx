@@ -111,6 +111,7 @@ export const MainButtonApp = React.memo(
     isLine,
     titleStyle,
     socialIcon,
+    icon,
     ...props
   }: ButtonProps & TouchableWithoutFeedbackProps) => {
     return (
@@ -144,7 +145,7 @@ export const MainButtonApp = React.memo(
               ]}
               children={title}
             />
-
+            {icon}
             {isLoading && (
               <ActivityIndicator color="white" style={styles.loading} />
             )}
@@ -158,9 +159,7 @@ export const MainButtonApp = React.memo(
 export const BackButton = React.memo(
   ({style}: ButtonProps & TouchableWithoutFeedbackProps) => {
     return (
-      <DebounceButton
-        style={[style, {alignSelf: 'baseline'}]}
-        onPress={() => NavigationUtils.goBack()}>
+      <DebounceButton style={style} onPress={() => NavigationUtils.goBack()}>
         <IconBack strokeColor={colors.black} />
       </DebounceButton>
     );
