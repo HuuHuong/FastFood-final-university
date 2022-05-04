@@ -4,3 +4,4 @@ export * from './AppStack';
 export * from './UIHelper';
 export * from './YupValidate';
 export * from './enum';
+export * from './animated';
