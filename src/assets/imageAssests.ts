@@ -5,6 +5,11 @@ export const Images = {
   ic_cart: require('./images/ic_cart.png'),
   ic_user: require('./images/ic_user.png'),
   ic_discount: require('./images/ic_discount.png'),
+  ic_tick: require('./images/ic_tick.png'),
+  ic_bookmark: require('./images/ic_bookmark.png'),
+  ic_notification: require('./images/ic_notification.png'),
+  ic_setting: require('./images/ic_setting.png'),
+  ic_payment: require('./images/ic_payment.png'),
 
   img_splash: require('./images/img_splash.png'),
   img_heart: require('./images/img_heart.png'),
@@ -29,7 +34,7 @@ export const Images = {
 
   img_rice1: require('./images/img_rice1.png'),
   img_rice2: require('./images/img_rice2.png'),
-
+  img_avatar: require('./images/img_avatar.png'),
   splash_1: require('./images/splash_1.png'),
   splash_2: require('./images/splash_2.png'),
   splash_3: require('./images/splash_3.png'),

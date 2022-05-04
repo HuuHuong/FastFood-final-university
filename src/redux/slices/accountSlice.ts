@@ -23,9 +23,12 @@ const accountSlice = createSlice({
     setItemSearch(state, action) {
       state.listTextSearched = action.payload;
     },
+    setLocalLang(state, action) {
+      state.localLang = action.payload;
+    },
   },
 });
 
-export const {setAccountToken, setDataProfile, setItemSearch} =
+export const {setAccountToken, setDataProfile, setItemSearch, setLocalLang} =
   accountSlice.actions;
 export default accountSlice.reducer;

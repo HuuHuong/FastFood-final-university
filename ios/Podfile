@@ -14,6 +14,7 @@ target 'FastFood' do
   pod 'FBSDKLoginKit'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'GoogleSignIn', '~> 6.1.0'
+  pod 'RNI18n', :path => '../node_modules/react-native-i18n'
   target 'FastFoodTests' do
     inherit! :complete
     # Pods for testing

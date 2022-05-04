@@ -3,7 +3,7 @@ import {Images} from '@assets/imageAssests';
 export const FAKE_AUTHEN = [
   {
     id: 1,
-    phone_number: '0978589470',
+    phone_number: '+84978589470',
     password: '123456789a',
   },
 ];
