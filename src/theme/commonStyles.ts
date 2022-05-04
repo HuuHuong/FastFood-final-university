@@ -20,6 +20,10 @@ export const commonStyles = StyleSheet.create({
     ...Poppins.Bold_Poppins_600,
     fontSize: FontSize.Font20,
   },
+  commonText400_20: {
+    ...Poppins.Normal_Poppins_400,
+    fontSize: FontSize.Font20,
+  },
   commonText400_16: {
     ...Poppins.Normal_Poppins_400,
     fontSize: FontSize.Font16,

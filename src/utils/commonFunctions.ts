@@ -65,12 +65,10 @@ export const showConfirm = (
     content,
     [
       {
-        // text: textCancel || R.strings().cancel,
         style: 'cancel',
         onPress: actionCandle,
       },
       {
-        // text: textConfirm || R.strings().confirm,
         onPress: action,
       },
     ],
@@ -81,14 +79,14 @@ export const isUser = async (action: () => void) => {
   // const token = await AsyncStorageService.getToken();
   // if (!token) {
   //   showConfirm(
-  //     R.strings().notification,
-  //     R.strings().require_login_message,
+  //     R.trans().notification,
+  //     R.trans().require_login_message,
   //     () => {
   //       NavigationUtils.navigate(SCREEN_ROUTER_APP.LOGIN);
   //     },
   //     () => {},
   //     '',
-  //     R.strings().login,
+  //     R.trans().login,
   //   );
   //   return;
   // }
