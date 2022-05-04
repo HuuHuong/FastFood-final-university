@@ -9,6 +9,8 @@ import isEqual from 'react-fast-compare';
 import {Formik} from 'formik';
 import {useFunctions} from './useFunctions';
 import {ModalVerifyCode} from './ModalVerifyCode';
+import strings from '@assets/trans';
+import trans from '@assets/trans';
 
 export const TabSignUp = () => {
   const {
@@ -51,7 +53,7 @@ export const TabSignUp = () => {
           marginVertical: Spacing.height28,
         }}>
         <View style={styles.header_signup}>
-          <AppText style={styles.header_content}>{'Register'}</AppText>
+          <AppText style={styles.header_content}>{trans().register}</AppText>
           <SocialLogin />
         </View>
         <Formik
@@ -65,7 +67,7 @@ export const TabSignUp = () => {
               <AppInput
                 onValueChange={handleChange('full_name')}
                 value={values.full_name}
-                placeholder="Full Name"
+                placeholder={trans().full_name}
                 error={errors.full_name}
                 // maxLength={LENGTH_TEXT.MAX_255}
                 containerStyle={styles.form_input}
@@ -73,7 +75,7 @@ export const TabSignUp = () => {
               <AppInput
                 onValueChange={handleChange('mobile_number')}
                 value={values.mobile_number}
-                placeholder={'Phone number'}
+                placeholder={trans().phone_number}
                 error={errors.mobile_number}
                 // maxLength={LENGTH_TEXT.MAX_255}
                 containerStyle={styles.form_input}
@@ -81,7 +83,7 @@ export const TabSignUp = () => {
               <AppInput
                 onValueChange={handleChange('password')}
                 value={values.password}
-                placeholder={'Password'}
+                placeholder={trans().password}
                 error={errors.password}
                 // maxLength={LENGTH_TEXT.MAX_255}
                 containerStyle={styles.form_input}
@@ -89,7 +91,7 @@ export const TabSignUp = () => {
               <AppInput
                 onValueChange={handleChange('confirm_password')}
                 value={values.confirm_password}
-                placeholder={'Confirm password'}
+                placeholder={trans().confirm_password}
                 error={errors.confirm_password}
                 // maxLength={LENGTH_TEXT.MAX_255}
                 containerStyle={styles.form_input}
@@ -97,7 +99,7 @@ export const TabSignUp = () => {
               <MainButtonApp
                 style={{width: '55%'}}
                 onPress={handleSubmit}
-                title={'Sign-up'}
+                title={trans().sign_up}
               />
             </>
           )}

@@ -10,6 +10,7 @@ import {TabView, SceneMap} from 'react-native-tab-view';
 import AppTabView from '@components/AppTabView/AppTabView';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 import {useFunctions} from './useFunctions';
+import trans from '@assets/trans';
 export const LoginScreen = () => {
   const {showDialog, signInFacebook, signInGoogle} = useFunctions();
   return (
@@ -18,10 +19,9 @@ export const LoginScreen = () => {
         <FastImage source={Images.ic_logo} style={styles.logo} />
       </View>
       <AppTabView
-        // reviewNumber={tutorDetail?.tutor?.reviews?.data?.length}
         screenRoutes={[
-          {key: 'TabLogin', title: 'Login'},
-          {key: 'TabSignUp', title: 'Sign-up'},
+          {key: 'TabLogin', title: trans().login},
+          {key: 'TabSignUp', title: trans().sign_up},
         ]}
         components={{
           TabLogin: () => (

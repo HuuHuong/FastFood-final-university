@@ -5,8 +5,9 @@ import {AppInput, AppText, DebounceButton, MainButtonApp} from '@components';
 import {useFunctions} from '../useFunctions';
 import {LENGTH_TEXT} from '@utils';
 import {styles} from './styles';
-import {IconFacebook, IconGoogle} from '@assets';
+import R, {IconFacebook, IconGoogle} from '@assets';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
+import trans from '@assets';
 
 export const TabLogin = (props: any) => {
   const {formik} = useFunctions();
@@ -40,10 +41,15 @@ export const TabLogin = (props: any) => {
           containerStyle={styles.form_input}
         />
         <DebounceButton activeOpacity={0.5} onPress={() => {}}>
-          <AppText style={styles.forgot_password}>{'Forgot password?'}</AppText>
+          <AppText style={styles.forgot_password}>
+            {trans().forgot_password}
+          </AppText>
         </DebounceButton>
-        <MainButtonApp onPress={() => formik.handleSubmit()} title={'Login'} />
-        <AppText style={styles.or}>{'Or'}</AppText>
+        <MainButtonApp
+          onPress={() => formik.handleSubmit()}
+          title={trans().login}
+        />
+        <AppText style={styles.or}>{trans().or}</AppText>
         <MainButtonApp
           style={{
             backgroundColor: colors.blue,
@@ -51,7 +57,7 @@ export const TabLogin = (props: any) => {
           }}
           socialIcon={<IconFacebook />}
           onPress={signInFacebook}
-          title={'Log In with Facebook'}
+          title={trans().login_facebook}
           titleStyle={styles.login_face}
         />
         <MainButtonApp
@@ -61,7 +67,7 @@ export const TabLogin = (props: any) => {
           }}
           socialIcon={<IconGoogle />}
           onPress={signInGoogle}
-          title={'Log In with Google'}
+          title={trans().login_google}
           titleStyle={styles.login_google}
         />
       </View>

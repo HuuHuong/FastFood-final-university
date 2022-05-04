@@ -45,20 +45,20 @@ export const useFunctions = () => {
     validationSchema: validationSchema,
     enableReinitialize: true,
     onSubmit: values => {
-      // const isLogin =
-      //   FAKE_AUTHEN.findIndex(
-      //     (item: FakeAuthen) =>
-      //       item.phone_number === values.phone_number &&
-      //       item.password === values.password,
-      //   ) != -1;
-      // if (isLogin) {
-      //   setShowDialog(true);
-      //   NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
-      //   setTimeout(() => {
-      //     setShowDialog(false);
-      //   }, 2000);
-      // }
-      onLogin(values);
+      const isLogin =
+        FAKE_AUTHEN.findIndex(
+          (item: FakeAuthen) =>
+            item.phone_number === values.phone_number &&
+            item.password === values.password,
+        ) != -1;
+      if (isLogin) {
+        setShowDialog(true);
+        NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
+        setTimeout(() => {
+          setShowDialog(false);
+        }, 2000);
+      }
+      // onLogin(values);
     },
   });
   const onLogin = async (values: any) => {
@@ -66,10 +66,10 @@ export const useFunctions = () => {
       // console.log(11111111111);
       // const response = await auth().signInWithPhoneNumber(values.phone_number);
       // console.log({response});
-      loginFirebase({
-        phoneNumber: values.phone_number,
-        password: values.password,
-      });
+      // loginFirebase({
+      //   phoneNumber: values.phone_number,
+      //   password: values.password,
+      // });
     } catch (error) {
       console.log({error});
     }

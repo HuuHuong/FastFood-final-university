@@ -10,21 +10,22 @@ import Carousel, {Pagination} from 'react-native-snap-carousel';
 import LinearGradient from 'react-native-linear-gradient';
 import {NavigationUtils} from '@navigation';
 import {SCREEN_ROUTER_APP} from '@utils';
+import trans from '@assets';
 export const SwiperAuth = () => {
   const dataSwipper = [
     {
       id: 1,
-      title: 'Save Food with our\nnew Feature!',
+      title: trans().save_food_new,
       img: Images.splash_1,
     },
     {
       id: 2,
-      title: 'Set preferences for multiple users from various restaurants!',
+      title: trans().set_preferences,
       img: Images.splash_2,
     },
     {
       id: 3,
-      title: 'Fast, rescued food at your service.',
+      title: trans().fast_rescued,
       img: Images.splash_3,
     },
   ];
@@ -46,7 +47,7 @@ export const SwiperAuth = () => {
               marginHorizontal: Spacing.width40,
             }}
             onPress={onStart}
-            title={'Get started!'}
+            title={trans().get_started}
             titleStyle={{
               color: colors.mainColor,
             }}
@@ -61,7 +62,7 @@ export const SwiperAuth = () => {
       style={{flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
         <DebounceButton onPress={onStart} viewStyle={styles.header_swipper}>
-          <AppText style={styles.skip}>{'SKIP'}</AppText>
+          <AppText style={styles.skip}>{trans().skip}</AppText>
           <IconArrowRight strokeColor={colors.white} />
         </DebounceButton>
         <FastImage source={Images.ic_logo} style={styles.logo} />
