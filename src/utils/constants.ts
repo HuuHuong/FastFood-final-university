@@ -2,7 +2,7 @@ import {Images} from '@assets';
 import {CartScreen} from '@screens/App/CartScreen/CartScreen';
 import {HomeScreen} from '@screens/App/HomeScreen/HomeScreen';
 import {ProfileScreen} from '@screens/App/ProfileScreen/ProfileScreen';
-import {StarScreen} from '@screens/App/StarScreen/StarScreen';
+import {OfferScreen} from '@screens/App/StarScreen/OfferScreen';
 import {Platform} from 'react-native';
 import {APP_STACK} from './AppStack';
 
@@ -18,6 +18,9 @@ const SCREEN_ROUTER_APP = {
   LIST_FOOD: 'LIST_FOOD',
   ORDER_AGAIN: 'ORDER_AGAIN',
   DETAIL_FOOD: 'DETAIL_FOOD',
+
+  SETTING: 'SETTING',
+  LANGUAGE: 'LANGUAGE',
 };
 const MAIN_TAB_BAR = {
   HOME: 'HOME',
@@ -39,7 +42,7 @@ const TAB_BAR = {
   OFFERS: {
     name: SCREEN_ROUTER_APP.OFFERS,
     icon: Images.ic_offers,
-    route: StarScreen,
+    route: OfferScreen,
     title: 'OFFERS',
   },
   CART: {
@@ -111,6 +114,10 @@ const USER = [
     name: 'User 4',
   },
 ];
+const TYPE_QUANTITY = {
+  REDUCTION: 0,
+  INCREASE: 1,
+};
 export {
   APP_STACK,
   SCREEN_ROUTER_APP,
@@ -121,4 +128,5 @@ export {
   SOCIAL_NETWORK,
   GOOGLE_CONFIG,
   CREDENTIALS,
+  TYPE_QUANTITY,
 };
