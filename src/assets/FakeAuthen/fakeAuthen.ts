@@ -1,4 +1,5 @@
 import {Images} from '@assets/imageAssests';
+import trans from '@assets/trans';
 
 export const FAKE_AUTHEN = [
   {
@@ -12,22 +13,22 @@ export const LIST_TYPE_FASTFOOD = [
   {
     id: 1,
     img: Images.img_type_food1,
-    title: 'Hot deals',
+    title: trans().hot_deal,
   },
   {
     id: 2,
     img: Images.img_type_food2,
-    title: 'New on FastFood',
+    title: trans().new_on_fastfood,
   },
   {
     id: 3,
     img: Images.img_type_food3,
-    title: 'Save Food, Save Hunger',
+    title: trans().save_food,
   },
   {
     id: 4,
     img: Images.img_type_food4,
-    title: 'Set Your Preferences Now!',
+    title: trans().set_preference,
   },
 ];
 

@@ -4,7 +4,7 @@ import {AppLoading} from '@components/Loading';
 import {AppSearch, AppText, DebounceButton} from '@components';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 import FastImage from 'react-native-fast-image';
-import {
+import trans, {
   DATA_BREAKFAST,
   IconArrowRight,
   IconDiscount,
@@ -221,7 +221,7 @@ export const HomeScreen = () => {
                         {borderColor: colors.border_C4},
                       ]}>
                       <AppText style={styles.free_delivery}>
-                        {'FREE DELIVERY'}
+                        {trans().free_delivery}
                       </AppText>
                     </View>
                   )}
@@ -263,7 +263,7 @@ export const HomeScreen = () => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <IconHome2 />
           <View style={{marginLeft: Spacing.width4}}>
-            <AppText style={styles.content_header}>{'Home'}</AppText>
+            <AppText style={styles.content_header}>{trans().home}</AppText>
             <AppText style={styles.location}>
               {'21-42-34, Banjara Hills, Hyder....'}
             </AppText>
@@ -275,7 +275,7 @@ export const HomeScreen = () => {
         onPress={onNavigateListFood}
         viewStyle={styles.view_search}>
         <IconSearch />
-        <AppText style={styles.search_food}>{'Search food'}</AppText>
+        <AppText style={styles.search_food}>{trans().search_food}</AppText>
       </DebounceButton>
       <Carousel
         layout="default"
@@ -304,11 +304,11 @@ export const HomeScreen = () => {
       <ListMenu />
       <View style={styles.view_looking_for}>
         <AppText style={styles.looking_for_content}>
-          {'Looking for '}
-          <AppText style={styles.time_zone}>{'Breakfast'}</AppText>
+          {trans().looking_for}
+          <AppText style={styles.time_zone}>{trans().breakfast}</AppText>
         </AppText>
         <AppText numberOfLines={2} style={styles.description_time_zone}>
-          {"Here's what you might like to taste"}
+          {trans().like_to_taste}
         </AppText>
         <AnimationVirtualist
           data={DATA_BREAKFAST}
@@ -336,16 +336,18 @@ export const HomeScreen = () => {
       </View>
       <View style={styles.session_main}>
         <View>
-          <AppText style={styles.content_session}>{'Order Again'}</AppText>
+          <AppText style={styles.content_session}>
+            {trans().order_again}
+          </AppText>
           <AppText numberOfLines={2} style={styles.title_session}>
-            {'You Ordered from 17 Restaurants'}
+            {trans().your_ordered}
           </AppText>
         </View>
         <DebounceButton
           activeOpacity={1}
           onPress={onNavigateOrderAgain}
           viewStyle={styles.view_btn_all}>
-          <AppText style={styles.all_txt}>{'All'}</AppText>
+          <AppText style={styles.all_txt}>{trans().all}</AppText>
           <IconArrowRight />
         </DebounceButton>
       </View>
@@ -357,16 +359,18 @@ export const HomeScreen = () => {
       />
       <View style={styles.session_main}>
         <View>
-          <AppText style={styles.content_session}>{'All Restaurants'}</AppText>
+          <AppText style={styles.content_session}>
+            {trans().all_restaurant}
+          </AppText>
           <AppText style={styles.title_session}>
-            {'11 Restaurants near you'}
+            {`${11} ${trans().restaurant_near_you}`}
           </AppText>
         </View>
         <DebounceButton
           activeOpacity={1}
           onPress={() => {}}
           viewStyle={styles.view_btn_all}>
-          <AppText style={styles.all_txt}>{'All'}</AppText>
+          <AppText style={styles.all_txt}>{trans().all}</AppText>
           <IconArrowRight />
         </DebounceButton>
       </View>

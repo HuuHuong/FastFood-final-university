@@ -18,6 +18,23 @@ function trans() {
     password: I18n.t('password', {defaultValue: ''}),
     confirm_password: I18n.t('confirm_password', {defaultValue: ''}),
 
+    //home
+    home: I18n.t('home', {defaultValue: ''}),
+    search_food: I18n.t('search_food', {defaultValue: ''}),
+    hot_deal: I18n.t('hot_deal', {defaultValue: ''}),
+    new_on_fastfood: I18n.t('new_on_fastfood', {defaultValue: ''}),
+    save_food: I18n.t('save_food', {defaultValue: ''}),
+    set_preference: I18n.t('set_preference', {defaultValue: ''}),
+    looking_for: I18n.t('looking_for', {defaultValue: ''}),
+    breakfast: I18n.t('breakfast', {defaultValue: ''}),
+    like_to_taste: I18n.t('like_to_taste', {defaultValue: ''}),
+    order_again: I18n.t('order_again', {defaultValue: ''}),
+    your_ordered: I18n.t('your_ordered', {defaultValue: ''}),
+    all: I18n.t('all', {defaultValue: ''}),
+    all_restaurant: I18n.t('all_restaurant', {defaultValue: ''}),
+    restaurant_near_you: I18n.t('restaurant_near_you', {defaultValue: ''}),
+    free_delivery: I18n.t('free_delivery', {defaultValue: ''}),
+    recent_search: I18n.t('recent_search', {defaultValue: ''}),
     //Cart
     cart: I18n.t('cart', {defaultValue: ''}),
     edit_address: I18n.t('edit_address', {defaultValue: ''}),

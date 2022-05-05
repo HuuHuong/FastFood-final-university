@@ -12,7 +12,7 @@ import {colors, commonStyles, Spacing} from '@theme';
 import {styles} from './styles';
 import {IconBack} from '@assets/icons/icon_back';
 import {useFunctions} from './useFunctions';
-import {
+import trans, {
   IconDelete,
   IconFilter,
   IconFire,
@@ -98,7 +98,7 @@ export const ListFood = (props: any) => {
     return (
       <View>
         <AppText style={styles.recent_search_heading}>
-          {'Recent Searches'}
+          {trans().recent_search}
         </AppText>
         {listTextSearched?.map((item: any, index: number) => (
           <View key={index} style={styles.item_recent}>
@@ -115,7 +115,13 @@ export const ListFood = (props: any) => {
     );
   });
   const ListFoodItem = React.memo(() => {
-    return <VirtualList data={LIST_FOOD_APP} renderItem={renderListFood} />;
+    return (
+      <VirtualList
+        data={LIST_FOOD_APP}
+        renderItem={renderListFood}
+        contentContainerStyle={{paddingTop: Spacing.height36}}
+      />
+    );
   });
   return (
     <ScreenWrapper
@@ -139,7 +145,7 @@ export const ListFood = (props: any) => {
           </DebounceButton>
           <View style={styles.view_search}>
             <AppInput
-              placeholder={'Search food'}
+              placeholder={trans().search_food}
               onValueChange={setText}
               value={text}
               containerStyle={{width: '85%'}}

@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderTopLeftRadius: Spacing.width30,
     borderTopRightRadius: Spacing.width30,
-    marginTop: Spacing.width75,
+    marginTop: Spacing.width36,
     paddingHorizontal: Spacing.width20,
     paddingVertical: Spacing.height32,
   },
@@ -54,11 +54,11 @@ export const styles = StyleSheet.create({
   view_list_food: {
     flex: 1,
     backgroundColor: colors.white,
-    marginTop: Spacing.width75,
+    marginTop: Spacing.width36,
     paddingHorizontal: Spacing.width20,
     borderTopLeftRadius: Spacing.width30,
     borderTopRightRadius: Spacing.width30,
-    paddingVertical: Spacing.height32,
+    // paddingVertical: Spacing.height32,
   },
   view_item_food: {
     marginBottom: Spacing.height24,
