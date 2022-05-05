@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.fastfood">
-
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
@@ -10,11 +9,12 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+      <meta-data
+    android:name="com.google.android.geo.API_KEY"
+     android:value="AIzaSyCd2CP3Xj-jf1BdoS_lxzaezak37S8G1sw"/>
      <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
    	<meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
-     <meta-data
-     android:name="com.google.android.geo.API_KEY"
-     android:value="AIzaSyDxKmTyiBDzoNiPYrnCwiE3F23QRGa_CfE"/>
+     
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

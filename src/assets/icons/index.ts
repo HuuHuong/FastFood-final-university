@@ -14,3 +14,4 @@ export * from './icon_fire';
 export * from './icon_about';
 export * from './icon_ticket';
 export * from './icon_bag';
+export * from './icon_marker';
