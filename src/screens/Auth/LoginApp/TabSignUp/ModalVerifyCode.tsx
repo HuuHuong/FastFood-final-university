@@ -13,7 +13,7 @@ export const ModalVerifyCode = (props: any) => {
     if (isFocus) setCode('');
   }, [isFocus]);
   return (
-    <Modal isVisible={isVisible}>
+    <Modal isVisible={isVisible} onBackdropPress={close}>
       <View style={styles.view_modal}>
         <AppText style={styles.heading_text}>{'Verify code'}</AppText>
         <OTPInputView

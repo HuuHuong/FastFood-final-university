@@ -21,6 +21,7 @@ export const TabSignUp = (props: any) => {
     setIsVisible,
     signInFacebook,
     signInGoogle,
+    verifyCode,
   } = useFunctions(props);
   const SocialLogin = React.memo(() => {
     return (
@@ -109,6 +110,7 @@ export const TabSignUp = (props: any) => {
         isVisible={isVisible}
         email={initialValues.email}
         close={() => setIsVisible(false)}
+        verifyCode={verifyCode}
       />
     </ScrollView>
   );

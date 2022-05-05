@@ -10,7 +10,8 @@ export const Images = {
   ic_notification: require('./images/ic_notification.png'),
   ic_setting: require('./images/ic_setting.png'),
   ic_payment: require('./images/ic_payment.png'),
-
+  ic_location: require('./images/ic_location.png'),
+  ic_maker: require('./images/ic_maker.png'),
   img_splash: require('./images/img_splash.png'),
   img_heart: require('./images/img_heart.png'),
   img_google_logo: require('./images/img_google_logo.png'),

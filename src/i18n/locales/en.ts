@@ -27,6 +27,13 @@ export default {
   length_pass: 'More than 10 letters + numbers',
   invalid_confirm_pass: 'Your confirm password is invalid',
   match_pass: 'Password confirmation does not match the password',
+  sign_up_success: 'Sign-up Successfully!',
+  welcome: 'Welcome,',
+  welcome_title:
+    'Unlock the world of street food paradise at FastFood by setting up your delivery address.',
+  select_location: 'SELECT LOCATION',
+  locate_me: 'Locate Me',
+  provide_delivery: 'Provide Delivery Location',
   home: 'Home',
   search_food: 'Search food',
   hot_deal: 'Hot Deals',

@@ -29,6 +29,12 @@ function trans() {
     length_pass: I18n.t('length_pass', {defaultValue: ''}),
     invalid_confirm_pass: I18n.t('invalid_confirm_pass', {defaultValue: ''}),
     match_pass: I18n.t('match_pass', {defaultValue: ''}),
+    sign_up_success: I18n.t('sign_up_success', {defaultValue: ''}),
+    welcome: I18n.t('welcome', {defaultValue: ''}),
+    welcome_title: I18n.t('welcome_title', {defaultValue: ''}),
+    select_location: I18n.t('select_location', {defaultValue: ''}),
+    locate_me: I18n.t('locate_me', {defaultValue: ''}),
+    provide_delivery: I18n.t('provide_delivery', {defaultValue: ''}),
     //home
     home: I18n.t('home', {defaultValue: ''}),
     search_food: I18n.t('search_food', {defaultValue: ''}),

@@ -3,9 +3,11 @@ import {ListFood} from '@screens/App/ListFood/ListFood';
 import {OrderAgain} from '@screens/App/OrderAgain/OrderAgain';
 import {LanguageScreen} from '@screens/App/ProfileScreen/SettingScreen/LanguageScreen/LanguageScreen';
 import {SettingScreen} from '@screens/App/ProfileScreen/SettingScreen/SettingScreen';
+import {LocationScreen} from '@screens/Auth/Location/LocationScreen';
 import {LoginScreen} from '@screens/Auth/LoginApp/LoginScreen';
 import {SplashScreen} from '@screens/Auth/Splash/SplashScreen';
 import {SwiperAuth} from '@screens/Auth/Splash/SwiperAuth';
+import {WelcomeScreen} from '@screens/Auth/WelcomeScreen/WelcomeScreen';
 import {SCREEN_ROUTER_APP} from './constants';
 
 const {
@@ -17,11 +19,15 @@ const {
   DETAIL_FOOD,
   SETTING,
   LANGUAGE,
+  WELCOME,
+  MY_LOCATION,
 } = SCREEN_ROUTER_APP;
 export const APP_STACK = {
   [SPLASH]: SplashScreen,
   [SWIPER_AUTH]: SwiperAuth,
   [LOGIN]: LoginScreen,
+  [WELCOME]: WelcomeScreen,
+  [MY_LOCATION]: LocationScreen,
   [LIST_FOOD]: ListFood,
   [ORDER_AGAIN]: OrderAgain,
   [DETAIL_FOOD]: DetailFood,

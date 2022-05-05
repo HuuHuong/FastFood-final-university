@@ -28,6 +28,13 @@ export default {
   length_pass: 'Lớn hơn 10 ký tự gồm số và chữ',
   invalid_confirm_pass: 'Mật khẩu xác thực không hợp lệ!',
   match_pass: 'Mật khẩu xác thực không đúng',
+  sign_up_success: 'Đăng ký thành công',
+  welcome: 'Xin chào,',
+  welcome_title:
+    'Mở khoá thế giới thiên đường ẩm thực đường phố tại FastFood bằng cách thiết lập địa chỉ giao hàng của bạn.',
+  select_location: 'LỰA CHỌN ĐỊA ĐIỂM',
+  locate_me: 'Vị trí của tôi',
+  provide_delivery: 'Chọn địa chỉ',
   home: 'Trang chủ',
   search_food: 'Tìm kiếm',
   hot_deal: 'Ưu đãi lớn',
