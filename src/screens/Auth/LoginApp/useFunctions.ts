@@ -22,9 +22,7 @@ import {
 } from 'react-native-fbsdk-next';
 import * as yup from 'yup';
 import {SocialUserInfo} from './SignInGeneric';
-import auth from '@react-native-firebase/auth';
 import firebase from '@react-native-firebase/app';
-import {getDataUser, loginFirebase} from '@services/firebase/firebase_config';
 import {ConfirmOTPCodeApi, LoginApi, SignUpApi} from '@services/Networks';
 import AsyncStorageService from '@services/AsyncStorage/AsyncStorageService';
 import {setAccountToken} from '@redux/slices/accountSlice';

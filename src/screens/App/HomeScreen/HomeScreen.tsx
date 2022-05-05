@@ -29,9 +29,7 @@ const AnimationVirtualist = Animated.createAnimatedComponent(VirtualList);
 
 export const HomeScreen = () => {
   const {
-    text,
-    setText,
-    onFilter,
+    isLoading,
     index,
     setIndex,
     isCarousel,
@@ -250,6 +248,7 @@ export const HomeScreen = () => {
     <ScreenWrapper
       unsafe
       scroll
+      isLoading={isLoading}
       backgroundColor={colors.white}
       backgroundHeader={colors.white}
       style={{paddingTop: Spacing.height44}}>
