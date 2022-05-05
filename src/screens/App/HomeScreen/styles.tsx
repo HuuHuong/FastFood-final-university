@@ -294,6 +294,7 @@ export const styles = StyleSheet.create({
   all_txt: {
     ...commonStyles.nunito_600_14,
     color: colors.primary_subTitle,
+    marginRight: Spacing.width4,
   },
   name_user: {
     ...commonStyles.commonText600_16,

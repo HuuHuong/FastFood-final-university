@@ -1,4 +1,8 @@
 export default {
+  HOME: 'TRANG CHỦ',
+  OFFERS: 'ƯU ĐÃI',
+  CART: 'GIỎ HÀNG',
+  USER: 'TÀI KHOẢN',
   save_food_new: 'Ghi nhớ đồ ăn với\ntính năng mới của chúng tôi!',
   set_preferences:
     'Đặt tùy chọn cho nhiều người dùng từ các nhà hàng khác nhau!',
@@ -35,6 +39,15 @@ export default {
   description: 'Giới thiệu',
   nutritional_value: 'Giá trị dinh dưỡng',
   ingredients: 'Thành phần',
+
+  //offer
+  big_offers: 'Ưu đãi lớn!',
+  a_big_binge:
+    'Thưởng thức một bữa tiệc lớn với các ưu đãi lớn nhất của chúng tôi.',
+  exclusively: 'Độc quyền trên FastFood',
+  deal_icious: 'Ưu đãi hấp dẫn từ thương hiệu hàng đầu!',
+  best_offers: 'Ưu đãi tốt',
+  just_for_you: 'Mở khoá dành cho bạn',
   //cart
   cart: 'Giỏ hàng',
   edit_address: 'Sửa địa chỉ',
@@ -53,7 +66,7 @@ export default {
   setting: 'Cài đặt',
   payment: 'Thanh toán',
   your_orders: 'Đơn hàng đã đặt',
-  feedback: 'Phản hồi và hoàn tiền',
+  history_order: 'Lịch sử mua hàng',
   my_preference: 'Quyền của tôi',
   help: 'Trợ giúp',
   send_feedback: 'Gửi phản hồi',

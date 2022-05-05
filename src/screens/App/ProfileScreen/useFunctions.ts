@@ -35,7 +35,7 @@ export const useFunctions = () => {
     },
     {
       id: 2,
-      title: trans().feedback,
+      title: trans().history_order,
     },
     {
       id: 3,

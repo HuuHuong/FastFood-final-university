@@ -14,6 +14,7 @@ import {
 import {colors, DEVICE, NotoSansFont, Nunitos, Spacing} from '@theme';
 import {NavigationUtils} from '@navigation/NavigationUtils';
 import {DebounceButton} from '@components/Button/Button';
+import trans from '@assets';
 interface History {
   type: string;
   key: string;
@@ -54,13 +55,13 @@ const renderTabScreens = () => {
 const getTabTitle = (route: string) => {
   switch (route) {
     case SCREEN_ROUTER_APP.HOME:
-      return 'HOME';
+      return trans().HOME;
     case SCREEN_ROUTER_APP.OFFERS:
-      return 'OFFERS';
+      return trans().OFFERS;
     case SCREEN_ROUTER_APP.CART:
-      return 'CART';
+      return trans().CART;
     case SCREEN_ROUTER_APP.PROFILE:
-      return 'USER';
+      return trans().USER;
     default:
       break;
   }
@@ -130,6 +131,15 @@ const styles = StyleSheet.create({
   barStyle: {
     height: Spacing.width94,
     borderTopWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    paddingHorizontal: Spacing.width12,
   },
   buttonTittle: {
     marginTop: 8,
@@ -142,8 +152,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: DEVICE.width / 5,
-    // paddingBottom: Spacing.width34,
-    // paddingTop: Spacing.width12,
     flexDirection: 'row',
   },
   focusedBtn: {

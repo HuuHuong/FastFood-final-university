@@ -1,4 +1,8 @@
 export default {
+  HOME: 'HOME',
+  OFFERS: 'OFFERS',
+  CART: 'CART',
+  USER: 'USER',
   save_food_new: 'Save Food with our\nnew Feature!',
   set_preferences:
     'Set preferences for multiple users from various restaurants!',
@@ -34,6 +38,14 @@ export default {
   description: 'Description',
   nutritional_value: 'Nutritional Value',
   ingredients: 'Ingredients',
+
+  //offer
+  big_offers: 'Big Offers!',
+  a_big_binge: 'Relish a big binge with our biggest offers.',
+  exclusively: 'Exclusively on FastFood',
+  deal_icious: 'Deal-icious offers from top brands!',
+  best_offers: 'Best of Offers',
+  just_for_you: 'Unlocked just for you.',
   //cart
   cart: 'Cart',
   edit_address: 'Edit Address',
@@ -52,7 +64,7 @@ export default {
   setting: 'Setting',
   payment: 'Payments',
   your_orders: 'Your Orders',
-  feedback: 'Feedback & Refunds',
+  history_order: 'History Orders',
   my_preference: 'My Preferences',
   help: 'Help',
   send_feedback: 'Send Feedback',

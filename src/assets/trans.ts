@@ -1,6 +1,10 @@
 import I18n from '../i18n/i18n';
 function trans() {
   return {
+    HOME: I18n.t('HOME', {defaultValue: ''}),
+    OFFERS: I18n.t('OFFERS', {defaultValue: ''}),
+    CART: I18n.t('CART', {defaultValue: ''}),
+    USER: I18n.t('USER', {defaultValue: ''}),
     save_food_new: I18n.t('save_food_new', {defaultValue: ''}),
     set_preferences: I18n.t('set_preferences', {defaultValue: ''}),
     fast_rescued: I18n.t('fast_rescued', {defaultValue: ''}),
@@ -30,6 +34,7 @@ function trans() {
     like_to_taste: I18n.t('like_to_taste', {defaultValue: ''}),
     order_again: I18n.t('order_again', {defaultValue: ''}),
     your_ordered: I18n.t('your_ordered', {defaultValue: ''}),
+
     all: I18n.t('all', {defaultValue: ''}),
     all_restaurant: I18n.t('all_restaurant', {defaultValue: ''}),
     restaurant_near_you: I18n.t('restaurant_near_you', {defaultValue: ''}),
@@ -38,6 +43,14 @@ function trans() {
     description: I18n.t('description', {defaultValue: ''}),
     nutritional_value: I18n.t('nutritional_value', {defaultValue: ''}),
     ingredients: I18n.t('ingredients', {defaultValue: ''}),
+
+    //offer
+    big_offers: I18n.t('big_offers', {defaultValue: ''}),
+    a_big_binge: I18n.t('a_big_binge', {defaultValue: ''}),
+    exclusively: I18n.t('exclusively', {defaultValue: ''}),
+    deal_icious: I18n.t('deal_icious', {defaultValue: ''}),
+    best_offers: I18n.t('best_offers', {defaultValue: ''}),
+    just_for_you: I18n.t('just_for_you', {defaultValue: ''}),
     //Cart
     cart: I18n.t('cart', {defaultValue: ''}),
     edit_address: I18n.t('edit_address', {defaultValue: ''}),
@@ -56,7 +69,7 @@ function trans() {
     setting: I18n.t('setting', {defaultValue: ''}),
     payment: I18n.t('payment', {defaultValue: ''}),
     your_orders: I18n.t('your_orders', {defaultValue: ''}),
-    feedback: I18n.t('feedback', {defaultValue: ''}),
+    history_order: I18n.t('history_order', {defaultValue: ''}),
     my_preference: I18n.t('my_preference', {defaultValue: ''}),
     help: I18n.t('help', {defaultValue: ''}),
     send_feedback: I18n.t('send_feedback', {defaultValue: ''}),
