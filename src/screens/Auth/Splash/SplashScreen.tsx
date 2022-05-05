@@ -11,12 +11,12 @@ export const SplashScreen = () => {
   useEffect(() => {
     setTimeout(() => {
       if (isFirst) NavigationUtils.replace(SCREEN_ROUTER_APP.SWIPER_AUTH);
-      else
-        token
-          ? NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN)
-          : NavigationUtils.navigate(SCREEN_ROUTER_APP.LOGIN);
+      // else
+      //   token
+      //     ? NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN)
+      NavigationUtils.navigate(SCREEN_ROUTER_APP.LOGIN);
     }, 1000);
-  });
+  }, []);
   return (
     <View style={{flex: 1}}>
       <FastImage

@@ -1,4 +1,4 @@
-import {FAKE_AUTHEN} from '@assets';
+import trans, {FAKE_AUTHEN} from '@assets';
 import {NavigationUtils} from '@navigation';
 import {
   CREDENTIALS,
@@ -22,11 +22,11 @@ import {
 } from 'react-native-fbsdk-next';
 import * as yup from 'yup';
 import {SocialUserInfo} from './SignInGeneric';
-import firebase from '@react-native-firebase/app';
 import {ConfirmOTPCodeApi, LoginApi, SignUpApi} from '@services/Networks';
 import AsyncStorageService from '@services/AsyncStorage/AsyncStorageService';
 import {setAccountToken} from '@redux/slices/accountSlice';
 import {useDispatch} from 'react-redux';
+import {showMessage} from 'react-native-flash-message';
 interface FakeAuthen {
   id: number;
   phone_number: string;
@@ -62,7 +62,9 @@ export const useFunctions = () => {
       console.log({response});
       AsyncStorageService.putToken(response.data.token);
       dispatch(setAccountToken(response.data.token));
-      NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN);
+      NavigationUtils.replace(SCREEN_ROUTER_APP.WELCOME, {
+        name: response.data.name.name,
+      });
       setShowDialog(false);
     } catch (error) {
       setShowDialog(false);
@@ -92,6 +94,10 @@ export const useFunctions = () => {
         email: param.email,
       });
       console.log({response});
+      showMessage({
+        type: 'success',
+        message: trans().sign_up_success,
+      });
     } catch (error) {
       console.log('Invalid code');
     }
@@ -190,14 +196,10 @@ export const useFunctions = () => {
   //     console.log({error});
   //   }
   // };
-  const configFirebase = async () => {
-    const response = await firebase.initializeApp(CREDENTIALS, 'FastFood');
-    console.log({response});
-  };
+
   useEffect(() => {
     Settings.initializeSDK();
     configGoogleSignIn();
-    configFirebase;
   }, []);
   return {
     formik,

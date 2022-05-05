@@ -9,8 +9,13 @@ import {styles} from './styles';
 import {useFunctions} from './useFunctions';
 
 export const ProfileScreen = () => {
-  const {OPTION_SETTING, OPTION_MENU, OPTION_ADMIN, onNavigationOptionSetting} =
-    useFunctions();
+  const {
+    OPTION_SETTING,
+    OPTION_MENU,
+    OPTION_ADMIN,
+    onNavigationOptionSetting,
+    onPressAdmin,
+  } = useFunctions();
   const renderOption = (item: any, index: number) => {
     return (
       <DebounceButton
@@ -67,6 +72,7 @@ export const ProfileScreen = () => {
       <View style={{marginHorizontal: Spacing.width20}}>
         {OPTION_ADMIN.map((item: any, index: number) => (
           <DebounceButton
+            onPress={() => onPressAdmin(item)}
             key={index}
             viewStyle={{marginBottom: Spacing.height12}}>
             <AppText style={styles.title_option_admin}>{item.title}</AppText>
