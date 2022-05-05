@@ -6,7 +6,7 @@ import {colors, commonStyles, Spacing} from '@theme';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {useIsFocused} from '@react-navigation/native';
 export const ModalVerifyCode = (props: any) => {
-  const {isVisible, verifyCode, close} = props;
+  const {isVisible, verifyCode, close, email} = props;
   const [code, setCode] = useState<string>('');
   const isFocus = useIsFocused();
   useEffect(() => {
@@ -18,14 +18,14 @@ export const ModalVerifyCode = (props: any) => {
         <AppText style={styles.heading_text}>{'Verify code'}</AppText>
         <OTPInputView
           style={{width: '80%', height: Spacing.height200, alignSelf: 'center'}}
-          pinCount={6}
+          pinCount={4}
           code={code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
           onCodeChanged={setCode}
           autoFocusOnLoad
           codeInputFieldStyle={styles.underlineStyleBase}
           codeInputHighlightStyle={styles.underlineStyleHighLighted}
           onCodeFilled={(code: string) => {
-            verifyCode(code);
+            verifyCode({code, email});
             close();
           }}
         />

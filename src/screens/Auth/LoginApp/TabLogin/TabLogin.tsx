@@ -25,18 +25,18 @@ export const TabLogin = (props: any) => {
           marginVertical: Spacing.height28,
         }}>
         <AppInput
-          onValueChange={formik.handleChange('phone_number')}
-          value={formik.values.phone_number}
-          placeholder="Mobile phone"
-          error={formik.errors.phone_number}
+          onValueChange={formik.handleChange('email')}
+          value={formik.values.email}
+          placeholder={trans().email}
+          error={formik.errors.email}
           maxLength={LENGTH_TEXT.MAX_255}
           containerStyle={styles.form_input}
         />
         <AppInput
           onValueChange={formik.handleChange('password')}
           value={formik.values.password}
-          placeholder="Password"
-          error={formik.errors.password}
+          placeholder={trans().password}
+          // error={formik.errors.password}
           maxLength={LENGTH_TEXT.MAX_30}
           containerStyle={styles.form_input}
         />

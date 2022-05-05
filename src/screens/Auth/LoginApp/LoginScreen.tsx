@@ -12,7 +12,15 @@ import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 import {useFunctions} from './useFunctions';
 import trans from '@assets/trans';
 export const LoginScreen = () => {
-  const {showDialog, signInFacebook, signInGoogle} = useFunctions();
+  const {
+    showDialog,
+    signInFacebook,
+    signInGoogle,
+    isVisible,
+    setIsVisible,
+    onSubmit,
+    verifyCode,
+  } = useFunctions();
   return (
     <ScreenWrapper unsafe dialogLoading={showDialog} style={{flex: 1}}>
       <View style={{width: '100%', backgroundColor: colors.white}}>
@@ -30,7 +38,16 @@ export const LoginScreen = () => {
               signInGoogle={signInGoogle}
             />
           ),
-          TabSignUp: () => <TabSignUp />,
+          TabSignUp: () => (
+            <TabSignUp
+              onSubmit={onSubmit}
+              verifyCode={verifyCode}
+              isVisible={isVisible}
+              setIsVisible={setIsVisible}
+              signInFacebook={signInFacebook}
+              signInGoogle={signInGoogle}
+            />
+          ),
         }}
       />
     </ScreenWrapper>

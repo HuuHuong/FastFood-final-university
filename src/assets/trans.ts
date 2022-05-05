@@ -18,10 +18,17 @@ function trans() {
     login_google: I18n.t('login_google', {defaultValue: ''}),
     register: I18n.t('register', {defaultValue: ''}),
     full_name: I18n.t('full_name', {defaultValue: ''}),
+    email: I18n.t('email', {defaultValue: ''}),
     phone_number: I18n.t('phone_number', {defaultValue: ''}),
     password: I18n.t('password', {defaultValue: ''}),
     confirm_password: I18n.t('confirm_password', {defaultValue: ''}),
-
+    enter_name: I18n.t('enter_name', {defaultValue: ''}),
+    invalid_name: I18n.t('invalid_name', {defaultValue: ''}),
+    invalid_email: I18n.t('invalid_email', {defaultValue: ''}),
+    invalid_pass: I18n.t('invalid_pass', {defaultValue: ''}),
+    length_pass: I18n.t('length_pass', {defaultValue: ''}),
+    invalid_confirm_pass: I18n.t('invalid_confirm_pass', {defaultValue: ''}),
+    match_pass: I18n.t('match_pass', {defaultValue: ''}),
     //home
     home: I18n.t('home', {defaultValue: ''}),
     search_food: I18n.t('search_food', {defaultValue: ''}),

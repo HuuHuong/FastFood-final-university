@@ -8,12 +8,16 @@ const initialState = {
   dataUser: [],
   localLang: '',
   listTextSearched: [],
+  isFirst: true,
 } as accountInterface;
 
 const accountSlice = createSlice({
   name: APP_SLICE.ACCOUNT_SLICE,
   initialState,
   reducers: {
+    setIsFirst(state, action) {
+      state.isFirst = action.payload;
+    },
     setAccountToken(state, action) {
       state.token = action.payload;
     },
@@ -29,6 +33,11 @@ const accountSlice = createSlice({
   },
 });
 
-export const {setAccountToken, setDataProfile, setItemSearch, setLocalLang} =
-  accountSlice.actions;
+export const {
+  setAccountToken,
+  setDataProfile,
+  setItemSearch,
+  setLocalLang,
+  setIsFirst,
+} = accountSlice.actions;
 export default accountSlice.reducer;

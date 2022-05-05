@@ -12,21 +12,22 @@ import {ModalVerifyCode} from './ModalVerifyCode';
 import strings from '@assets/trans';
 import trans from '@assets/trans';
 
-export const TabSignUp = () => {
+export const TabSignUp = (props: any) => {
   const {
     initialValues,
     validationSchema,
     onSubmit,
-    verifyCode,
     isVisible,
     setIsVisible,
-  } = useFunctions();
+    signInFacebook,
+    signInGoogle,
+  } = useFunctions(props);
   const SocialLogin = React.memo(() => {
     return (
       <View style={{flexDirection: 'row'}}>
         <DebounceButton
           activeOpacity={0.5}
-          onPress={() => {}}
+          onPress={signInGoogle}
           style={styles.logo_social}>
           <FastImage
             source={Images.img_google_logo}
@@ -35,7 +36,7 @@ export const TabSignUp = () => {
         </DebounceButton>
         <DebounceButton
           activeOpacity={0.5}
-          onPress={() => {}}
+          onPress={signInFacebook}
           style={styles.logo_social}>
           <FastImage
             source={Images.img_facebook_logo}
@@ -73,11 +74,10 @@ export const TabSignUp = () => {
                 containerStyle={styles.form_input}
               />
               <AppInput
-                onValueChange={handleChange('mobile_number')}
-                value={values.mobile_number}
-                placeholder={trans().phone_number}
-                error={errors.mobile_number}
-                // maxLength={LENGTH_TEXT.MAX_255}
+                onValueChange={handleChange('email')}
+                value={values.email}
+                placeholder={trans().email}
+                error={errors.email}
                 containerStyle={styles.form_input}
               />
               <AppInput
@@ -107,7 +107,7 @@ export const TabSignUp = () => {
       </View>
       <ModalVerifyCode
         isVisible={isVisible}
-        verifyCode={verifyCode}
+        email={initialValues.email}
         close={() => setIsVisible(false)}
       />
     </ScrollView>

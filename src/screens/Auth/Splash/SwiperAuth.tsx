@@ -1,5 +1,5 @@
 import {View, Text, SafeAreaView, StatusBar} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 import {AppText, DebounceButton, MainButtonApp} from '@components';
 import {colors, deviceWidth, Spacing} from '@theme';
@@ -11,7 +11,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import {NavigationUtils} from '@navigation';
 import {SCREEN_ROUTER_APP} from '@utils';
 import trans from '@assets';
+import {useDispatch} from 'react-redux';
+import {setIsFirst} from '@redux/slices/accountSlice';
 export const SwiperAuth = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setIsFirst(false));
+  }, []);
   const dataSwipper = [
     {
       id: 1,

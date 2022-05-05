@@ -25,19 +25,25 @@ import {SocialUserInfo} from './SignInGeneric';
 import auth from '@react-native-firebase/auth';
 import firebase from '@react-native-firebase/app';
 import {getDataUser, loginFirebase} from '@services/firebase/firebase_config';
+import {ConfirmOTPCodeApi, LoginApi, SignUpApi} from '@services/Networks';
+import AsyncStorageService from '@services/AsyncStorage/AsyncStorageService';
+import {setAccountToken} from '@redux/slices/accountSlice';
+import {useDispatch} from 'react-redux';
 interface FakeAuthen {
   id: number;
   phone_number: string;
   password: string;
 }
 export const useFunctions = () => {
+  const dispatch = useDispatch();
   const [showDialog, setShowDialog] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const initialValues = {
-    phone_number: __DEV__ ? '+84978589470' : '',
-    password: __DEV__ ? '123456789a' : '',
+    email: __DEV__ ? 'thecong1996@gmail.com' : '',
+    password: __DEV__ ? '123456' : '',
   };
   const validationSchema = yup.object().shape({
-    phone_number: validators().mobile_number,
+    email: validators().email,
     password: validators().password,
   });
   const formik = useFormik({
@@ -45,33 +51,51 @@ export const useFunctions = () => {
     validationSchema: validationSchema,
     enableReinitialize: true,
     onSubmit: values => {
-      const isLogin =
-        FAKE_AUTHEN.findIndex(
-          (item: FakeAuthen) =>
-            item.phone_number === values.phone_number &&
-            item.password === values.password,
-        ) != -1;
-      if (isLogin) {
-        setShowDialog(true);
-        NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
-        setTimeout(() => {
-          setShowDialog(false);
-        }, 2000);
-      }
-      // onLogin(values);
+      onLogin(values);
     },
   });
   const onLogin = async (values: any) => {
     try {
-      // console.log(11111111111);
-      // const response = await auth().signInWithPhoneNumber(values.phone_number);
-      // console.log({response});
-      // loginFirebase({
-      //   phoneNumber: values.phone_number,
-      //   password: values.password,
-      // });
+      setShowDialog(true);
+      const response = await LoginApi({
+        email: values.email,
+        password: values.password,
+      });
+      console.log({response});
+      AsyncStorageService.putToken(response.data.token);
+      dispatch(setAccountToken(response.data.token));
+      NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN);
+      setShowDialog(false);
     } catch (error) {
+      setShowDialog(false);
       console.log({error});
+    }
+  };
+  const onSubmit = async (values: any) => {
+    try {
+      setShowDialog(true);
+      const response = await SignUpApi({
+        name: values.full_name,
+        email: values.email,
+        password: values.password,
+      });
+      console.log(response, 'abc');
+      setShowDialog(false);
+      setIsVisible(true);
+    } catch (error) {
+      setShowDialog(false);
+      console.log(error);
+    }
+  };
+  const verifyCode = async (param: {code: string; email: string}) => {
+    try {
+      const response = await ConfirmOTPCodeApi({
+        code: param.code,
+        email: param.email,
+      });
+      console.log({response});
+    } catch (error) {
+      console.log('Invalid code');
     }
   };
   const signInGoogle = async () => {
@@ -177,5 +201,14 @@ export const useFunctions = () => {
     configGoogleSignIn();
     configFirebase;
   }, []);
-  return {formik, showDialog, signInFacebook, signInGoogle};
+  return {
+    formik,
+    showDialog,
+    signInFacebook,
+    signInGoogle,
+    isVisible,
+    setIsVisible,
+    onSubmit,
+    verifyCode,
+  };
 };
