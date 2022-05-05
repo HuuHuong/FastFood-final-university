@@ -25,4 +25,5 @@ export const colors = {
   border_4F: '#4FA987',
   border_C4: '#C4C4C4',
   light_yellow: '#FEEBC1',
+  brown_5E: '#5E5959',
 };

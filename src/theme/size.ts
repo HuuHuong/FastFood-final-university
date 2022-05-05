@@ -610,6 +610,7 @@ export const Spacing = {
   height300: sizeHeight(300),
   height302: sizeHeight(302),
   height303: sizeHeight(303),
+  height324: sizeHeight(324),
   height335: sizeHeight(335),
   height348: sizeHeight(348),
   height375: sizeHeight(375),

@@ -32,6 +32,9 @@ export default {
   restaurant_near_you: 'Nhà hàng gần bạn',
   free_delivery: 'FREE SHIP',
   recent_search: 'Tìm kiếm gần đây',
+  description: 'Giới thiệu',
+  nutritional_value: 'Giá trị dinh dưỡng',
+  ingredients: 'Thành phần',
   //cart
   cart: 'Giỏ hàng',
   edit_address: 'Sửa địa chỉ',

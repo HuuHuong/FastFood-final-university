@@ -31,9 +31,10 @@ export const Images = {
   img_kfc: require('./images/img_kfc.png'),
   img_madchef: require('./images/img_madchef.png'),
   img_mehfil_coffee: require('./images/img_mehfil_coffee.png'),
-
+  img_rice: require('./images/img_rice.png'),
   img_rice1: require('./images/img_rice1.png'),
   img_rice2: require('./images/img_rice2.png'),
+  img_fried_rice: require('./images/img_fried_rice.png'),
   img_avatar: require('./images/img_avatar.png'),
   splash_1: require('./images/splash_1.png'),
   splash_2: require('./images/splash_2.png'),

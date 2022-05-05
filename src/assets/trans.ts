@@ -35,6 +35,9 @@ function trans() {
     restaurant_near_you: I18n.t('restaurant_near_you', {defaultValue: ''}),
     free_delivery: I18n.t('free_delivery', {defaultValue: ''}),
     recent_search: I18n.t('recent_search', {defaultValue: ''}),
+    description: I18n.t('description', {defaultValue: ''}),
+    nutritional_value: I18n.t('nutritional_value', {defaultValue: ''}),
+    ingredients: I18n.t('ingredients', {defaultValue: ''}),
     //Cart
     cart: I18n.t('cart', {defaultValue: ''}),
     edit_address: I18n.t('edit_address', {defaultValue: ''}),

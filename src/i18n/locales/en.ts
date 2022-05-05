@@ -31,6 +31,9 @@ export default {
   restaurant_near_you: 'Restaurant near you',
   free_delivery: 'FREE DELIVERY',
   recent_search: 'Recent Searches',
+  description: 'Description',
+  nutritional_value: 'Nutritional Value',
+  ingredients: 'Ingredients',
   //cart
   cart: 'Cart',
   edit_address: 'Edit Address',

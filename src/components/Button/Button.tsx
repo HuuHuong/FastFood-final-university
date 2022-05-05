@@ -157,10 +157,10 @@ export const MainButtonApp = React.memo(
 );
 
 export const BackButton = React.memo(
-  ({style}: ButtonProps & TouchableWithoutFeedbackProps) => {
+  ({style, colorIcon}: ButtonProps & TouchableWithoutFeedbackProps) => {
     return (
       <DebounceButton style={style} onPress={() => NavigationUtils.goBack()}>
-        <IconBack strokeColor={colors.black} />
+        <IconBack strokeColor={colorIcon || colors.black} />
       </DebounceButton>
     );
   },

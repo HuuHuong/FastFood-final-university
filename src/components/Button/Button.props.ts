@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleProp, TextStyle, ViewStyle} from 'react-native';
+import {ColorValue, StyleProp, TextStyle, ViewStyle} from 'react-native';
 export interface ButtonProps {
   title?: string;
   isLoading?: boolean;
@@ -15,4 +15,5 @@ export interface ButtonProps {
   isLine?: boolean;
   titleStyle?: StyleProp<TextStyle>;
   socialIcon?: React.ReactNode;
+  colorIcon?: string;
 }
