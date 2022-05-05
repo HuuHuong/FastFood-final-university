@@ -22,10 +22,13 @@ export const CartScreen = () => {
     onEditQuantity,
     isVisible,
     setIsVisible,
+    onDetailFood,
   } = useFunctions();
   const renderItemCart = () => {
     return (
-      <View style={{...commonStyles.row_center_space_between}}>
+      <DebounceButton
+        onPress={onDetailFood}
+        viewStyle={{...commonStyles.row_center_space_between}}>
         <View style={{...commonStyles.row_align_center}}>
           <View style={styles.view_img}>
             <FastImage
@@ -55,7 +58,7 @@ export const CartScreen = () => {
             quantity * 20000
           } VND`}</AppText>
         </View>
-      </View>
+      </DebounceButton>
     );
   };
   const CountMoney = React.memo(
@@ -134,7 +137,6 @@ export const CartScreen = () => {
         viewStyle={{paddingHorizontal: Spacing.width36}}
         style={{marginTop: Spacing.height32, alignSelf: 'center'}}
       />
-
       <Modal
         onBackdropPress={() => setIsVisible(false)}
         isVisible={isVisible}

@@ -348,7 +348,7 @@ export const HomeScreen = () => {
           onPress={onNavigateOrderAgain}
           viewStyle={styles.view_btn_all}>
           <AppText style={styles.all_txt}>{trans().all}</AppText>
-          <IconArrowRight />
+          <IconNext strokeColor={colors.primary_subTitle} />
         </DebounceButton>
       </View>
       <VirtualList
@@ -371,7 +371,7 @@ export const HomeScreen = () => {
           onPress={() => {}}
           viewStyle={styles.view_btn_all}>
           <AppText style={styles.all_txt}>{trans().all}</AppText>
-          <IconArrowRight />
+          <IconNext strokeColor={colors.primary_subTitle} />
         </DebounceButton>
       </View>
       <ListRestaurant />
