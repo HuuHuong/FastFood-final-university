@@ -111,6 +111,10 @@ export const styles = StyleSheet.create({
     ...commonStyles.commonText400_16,
     color: colors.orange_F8,
   },
+  calo: {
+    ...commonStyles.commonText400_14,
+    color: colors.black,
+  },
   view_price: {
     marginTop: Spacing.height12,
     ...commonStyles.row_center_space_between,

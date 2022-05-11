@@ -9,29 +9,6 @@ export const FAKE_AUTHEN = [
   },
 ];
 
-export const LIST_TYPE_FASTFOOD = [
-  {
-    id: 1,
-    img: Images.img_type_food1,
-    title: trans().hot_deal,
-  },
-  {
-    id: 2,
-    img: Images.img_type_food2,
-    title: trans().new_on_fastfood,
-  },
-  {
-    id: 3,
-    img: Images.img_type_food3,
-    title: trans().save_food,
-  },
-  {
-    id: 4,
-    img: Images.img_type_food4,
-    title: trans().set_preference,
-  },
-];
-
 export const DATA_BREAKFAST = [
   {
     id: 1,
@@ -136,6 +113,8 @@ export const LIST_FOOD_APP = [
     restaurant: 'Suhani Restaurant',
     realPrice: 20000,
     freeDelivery: false,
+    calo: 70,
+    star: 4.5,
   },
   {
     id: 2,
@@ -145,6 +124,8 @@ export const LIST_FOOD_APP = [
     realPrice: 20000,
     freeDelivery: false,
     discount: '25%',
+    calo: 70,
+    star: 4.5,
   },
   {
     id: 3,
@@ -157,7 +138,11 @@ export const LIST_FOOD_APP = [
       Protein: '2.5g',
       Carbohydrates: '14.7g',
       Fat: '0,5%',
+      star: 4.5,
+      calo: 145,
     },
+    calo: 90,
+    star: 4.5,
   },
   {
     id: 4,
@@ -166,6 +151,8 @@ export const LIST_FOOD_APP = [
     restaurant: "Mehfil's Place",
     realPrice: 20000,
     freeDelivery: false,
+    calo: 95,
+    star: 4.5,
   },
   {
     id: 5,
@@ -174,6 +161,8 @@ export const LIST_FOOD_APP = [
     restaurant: 'Suhani Restaurant',
     realPrice: 20000,
     freeDelivery: false,
+    star: 4.5,
+    calo: 115,
   },
   {
     id: 6,

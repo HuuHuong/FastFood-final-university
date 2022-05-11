@@ -46,10 +46,7 @@ const CustomTab = React.memo((props: CustomTabProps) => {
         return (
           <DebounceButton
             key={i}
-            style={[
-              styles.button,
-              {width: Spacing.width100, alignSelf: 'center'},
-            ]}
+            style={[styles.button, {width: '50%', alignSelf: 'center'}]}
             onPress={() => {
               onChange(i);
             }}>

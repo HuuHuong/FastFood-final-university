@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: Spacing.width20,
     marginTop: -Spacing.height32,
     backgroundColor: colors.white,
+    marginBottom: Spacing.height24,
   },
   view_name_food: {
     backgroundColor: colors.white,
@@ -47,6 +48,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 2.62,
 
     elevation: 4,
+    marginBottom: Spacing.height24,
   },
   name_food: {
     ...commonStyles.commonText700_20,
@@ -61,7 +63,7 @@ export const styles = StyleSheet.create({
     color: colors.brown_5E,
   },
   title: {
-    ...commonStyles.commonText400_12,
+    ...commonStyles.commonText400_14,
     color: colors.brown_5E,
   },
   view_type_food: {
@@ -84,7 +86,7 @@ export const styles = StyleSheet.create({
     color: colors.brown_5E,
   },
   calories: {
-    ...commonStyles.commonText400_14,
+    ...commonStyles.commonText400_16,
     color: colors.gray_4F,
   },
   title_nutrition: {
@@ -104,7 +106,7 @@ export const styles = StyleSheet.create({
     borderColor: colors.gray_4F,
   },
   view_ingredient: {
-    paddingVertical: Spacing.height4,
+    paddingVertical: Spacing.height14,
     backgroundColor: colors.white,
     marginTop: Spacing.height20,
     borderRadius: Spacing.width24,
@@ -118,9 +120,9 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   title_ingredient: {
-    ...commonStyles.commonText600_14,
+    ...commonStyles.commonText600_16,
     color: colors.brown_5E,
-    fontStyle: 'italic',
+    // fontStyle: 'italic',
     marginLeft: Spacing.width20,
   },
   img_ingredient: {

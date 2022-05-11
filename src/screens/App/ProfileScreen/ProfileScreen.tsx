@@ -15,6 +15,7 @@ export const ProfileScreen = () => {
     OPTION_ADMIN,
     onNavigationOptionSetting,
     onPressAdmin,
+    dataUser,
   } = useFunctions();
   const renderOption = (item: any, index: number) => {
     return (
@@ -22,8 +23,8 @@ export const ProfileScreen = () => {
         key={index}
         viewStyle={styles.view_option}
         onPress={() => onNavigationOptionSetting(item?.navigate)}>
-        <FastImage source={item.icon} style={styles.icon_option} />
-        <AppText style={styles.title_option}>{item.title}</AppText>
+        <FastImage source={item?.icon} style={styles.icon_option} />
+        <AppText style={styles.title_option}>{item?.title}</AppText>
       </DebounceButton>
     );
   };
@@ -46,8 +47,9 @@ export const ProfileScreen = () => {
       <View style={styles.view_user}>
         <FastImage source={Images.img_avatar} style={styles.avatar} />
         <View style={{marginLeft: Spacing.width16}}>
-          <AppText style={styles.name}>{'Sumanya K.'}</AppText>
-          <AppText style={styles.phone_address}>{'+84978589470'}</AppText>
+          <AppText style={styles.name}>{dataUser?.name}</AppText>
+          <AppText style={styles.phone_address}>{dataUser?.email}</AppText>
+          <AppText style={styles.phone_address}>{'+84xxxxxxxxx'}</AppText>
           <AppText
             numberOfLines={2}
             style={[styles.phone_address, {width: '80%'}]}>
@@ -64,7 +66,7 @@ export const ProfileScreen = () => {
         style={{marginTop: Spacing.height36, marginBottom: Spacing.height14}}>
         {OPTION_MENU.map((item: any, index: number) => (
           <DebounceButton key={index} viewStyle={styles.view_option_menu}>
-            <AppText style={styles.title_option_menu}>{item.title}</AppText>
+            <AppText style={styles.title_option_menu}>{item?.title}</AppText>
             <IconNext strokeColor={colors.black} />
           </DebounceButton>
         ))}
@@ -75,7 +77,7 @@ export const ProfileScreen = () => {
             onPress={() => onPressAdmin(item)}
             key={index}
             viewStyle={{marginBottom: Spacing.height12}}>
-            <AppText style={styles.title_option_admin}>{item.title}</AppText>
+            <AppText style={styles.title_option_admin}>{item?.title}</AppText>
           </DebounceButton>
         ))}
       </View>

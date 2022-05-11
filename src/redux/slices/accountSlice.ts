@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {APP_SLICE} from '@types';
+import reactotron from 'reactotron-react-native';
 import {accountInterface} from '../types';
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   localLang: '',
   listTextSearched: [],
   isFirst: true,
+  listCart: [],
 } as accountInterface;
 
 const accountSlice = createSlice({
@@ -16,7 +18,7 @@ const accountSlice = createSlice({
   initialState,
   reducers: {
     setIsFirst(state, action) {
-      state.isFirst = action.payload;
+      state.isFirst = action.payload || true;
     },
     setAccountToken(state, action) {
       state.token = action.payload;
@@ -30,6 +32,10 @@ const accountSlice = createSlice({
     setLocalLang(state, action) {
       state.localLang = action.payload;
     },
+    setAddCart(state, action) {
+      reactotron.log!(action.payload);
+      state.listCart = action.payload;
+    },
   },
 });
 
@@ -39,5 +45,6 @@ export const {
   setItemSearch,
   setLocalLang,
   setIsFirst,
+  setAddCart,
 } = accountSlice.actions;
 export default accountSlice.reducer;

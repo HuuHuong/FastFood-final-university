@@ -1,12 +1,6 @@
-import {View, Text, ScrollView, TouchableOpacity, Keyboard} from 'react-native';
+import {View, ScrollView, TouchableOpacity, Keyboard} from 'react-native';
 import React from 'react';
-import {
-  AppInput,
-  AppSearch,
-  AppText,
-  BackButton,
-  DebounceButton,
-} from '@components';
+import {AppInput, AppText, DebounceButton} from '@components';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 import {colors, commonStyles, Spacing} from '@theme';
 import {styles} from './styles';
@@ -19,7 +13,6 @@ import trans, {
   IconSearch,
   IconStar,
   Images,
-  LIST_FOOD_APP,
 } from '@assets';
 import {NavigationUtils} from '@navigation';
 import {VirtualList} from '@components/Flatlist';
@@ -36,36 +29,41 @@ export const ListFood = (props: any) => {
     onDeleteTextSearch,
     setFocusSearch,
     onDetailFood,
+    listFood,
+    isLoading,
   } = useFunctions(props);
   const renderListFood = ({item, index}: any) => {
     return (
       <DebounceButton
+        key={index}
         activeOpacity={1}
-        onPress={() => onDetailFood(item)}
+        onPress={() => onDetailFood(item?.id)}
         viewStyle={styles.view_item_food}>
         <View>
-          <FastImage source={item.img} style={styles.img_food} />
-          {item.offers && (
+          <FastImage source={{uri: item?.image}} style={styles.img_food} />
+          {item?.offers && (
             <View style={styles.view_discount}>
               <FastImage
                 source={Images.img_discount}
                 style={styles.img_discount}
               />
               <AppText
-                style={styles.num_discount}>{`${item.offers}% OFF`}</AppText>
+                style={styles.num_discount}>{`${item?.offers}% OFF`}</AppText>
             </View>
           )}
         </View>
         <View style={styles.view_info}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View>
-              <AppText style={styles.name_food}>{item.name}</AppText>
+              <AppText style={styles.name_food}>{item?.name}</AppText>
               <AppText style={styles.name_restaurant}>
-                {item.restaurant}
+                {item?.store?.name}
               </AppText>
             </View>
             <View style={styles.view_star}>
-              <AppText style={styles.count_star}>{item.star}</AppText>
+              <AppText style={styles.count_star}>
+                {parseFloat(item?.rating)}
+              </AppText>
               <IconStar />
             </View>
           </View>
@@ -73,23 +71,23 @@ export const ListFood = (props: any) => {
           <View style={styles.view_price}>
             <View style={{...commonStyles.row_align_center}}>
               <AppText
-                style={item.offers ? styles.real_price : styles.offer_prices}>
-                {`${item.realPrice}VND`}
+                style={item?.offers ? styles.real_price : styles.offer_prices}>
+                {`${item?.price}VND`}
               </AppText>
-              {item.offers && (
+              {item?.offers && (
                 <AppText style={styles.offer_prices}>
-                  {`${(item.realPrice * item.offers) / 100}VND`}
+                  {`${(item?.realPrice * item?.offers) / 100}VND`}
                 </AppText>
               )}
             </View>
-            <View style={{...commonStyles.row_align_center}}>
+            <View style={{flexDirection: 'row'}}>
               <IconFire />
-              <AppText>{`${item.calo} Cal`}</AppText>
+              <AppText style={styles.calo}>{`${item?.calo} Cal`}</AppText>
             </View>
           </View>
         </View>
-        {item.offers && (
-          <AppText style={styles.title_offer}>{item.title_offer}</AppText>
+        {item?.offers && (
+          <AppText style={styles.title_offer}>{item?.title_offer}</AppText>
         )}
       </DebounceButton>
     );
@@ -117,7 +115,8 @@ export const ListFood = (props: any) => {
   const ListFoodItem = React.memo(() => {
     return (
       <VirtualList
-        data={LIST_FOOD_APP}
+        isLoading={isLoading}
+        data={listFood}
         renderItem={renderListFood}
         contentContainerStyle={{paddingTop: Spacing.height36}}
       />
@@ -127,6 +126,7 @@ export const ListFood = (props: any) => {
     <ScreenWrapper
       back
       unsafe
+      dialogLoading={isLoading}
       style={{paddingTop: Spacing.height44}}
       backgroundColor={colors.mainColor}>
       <TouchableOpacity
@@ -158,7 +158,7 @@ export const ListFood = (props: any) => {
               onForcus={() => setFocusSearch(true)}
               onBlur={() => setFocusSearch(false)}
             />
-            <DebounceButton activeOpacity={0.5} onPress={onSearch}>
+            <DebounceButton activeOpacity={0.5} onPress={() => onSearch()}>
               <IconSearch />
             </DebounceButton>
           </View>

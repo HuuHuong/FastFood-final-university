@@ -17,15 +17,17 @@ export const LanguageScreen = () => {
         <RadioButton
           onToggle={() => onSelectlanguage(item, index)}
           key={index}
-          title={item.lang}
-          value={item.isChecked}
-          // style={{paddingVertical: Spacing.height20}}
+          title={item?.lang}
+          value={item?.isChecked}
+          style={{marginBottom: Spacing.height16}}
         />
-        <View
+        {/* <View
           style={{
             height: Spacing.width1,
             // backgroundColor: colors.disabledBg,
-          }}></View>
+          }}>
+          
+          </View> */}
       </>
     );
   };

@@ -6,7 +6,7 @@ import {colors, commonStyles, Spacing} from '@theme';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {useIsFocused} from '@react-navigation/native';
 export const ModalVerifyCode = (props: any) => {
-  const {isVisible, verifyCode, close, email} = props;
+  const {isVisible, verifyCode, close} = props;
   const [code, setCode] = useState<string>('');
   const isFocus = useIsFocused();
   useEffect(() => {
@@ -25,7 +25,7 @@ export const ModalVerifyCode = (props: any) => {
           codeInputFieldStyle={styles.underlineStyleBase}
           codeInputHighlightStyle={styles.underlineStyleHighLighted}
           onCodeFilled={(code: string) => {
-            verifyCode({code, email});
+            verifyCode(code);
             close();
           }}
         />

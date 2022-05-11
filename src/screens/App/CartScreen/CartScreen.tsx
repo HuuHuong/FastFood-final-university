@@ -16,46 +16,64 @@ import FastImage from 'react-native-fast-image';
 import Modal from 'react-native-modal';
 export const CartScreen = () => {
   const {
-    listCart,
-    quantity,
+    listFoodCart,
+    totalPrice,
     TYPE_QUANTITY,
     onEditQuantity,
     isVisible,
     setIsVisible,
     onDetailFood,
+    onRemoveItem,
+    countShip,
+    itemSelect,
   } = useFunctions();
-  const renderItemCart = () => {
+  const renderItemCart = (item: any) => {
     return (
       <DebounceButton
-        onPress={onDetailFood}
-        viewStyle={{...commonStyles.row_center_space_between}}>
-        <View style={{...commonStyles.row_align_center}}>
+        onPress={() => onDetailFood(item?.id)}
+        viewStyle={{
+          ...commonStyles.row_center_space_between,
+          marginBottom: Spacing.height20,
+        }}>
+        <View
+          style={{
+            ...commonStyles.row_align_center,
+            width: '70%',
+          }}>
           <View style={styles.view_img}>
             <FastImage
-              source={Images.img_coffee}
+              source={{uri: item?.image}}
               style={styles.img_food}
               resizeMode={'cover'}
             />
           </View>
           <View style={{marginLeft: Spacing.width12}}>
-            <AppText style={styles.name_food}>{'Fried Rice'}</AppText>
-            <AppText style={styles.name_restaurant}>{'Pista House'}</AppText>
+            <AppText numberOfLines={2} style={styles.name_food}>
+              {item?.name}
+            </AppText>
+            <AppText numberOfLines={2} style={styles.name_restaurant}>
+              {item?.store?.name}
+            </AppText>
           </View>
         </View>
         <View style={{alignItems: 'center'}}>
           <View style={styles.view_quantity}>
             <DebounceButton
-              onPress={() => onEditQuantity(TYPE_QUANTITY.REDUCTION)}>
+              onPress={() =>
+                onEditQuantity({item, type_edit: TYPE_QUANTITY.REDUCTION})
+              }>
               <AppText style={styles.edit_quantity}>{'-'}</AppText>
             </DebounceButton>
-            <AppText style={styles.edit_quantity}>{quantity}</AppText>
+            <AppText style={styles.edit_quantity}>{item?.quantity}</AppText>
             <DebounceButton
-              onPress={() => onEditQuantity(TYPE_QUANTITY.INCREASE)}>
+              onPress={() =>
+                onEditQuantity({item, type_edit: TYPE_QUANTITY.INCREASE})
+              }>
               <AppText style={styles.edit_quantity}>{'+'}</AppText>
             </DebounceButton>
           </View>
           <AppText style={styles.money_food}>{`${
-            quantity * 20000
+            item?.quantity * item?.price
           } VND`}</AppText>
         </View>
       </DebounceButton>
@@ -87,6 +105,7 @@ export const CartScreen = () => {
   return (
     <ScreenWrapper
       unsafe
+      scroll
       style={{
         paddingVertical: Spacing.height44,
         paddingHorizontal: Spacing.width20,
@@ -105,10 +124,7 @@ export const CartScreen = () => {
         </DebounceButton>
       </View>
       <View style={{marginTop: Spacing.height20}}>
-        {/* {listCart?.map((item: any, index: number) =>
-          renderItemCart(item, index),
-        )} */}
-        {renderItemCart()}
+        {listFoodCart?.map((item: any, index: number) => renderItemCart(item))}
       </View>
       <DebounceButton
         onPress={() => {}}
@@ -121,11 +137,11 @@ export const CartScreen = () => {
         <IconNext strokeColor={colors.black} />
       </DebounceButton>
       <View style={styles.view_total}>
-        <CountMoney title={trans().total_food} money={quantity * 20000} />
-        <CountMoney title={trans().delivery} money={15000} />
+        <CountMoney title={trans().total_food} money={totalPrice} />
+        <CountMoney title={trans().delivery} money={countShip} />
         <CountMoney
           title={trans().total}
-          money={quantity * 20000 + 15000}
+          money={totalPrice + countShip}
           final
         />
       </View>
@@ -143,7 +159,13 @@ export const CartScreen = () => {
         animationIn={'zoomIn'}
         animationOut={'fadeOut'}>
         <View style={styles.view_modal}>
-          <AppText style={styles.title_modal}>{trans().delete_food}</AppText>
+          <AppText style={styles.title_modal}>
+            {trans().delete_food}
+            <AppText style={{...commonStyles.commonText600_14}}>
+              {itemSelect?.name}
+            </AppText>
+            {trans().from_cart}
+          </AppText>
           <View
             style={{
               ...commonStyles.row_align_center,
@@ -156,7 +178,7 @@ export const CartScreen = () => {
               titleStyle={{paddingHorizontal: Spacing.width32}}
             />
             <MainButtonApp
-              onPress={() => {}}
+              onPress={onRemoveItem}
               title={trans().confirm}
               titleStyle={{paddingHorizontal: Spacing.width32}}
             />

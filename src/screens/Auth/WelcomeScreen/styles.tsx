@@ -16,8 +16,8 @@ export const styles = StyleSheet.create({
     color: colors.white,
   },
   logo: {
-    width: Spacing.width160,
-    height: Spacing.height160,
+    width: Spacing.width120,
+    height: Spacing.height120,
     backgroundColor: 'white',
     borderRadius: Spacing.width100,
     alignSelf: 'center',
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   welcome_title: {
-    ...commonStyles.nunito_600_20,
+    ...commonStyles.nunito_600_18,
     color: 'rgba(255,255,255,0.6)',
     textAlign: 'center',
     marginTop: Spacing.height20,

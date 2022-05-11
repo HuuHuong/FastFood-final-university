@@ -121,11 +121,9 @@ export const MainButtonApp = React.memo(
           styles.btnPrimary,
           style,
           isLine && {
-            // borderColor: colors.primary,
             borderWidth: 1,
             backgroundColor: 'transparent',
           },
-          // disabled && {...commonStyles.disabledBtn},
         ]}
         onPress={onPress}
         disabled={isLoading || disabled}
@@ -137,14 +135,7 @@ export const MainButtonApp = React.memo(
               justifyContent: 'center',
             }}>
             {socialIcon}
-            <Text
-              style={[
-                styles.txtTitle,
-                // isLine && {color: colors.primary},
-                titleStyle,
-              ]}
-              children={title}
-            />
+            <Text style={[styles.txtTitle, titleStyle]} children={title} />
             {icon}
             {isLoading && (
               <ActivityIndicator color="white" style={styles.loading} />

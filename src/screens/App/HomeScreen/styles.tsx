@@ -136,7 +136,7 @@ export const styles = StyleSheet.create({
   },
   view_food_time_zone: {
     width: Spacing.width190,
-    height: Spacing.height254,
+    height: Spacing.height275,
     marginRight: Spacing.width8,
     backgroundColor: colors.white,
     borderRadius: Spacing.width14,
@@ -235,6 +235,7 @@ export const styles = StyleSheet.create({
   img_restaurant: {
     width: Spacing.width64,
     height: Spacing.width64,
+    borderRadius: Spacing.width24,
   },
   view_closed_restaurant: {
     position: 'absolute',
@@ -264,6 +265,7 @@ export const styles = StyleSheet.create({
   name_restaurant: {
     ...commonStyles.commonText600_16,
     color: colors.black_33,
+    width: '75%',
   },
   des_restaurant: {
     ...commonStyles.commonText400_16,

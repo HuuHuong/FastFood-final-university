@@ -4,11 +4,12 @@ import trans, {Images} from '@assets';
 import {NavigationUtils} from '@navigation';
 import {SCREEN_ROUTER_APP} from '@utils';
 import AsyncStorageService from '@services/AsyncStorage/AsyncStorageService';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {setAccountToken} from '@redux/slices/accountSlice';
 
 export const useFunctions = () => {
   const dispatch = useDispatch();
+  const dataUser = useSelector((state: any) => state.accountSlice.dataUser);
   const OPTION_SETTING = [
     {
       id: 1,
@@ -79,6 +80,7 @@ export const useFunctions = () => {
     try {
       AsyncStorageService.remove('token');
       dispatch(setAccountToken(''));
+      NavigationUtils.reset(SCREEN_ROUTER_APP.LOGIN);
     } catch (error) {}
   };
   return {
@@ -87,5 +89,6 @@ export const useFunctions = () => {
     OPTION_ADMIN,
     onNavigationOptionSetting,
     onPressAdmin,
+    dataUser,
   };
 };

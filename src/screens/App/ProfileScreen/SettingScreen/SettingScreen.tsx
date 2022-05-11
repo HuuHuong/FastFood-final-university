@@ -8,7 +8,7 @@ import {useFunction} from './useFunction';
 import {styles} from './styles';
 
 export const SettingScreen = () => {
-  const {onSettingLanguage} = useFunction();
+  const {onSettingLanguage, renderLanguage} = useFunction();
   return (
     <ScreenWrapper
       unsafe
@@ -31,7 +31,7 @@ export const SettingScreen = () => {
         activeOpacity={1}>
         <AppText style={styles.title_setting}>{trans().language}</AppText>
         <View style={{...commonStyles.row_align_center}}>
-          <AppText style={styles.language}>{'Việt Nam'}</AppText>
+          <AppText style={styles.language}>{renderLanguage()}</AppText>
           <IconNext strokeColor={colors.black} />
         </View>
       </DebounceButton>

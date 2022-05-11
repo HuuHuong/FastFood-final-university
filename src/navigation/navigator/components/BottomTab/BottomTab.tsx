@@ -46,7 +46,7 @@ const renderTabScreens = () => {
     <>
       {tabArray.map((item, index) => {
         return (
-          <Tab.Screen key={index} name={item.name} component={item.route} />
+          <Tab.Screen key={index} name={item?.name} component={item?.route} />
         );
       })}
     </>

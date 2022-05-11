@@ -72,6 +72,10 @@ export const commonStyles = StyleSheet.create({
     ...Nunitos.Bold_Nunitos_600,
     fontSize: FontSize.Font16,
   },
+  nunito_600_18: {
+    ...Nunitos.Bold_Nunitos_600,
+    fontSize: FontSize.Font18,
+  },
   nunito_600_20: {
     ...Nunitos.Bold_Nunitos_600,
     fontSize: FontSize.Font20,

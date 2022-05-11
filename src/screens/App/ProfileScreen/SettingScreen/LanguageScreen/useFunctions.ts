@@ -35,15 +35,15 @@ export const useFunctions = () => {
   useEffect(() => {
     setLanguage(
       LANGUAGE.map((item: any, index: number) => {
-        if (item.localLang === languageApp) return {...item, isChecked: true};
+        if (item?.localLang === languageApp) return {...item, isChecked: true};
         else return item;
       }),
     );
   }, []);
   const onSelectlanguage = async (item: any, indexLang: any) => {
     try {
-      if (!item.isChecked) {
-        // const response = await changeLanguageApi({language: item.localLang});
+      if (!item?.isChecked) {
+        // const response = await changeLanguageApi({language: item?.localLang});
         const languageCode = language[indexLang].localLang;
         setLanguage(
           language.map((item: any, index: number) => {

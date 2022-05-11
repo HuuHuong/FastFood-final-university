@@ -1,4 +1,4 @@
-import {View, Text, ImageBackground} from 'react-native';
+import {View, Text, ImageBackground, ScrollView} from 'react-native';
 import React from 'react';
 import {ScreenWrapper} from '@components/Screen/ScreenWrapper';
 import {AppText, BackButton, DebounceButton, HeartLotie} from '@components';
@@ -10,8 +10,19 @@ import {styles} from './styles';
 import {VirtualList} from '@components/Flatlist';
 import FastImage from 'react-native-fast-image';
 import {SplashScreen} from '@screens/Auth/Splash/SplashScreen';
+import {useFunctions} from './useFunctions';
+import {TYPE_QUANTITY} from '@utils';
 
-export const DetailFood = () => {
+export const DetailFood = (props: any) => {
+  const {
+    onEditQuantity,
+    quantityFood,
+    onAddCart,
+    itemFood,
+    isHeart,
+    setIsHeart,
+    isLoading,
+  } = useFunctions(props);
   const RenderNutrition = (props: {title: string; value: string}) => {
     const {title, value} = props;
     return (
@@ -26,10 +37,11 @@ export const DetailFood = () => {
       <ScreenWrapper
         unsafe
         scroll
+        isLoading={isLoading}
         backgroundColor={colors.white}
-        style={{marginBottom: Spacing.height44}}>
+        style={{height: '100%'}}>
         <ImageBackground
-          source={Images.img_fried_rice}
+          source={{uri: itemFood?.image}}
           imageStyle={styles.img_food}
           style={styles.view_img_food}>
           <View
@@ -40,7 +52,9 @@ export const DetailFood = () => {
             }}>
             <BackButton colorIcon={colors.white} />
             <View style={styles.view_star}>
-              <AppText style={styles.count_star}>{'4.5'}</AppText>
+              <AppText style={styles.count_star}>
+                {parseFloat(itemFood?.rating)}
+              </AppText>
               <IconStar width={Spacing.width18} height={Spacing.width18} />
             </View>
           </View>
@@ -52,85 +66,91 @@ export const DetailFood = () => {
               marginTop: -Spacing.height32,
             }}>
             <View style={styles.view_name_food}>
-              <AppText style={styles.name_food}>{'Fried rice'}</AppText>
+              <AppText style={styles.name_food}>{itemFood?.name}</AppText>
               <AppText style={styles.name_restaurant}>
-                {'Pista House, Kukatpally'}
+                {itemFood?.store?.name}
               </AppText>
             </View>
-            <HeartLotie />
+            <HeartLotie isHeart={isHeart} setIsHeart={setIsHeart} />
           </View>
-          <View style={{marginTop: Spacing.height24}}>
-            <AppText style={styles.description}>{trans().description}</AppText>
-            <AppText numberOfLines={5} style={styles.title}>
-              {
-                'Our fried rice is made from the finest ingredients and veggies. single dish is made with fresh vegetables, rescued.'
-              }
+          <AppText style={styles.description}>{trans().description}</AppText>
+          <AppText numberOfLines={5} style={styles.title}>
+            {itemFood?.desc}
+          </AppText>
+          <View
+            style={{
+              ...commonStyles.row_center_space_between,
+              marginTop: Spacing.height24,
+            }}>
+            <AppText style={styles.nutritional_value}>
+              {trans().nutritional_value}
             </AppText>
-            <View style={styles.view_type_food}>
-              <AppText style={styles.type_food}>{'Rescued'}</AppText>
-              <AppText style={styles.type_food}>{'Vegan'}</AppText>
-            </View>
-          </View>
-          <View>
-            <View style={{...commonStyles.row_center_space_between}}>
-              <AppText style={styles.nutritional_value}>
-                {trans().nutritional_value}
-              </AppText>
-              <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
-                <IconFire />
-                <AppText style={styles.calories}>{`${145} cal`}</AppText>
-              </View>
-            </View>
-            <View style={styles.view_nutritional}>
-              <RenderNutrition title={'Protein'} value={'2.5g'} />
-              <RenderNutrition title={'Carbohydrates'} value={'2.5g'} />
-              <RenderNutrition title={'Sodium'} value={'2.5g'} />
-              <RenderNutrition title={'Potassium'} value={'2.5g'} />
+            <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+              <IconFire />
+              <AppText
+                style={styles.calories}>{`${itemFood.calo} calo`}</AppText>
             </View>
           </View>
           <View style={styles.view_ingredient}>
             <AppText style={styles.title_ingredient}>
               {trans().ingredients}
             </AppText>
-            <VirtualList
-              data={[1, 2, 3, 4]}
-              renderItem={() => (
-                <FastImage
-                  source={Images.img_rice}
-                  style={styles.img_ingredient}
-                />
-              )}
+            <ScrollView
               horizontal
+              showsHorizontalScrollIndicator={false}
               contentContainerStyle={{
                 paddingHorizontal: Spacing.width12,
                 marginTop: Spacing.height8,
-              }}
-            />
+              }}>
+              {itemFood?.ingredient?.map((item: any, index: number) => (
+                <FastImage
+                  key={index}
+                  source={{
+                    uri: item?.image,
+                  }}
+                  style={styles.img_ingredient}
+                />
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: colors.white,
+            flex: 1,
+            bottom: 0,
+            position: 'absolute',
+            width: '100%',
+          }}>
+          <View style={styles.view_price}>
+            <AppText style={styles.price}>{`${
+              quantityFood * itemFood.price
+            } VND`}</AppText>
+            <View style={{...commonStyles.row_align_center}}>
+              <View style={styles.view_quantity}>
+                <DebounceButton
+                  onPress={() => onEditQuantity(TYPE_QUANTITY.REDUCTION)}>
+                  <AppText style={styles.quantity}>{'-'}</AppText>
+                </DebounceButton>
+                <AppText
+                  style={[
+                    styles.quantity,
+                    {marginHorizontal: Spacing.width24},
+                  ]}>
+                  {quantityFood}
+                </AppText>
+                <DebounceButton
+                  onPress={() => onEditQuantity(TYPE_QUANTITY.INCREASE)}>
+                  <AppText style={styles.quantity}>{'+'}</AppText>
+                </DebounceButton>
+              </View>
+              <DebounceButton onPress={onAddCart} viewStyle={styles.btn_bag}>
+                <IconBag />
+              </DebounceButton>
+            </View>
           </View>
         </View>
       </ScreenWrapper>
-      <View style={{backgroundColor: colors.white}}>
-        <View style={styles.view_price}>
-          <AppText style={styles.price}>{`${25000} VND`}</AppText>
-          <View style={{...commonStyles.row_align_center}}>
-            <View style={styles.view_quantity}>
-              <DebounceButton>
-                <AppText style={styles.quantity}>{'-'}</AppText>
-              </DebounceButton>
-              <AppText
-                style={[styles.quantity, {marginHorizontal: Spacing.width24}]}>
-                {'1'}
-              </AppText>
-              <DebounceButton>
-                <AppText style={styles.quantity}>{'+'}</AppText>
-              </DebounceButton>
-            </View>
-            <DebounceButton viewStyle={styles.btn_bag}>
-              <IconBag />
-            </DebounceButton>
-          </View>
-        </View>
-      </View>
     </>
   );
 };

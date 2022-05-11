@@ -14,10 +14,6 @@ import trans from '@assets';
 import {useDispatch} from 'react-redux';
 import {setIsFirst} from '@redux/slices/accountSlice';
 export const SwiperAuth = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setIsFirst(false));
-  }, []);
   const dataSwipper = [
     {
       id: 1,
@@ -44,8 +40,8 @@ export const SwiperAuth = () => {
   const renderItem = ({item, index}: any) => {
     return (
       <View key={index}>
-        <AppText style={styles.title_swipper}>{item.title}</AppText>
-        <FastImage source={item.img} style={styles.image_swipper} />
+        <AppText style={styles.title_swipper}>{item?.title}</AppText>
+        <FastImage source={item?.img} style={styles.image_swipper} />
         {index === 2 && (
           <MainButtonApp
             style={{

@@ -5,6 +5,7 @@ export interface accountInterface {
   dataUser: any;
   localLang: string;
   listTextSearched: any;
+  listCart: any;
 }
 export interface ChatState {
   conversationListState: {

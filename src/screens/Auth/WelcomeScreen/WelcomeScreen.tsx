@@ -25,7 +25,6 @@ export const WelcomeScreen = (props: any) => {
       <View style={{width: '80%', alignSelf: 'center'}}>
         <AppText style={styles.welcome_title}>{trans().welcome_title}</AppText>
       </View>
-
       <View
         style={{
           position: 'absolute',

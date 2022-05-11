@@ -24,7 +24,11 @@ import * as yup from 'yup';
 import {SocialUserInfo} from './SignInGeneric';
 import {ConfirmOTPCodeApi, LoginApi, SignUpApi} from '@services/Networks';
 import AsyncStorageService from '@services/AsyncStorage/AsyncStorageService';
-import {setAccountToken} from '@redux/slices/accountSlice';
+import {
+  setAccountToken,
+  setDataProfile,
+  setIsFirst,
+} from '@redux/slices/accountSlice';
 import {useDispatch} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 interface FakeAuthen {
@@ -36,8 +40,9 @@ export const useFunctions = () => {
   const dispatch = useDispatch();
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>('');
   const initialValues = {
-    email: __DEV__ ? 'thecong1996@gmail.com' : '',
+    email: __DEV__ ? 'nhhuong062@gmail.com' : '',
     password: __DEV__ ? '123456' : '',
   };
   const validationSchema = yup.object().shape({
@@ -62,6 +67,8 @@ export const useFunctions = () => {
       console.log({response});
       AsyncStorageService.putToken(response.data.token);
       dispatch(setAccountToken(response.data.token));
+      dispatch(setIsFirst(false));
+      dispatch(setDataProfile(response.data.name));
       NavigationUtils.replace(SCREEN_ROUTER_APP.WELCOME, {
         name: response.data.name.name,
       });
@@ -80,6 +87,7 @@ export const useFunctions = () => {
         password: values.password,
       });
       console.log(response, 'abc');
+      setEmail(values?.email);
       setShowDialog(false);
       setIsVisible(true);
     } catch (error) {
@@ -87,11 +95,11 @@ export const useFunctions = () => {
       console.log(error);
     }
   };
-  const verifyCode = async (param: {code: string; email: string}) => {
+  const verifyCode = async (code: number) => {
     try {
       const response = await ConfirmOTPCodeApi({
-        code: param.code,
-        email: param.email,
+        code: code,
+        email: email,
       });
       console.log({response});
       showMessage({
@@ -114,7 +122,7 @@ export const useFunctions = () => {
         email: res?.user?.email,
       };
       console.log({res});
-      NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN);
+      NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
     } catch (error: any) {
       console.log(error.code);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -166,7 +174,7 @@ export const useFunctions = () => {
             email: result?.email as string,
           };
           console.log!(result, 'result');
-          NavigationUtils.navigate(SCREEN_ROUTER_APP.MAIN);
+          NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
           // loginWithThirdParty(socialUserInfo);
         }
       },

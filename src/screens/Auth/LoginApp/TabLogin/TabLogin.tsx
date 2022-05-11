@@ -13,12 +13,7 @@ export const TabLogin = (props: any) => {
   const {formik} = useFunctions();
   const {signInFacebook, signInGoogle} = props;
   return (
-    <ScreenWrapper
-      unsafe
-      scroll
-      style={{
-        flex: 1,
-      }}>
+    <ScreenWrapper unsafe scroll>
       <View
         style={{
           marginHorizontal: Spacing.width48,
