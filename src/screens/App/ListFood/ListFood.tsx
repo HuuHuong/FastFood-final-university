@@ -80,10 +80,10 @@ export const ListFood = (props: any) => {
                 </AppText>
               )}
             </View>
-            <View style={{flexDirection: 'row'}}>
+            {/* <View style={{flexDirection: 'row'}}>
               <IconFire />
               <AppText style={styles.calo}>{`${item?.calo} Cal`}</AppText>
-            </View>
+            </View> */}
           </View>
         </View>
         {item?.offers && (
@@ -162,9 +162,9 @@ export const ListFood = (props: any) => {
               <IconSearch />
             </DebounceButton>
           </View>
-          <DebounceButton onPress={onFilter} viewStyle={styles.filter}>
+          {/* <DebounceButton onPress={onFilter} viewStyle={styles.filter}>
             <IconFilter />
-          </DebounceButton>
+          </DebounceButton> */}
         </View>
       </TouchableOpacity>
       {focusSearch ? (

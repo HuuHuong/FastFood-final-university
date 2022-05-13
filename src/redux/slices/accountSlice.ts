@@ -11,6 +11,7 @@ const initialState = {
   listTextSearched: [],
   isFirst: true,
   listCart: [],
+  listOrder: [],
 } as accountInterface;
 
 const accountSlice = createSlice({
@@ -33,8 +34,10 @@ const accountSlice = createSlice({
       state.localLang = action.payload;
     },
     setAddCart(state, action) {
-      reactotron.log!(action.payload);
       state.listCart = action.payload;
+    },
+    setListOrders(state, action) {
+      state.listOrder = action.payload;
     },
   },
 });
@@ -46,5 +49,6 @@ export const {
   setLocalLang,
   setIsFirst,
   setAddCart,
+  setListOrders,
 } = accountSlice.actions;
 export default accountSlice.reducer;

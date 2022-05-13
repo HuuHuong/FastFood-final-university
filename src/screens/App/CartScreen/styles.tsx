@@ -121,4 +121,10 @@ export const styles = StyleSheet.create({
     marginBottom: Spacing.height4,
   },
   count_payment: {...commonStyles.commonText600_16, color: colors.black},
+  no_cart: {
+    ...commonStyles.commonText600_20,
+    color: colors.black,
+    textAlign: 'center',
+    marginVertical: Spacing.height20,
+  },
 });

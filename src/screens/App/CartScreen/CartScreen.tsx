@@ -26,6 +26,7 @@ export const CartScreen = () => {
     onRemoveItem,
     countShip,
     itemSelect,
+    onPayment,
   } = useFunctions();
   const renderItemCart = (item: any) => {
     return (
@@ -102,27 +103,14 @@ export const CartScreen = () => {
       );
     },
   );
-  return (
-    <ScreenWrapper
-      unsafe
-      scroll
-      style={{
-        paddingVertical: Spacing.height44,
-        paddingHorizontal: Spacing.width20,
-      }}
-      backgroundColor={colors.white}>
-      <AppText style={styles.heading_txt}>{trans().cart}</AppText>
-      <View style={styles.view_address}>
-        <View style={{flexDirection: 'row', width: '70%'}}>
-          <IconHome />
-          <AppText numberOfLines={3} style={styles.address}>
-            {'21-42-34, Banjara Hills, Hyderabad, 500072'}
-          </AppText>
-        </View>
-        <DebounceButton>
-          <AppText style={styles.edit_address}>{trans().edit_address}</AppText>
-        </DebounceButton>
-      </View>
+  const NoFoodCard = () => (
+    <View style={{marginTop: Spacing.height40}}>
+      <AppText style={styles.no_cart}>{trans().dont_have_cart}</AppText>
+      <MainButtonApp title={trans().start_order} />
+    </View>
+  );
+  const ListFoodCart = () => (
+    <View>
       <View style={{marginTop: Spacing.height20}}>
         {listFoodCart?.map((item: any, index: number) => renderItemCart(item))}
       </View>
@@ -149,10 +137,36 @@ export const CartScreen = () => {
         title={trans().payment}
         titleStyle={{marginRight: Spacing.width16}}
         icon={<IconArrowRight />}
-        onPress={() => {}}
+        onPress={onPayment}
         viewStyle={{paddingHorizontal: Spacing.width36}}
         style={{marginTop: Spacing.height32, alignSelf: 'center'}}
       />
+    </View>
+  );
+  return (
+    <ScreenWrapper
+      unsafe
+      scroll
+      style={{
+        paddingVertical: Spacing.height44,
+        paddingHorizontal: Spacing.width20,
+      }}
+      backgroundColor={colors.white}>
+      <AppText style={styles.heading_txt}>{trans().cart}</AppText>
+      <View style={styles.view_address}>
+        <View style={{flexDirection: 'row', width: '70%'}}>
+          <IconHome />
+          <AppText numberOfLines={3} style={styles.address}>
+            {'21-42-34, Banjara Hills, Hyderabad, 500072'}
+          </AppText>
+        </View>
+        <DebounceButton>
+          <AppText style={styles.edit_address}>{trans().edit_address}</AppText>
+        </DebounceButton>
+      </View>
+
+      {!!listFoodCart.length ? <ListFoodCart /> : <NoFoodCard />}
+
       <Modal
         onBackdropPress={() => setIsVisible(false)}
         isVisible={isVisible}

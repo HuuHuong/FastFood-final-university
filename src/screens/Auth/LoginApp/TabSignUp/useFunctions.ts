@@ -27,12 +27,14 @@ export const useFunctions = (props: SignUpProps) => {
     email: '',
     password: '',
     confirm_password: '',
+    phone_number: '',
   };
   const validationSchema = yup.object().shape({
     full_name: validators().full_name,
     email: validators().email,
     password: validators().password,
     confirm_password: validators().confirm_password,
+    phone_number: validators().mobile_number,
   });
 
   return {

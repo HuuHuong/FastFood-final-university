@@ -21,10 +21,10 @@ export const validators = () => {
       ),
     mobile_number: yup
       .string()
-      .required('You must enter your phone number')
+      .required(trans().enter_phone)
       .matches(
         /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{4}[-\s\.]?[0-9]{3,8}$/,
-        'Your phone number does not exist',
+        trans().invalid_phone,
       ),
   };
 };

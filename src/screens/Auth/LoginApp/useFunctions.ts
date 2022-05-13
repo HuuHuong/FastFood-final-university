@@ -21,8 +21,13 @@ import {
   Settings,
 } from 'react-native-fbsdk-next';
 import * as yup from 'yup';
-import {SocialUserInfo} from './SignInGeneric';
-import {ConfirmOTPCodeApi, LoginApi, SignUpApi} from '@services/Networks';
+import {LoginRootResponse, SocialUserInfo} from './SignInGeneric';
+import {
+  ConfirmOTPCodeApi,
+  LoginApi,
+  LoginSocialApi,
+  SignUpApi,
+} from '@services/Networks';
 import AsyncStorageService from '@services/AsyncStorage/AsyncStorageService';
 import {
   setAccountToken,
@@ -31,6 +36,7 @@ import {
 } from '@redux/slices/accountSlice';
 import {useDispatch} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
+import reactotron from 'reactotron-react-native';
 interface FakeAuthen {
   id: number;
   phone_number: string;
@@ -122,7 +128,8 @@ export const useFunctions = () => {
         email: res?.user?.email,
       };
       console.log({res});
-      NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
+      // NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
+      loginWithThirdParty(socialUserInfo);
     } catch (error: any) {
       console.log(error.code);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -174,8 +181,8 @@ export const useFunctions = () => {
             email: result?.email as string,
           };
           console.log!(result, 'result');
-          NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
-          // loginWithThirdParty(socialUserInfo);
+          // NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
+          loginWithThirdParty(socialUserInfo);
         }
       },
     );
@@ -189,21 +196,20 @@ export const useFunctions = () => {
       profileImageSize: GOOGLE_CONFIG.PROFILE_IMAGE_SIZE,
     });
   };
-  // const loginWithThirdParty = async (userInfo: SocialUserInfo) => {
-  //   try {
-  //     setDialogLoading(true);
-  //     const res: LoginRootResponse = await requestSignInWithThirdParty(
-  //       userInfo,
-  //     );
-  //     setDialogLoading(false);
-  //     AsyncStorageService.putToken(res.data.access_token);
-  //     dispatch(setAccountToken(res.data.access_token));
-  //     NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
-  //   } catch (error) {
-  //     setDialogLoading(false);
-  //     console.log({error});
-  //   }
-  // };
+  const loginWithThirdParty = async (userInfo: SocialUserInfo) => {
+    try {
+      setShowDialog(true);
+      const response: any = await LoginSocialApi(userInfo);
+      setShowDialog(false);
+      reactotron.log!({response});
+      AsyncStorageService.putToken(response.access_token);
+      dispatch(setAccountToken(response.profile));
+      NavigationUtils.reset(SCREEN_ROUTER_APP.MAIN);
+    } catch (error) {
+      setShowDialog(false);
+      console.log({error});
+    }
+  };
 
   useEffect(() => {
     Settings.initializeSDK();

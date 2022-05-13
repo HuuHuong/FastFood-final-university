@@ -55,7 +55,6 @@ export const useFunctions = () => {
   };
   const getTimeCurrent = () => {
     const timeHour = new Date().getHours();
-    reactotron.log!({timeHour});
     if (timeHour > 6 && timeHour < 10) setTimeNow(1);
     else if (timeHour >= 10 && timeHour < 14) setTimeNow(2);
     else if (timeHour >= 14 && timeHour < 17) setTimeNow(3);

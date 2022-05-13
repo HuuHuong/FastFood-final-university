@@ -75,6 +75,13 @@ export const TabSignUp = (props: any) => {
                 containerStyle={styles.form_input}
               />
               <AppInput
+                onValueChange={handleChange('phone_number')}
+                value={values.phone_number}
+                placeholder={trans().phone_number}
+                error={errors.phone_number}
+                containerStyle={styles.form_input}
+              />
+              <AppInput
                 onValueChange={handleChange('email')}
                 value={values.email}
                 placeholder={trans().email}

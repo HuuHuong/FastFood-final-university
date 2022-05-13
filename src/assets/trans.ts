@@ -23,7 +23,9 @@ function trans() {
     password: I18n.t('password', {defaultValue: ''}),
     confirm_password: I18n.t('confirm_password', {defaultValue: ''}),
     enter_name: I18n.t('enter_name', {defaultValue: ''}),
+    enter_phone: I18n.t('enter_phone', {defaultValue: ''}),
     invalid_name: I18n.t('invalid_name', {defaultValue: ''}),
+    invalid_phone: I18n.t('invalid_phone', {defaultValue: ''}),
     invalid_email: I18n.t('invalid_email', {defaultValue: ''}),
     invalid_pass: I18n.t('invalid_pass', {defaultValue: ''}),
     length_pass: I18n.t('length_pass', {defaultValue: ''}),
@@ -80,6 +82,8 @@ function trans() {
     total_food: I18n.t('total_food', {defaultValue: ''}),
     delivery: I18n.t('delivery', {defaultValue: ''}),
     total: I18n.t('total', {defaultValue: ''}),
+    dont_have_cart: I18n.t('dont_have_cart', {defaultValue: ''}),
+
     //Profile
     personal_detail: I18n.t('personal_detail', {defaultValue: ''}),
     edit: I18n.t('edit', {defaultValue: ''}),
@@ -98,6 +102,15 @@ function trans() {
     about: I18n.t('about', {defaultValue: ''}),
     update: I18n.t('update', {defaultValue: ''}),
     language: I18n.t('language', {defaultValue: ''}),
+    dont_have_order: I18n.t('dont_have_order', {defaultValue: ''}),
+    start_order: I18n.t('start_order', {defaultValue: ''}),
+    item: I18n.t('item', {defaultValue: ''}),
+    ordered_on: I18n.t('ordered_on', {defaultValue: ''}),
+    rejected: I18n.t('rejected', {defaultValue: ''}),
+    reject: I18n.t('reject', {defaultValue: ''}),
+    delivered: I18n.t('delivered', {defaultValue: ''}),
+    delivering: I18n.t('delivering', {defaultValue: ''}),
+    repeat_order: I18n.t('repeat_order', {defaultValue: ''}),
   };
 }
 export default trans;

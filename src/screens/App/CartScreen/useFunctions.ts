@@ -1,6 +1,6 @@
 import {NavigationUtils} from '@navigation';
 import {useIsFocused} from '@react-navigation/native';
-import {setAddCart} from '@redux/slices/accountSlice';
+import {setAddCart, setListOrders} from '@redux/slices/accountSlice';
 import {SCREEN_ROUTER_APP, TYPE_QUANTITY} from '@utils';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -18,7 +18,7 @@ export const useFunctions = () => {
   useEffect(() => {
     if (isFocus) setListFoodCart(listCart);
   }, [isFocus]);
-
+  reactotron.log!({listCart});
   const onDetailFood = (idFood: number) => {
     NavigationUtils.navigate(SCREEN_ROUTER_APP.DETAIL_FOOD, {idFood});
   };
@@ -68,6 +68,11 @@ export const useFunctions = () => {
     calculationPrice();
     setCountShip(listFoodCart.length ? 15000 : 0);
   }, [onEditQuantity]);
+  const onPayment = () => {
+    dispatch(setAddCart([]));
+    dispatch(setListOrders(listCart));
+    NavigationUtils.navigate(SCREEN_ROUTER_APP.YOUR_ORDERS);
+  };
   return {
     listFoodCart,
     onEditQuantity,
@@ -79,5 +84,6 @@ export const useFunctions = () => {
     onRemoveItem,
     countShip,
     itemSelect,
+    onPayment,
   };
 };

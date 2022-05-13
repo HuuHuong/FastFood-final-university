@@ -16,6 +16,9 @@ export const ProfileScreen = () => {
     onNavigationOptionSetting,
     onPressAdmin,
     dataUser,
+    onNavigateMenu,
+    onLogOut,
+    showDialog,
   } = useFunctions();
   const renderOption = (item: any, index: number) => {
     return (
@@ -30,6 +33,7 @@ export const ProfileScreen = () => {
   };
   return (
     <ScreenWrapper
+      dialogLoading={showDialog}
       scroll
       unsafe
       style={{
@@ -49,7 +53,9 @@ export const ProfileScreen = () => {
         <View style={{marginLeft: Spacing.width16}}>
           <AppText style={styles.name}>{dataUser?.name}</AppText>
           <AppText style={styles.phone_address}>{dataUser?.email}</AppText>
-          <AppText style={styles.phone_address}>{'+84xxxxxxxxx'}</AppText>
+          <AppText style={styles.phone_address}>
+            {dataUser?.phone_number || '*phone_number'}
+          </AppText>
           <AppText
             numberOfLines={2}
             style={[styles.phone_address, {width: '80%'}]}>
@@ -65,7 +71,10 @@ export const ProfileScreen = () => {
       <View
         style={{marginTop: Spacing.height36, marginBottom: Spacing.height14}}>
         {OPTION_MENU.map((item: any, index: number) => (
-          <DebounceButton key={index} viewStyle={styles.view_option_menu}>
+          <DebounceButton
+            onPress={() => onNavigateMenu(item?.navigate)}
+            key={index}
+            viewStyle={styles.view_option_menu}>
             <AppText style={styles.title_option_menu}>{item?.title}</AppText>
             <IconNext strokeColor={colors.black} />
           </DebounceButton>
@@ -86,8 +95,8 @@ export const ProfileScreen = () => {
         <AppText style={styles.about}>{trans().about}</AppText>
       </DebounceButton>
       <MainButtonApp
-        onPress={() => {}}
-        title={trans().update}
+        onPress={onLogOut}
+        title={trans().logout}
         style={{marginTop: Spacing.height52}}
       />
     </ScreenWrapper>

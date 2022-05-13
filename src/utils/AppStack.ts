@@ -3,6 +3,7 @@ import {ListFood} from '@screens/App/ListFood/ListFood';
 import {OrderAgain} from '@screens/App/OrderAgain/OrderAgain';
 import {LanguageScreen} from '@screens/App/ProfileScreen/SettingScreen/LanguageScreen/LanguageScreen';
 import {SettingScreen} from '@screens/App/ProfileScreen/SettingScreen/SettingScreen';
+import {YourOrders} from '@screens/App/ProfileScreen/YourOrders/YourOrders';
 import {LocationScreen} from '@screens/Auth/Location/LocationScreen';
 import {LoginScreen} from '@screens/Auth/LoginApp/LoginScreen';
 import {SplashScreen} from '@screens/Auth/Splash/SplashScreen';
@@ -21,6 +22,7 @@ const {
   LANGUAGE,
   WELCOME,
   MY_LOCATION,
+  YOUR_ORDERS,
 } = SCREEN_ROUTER_APP;
 export const APP_STACK = {
   [SPLASH]: SplashScreen,
@@ -33,4 +35,5 @@ export const APP_STACK = {
   [DETAIL_FOOD]: DetailFood,
   [SETTING]: SettingScreen,
   [LANGUAGE]: LanguageScreen,
+  [YOUR_ORDERS]: YourOrders,
 };

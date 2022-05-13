@@ -43,7 +43,6 @@ export const HomeScreen = () => {
     dataHomePage,
   } = useFunctions();
   const refWidht = useRef(DEVICE.width);
-  reactotron.log!({timeZone});
   const renderBanner = ({item, index}: any) => {
     return (
       <LinearGradient
@@ -212,8 +211,8 @@ export const HomeScreen = () => {
                   }>{`Open at ${item.timeOpen} `}</AppText>
               )} */}
               <AppText style={styles.name_restaurant}>{item?.name}</AppText>
-              <AppText numberOfLines={2} style={styles.des_restaurant}>
-                {item.description}
+              <AppText numberOfLines={4} style={styles.des_restaurant}>
+                {item.desc}
               </AppText>
               {/* {(item.rescued || item.freeDelivery) && (
                 <View

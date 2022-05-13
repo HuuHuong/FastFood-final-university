@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: Spacing.width20,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
   },
   filter: {
     padding: Spacing.width16,
@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
     width: '75%',
     borderRadius: Spacing.width14,
+    marginLeft: Spacing.width16,
   },
   view_body: {
     backgroundColor: colors.white,

@@ -77,7 +77,7 @@ export const DetailFood = (props: any) => {
           <AppText numberOfLines={5} style={styles.title}>
             {itemFood?.desc}
           </AppText>
-          <View
+          {/* <View
             style={{
               ...commonStyles.row_center_space_between,
               marginTop: Spacing.height24,
@@ -90,7 +90,7 @@ export const DetailFood = (props: any) => {
               <AppText
                 style={styles.calories}>{`${itemFood.calo} calo`}</AppText>
             </View>
-          </View>
+          </View> */}
           <View style={styles.view_ingredient}>
             <AppText style={styles.title_ingredient}>
               {trans().ingredients}

@@ -6,6 +6,7 @@ export interface accountInterface {
   localLang: string;
   listTextSearched: any;
   listCart: any;
+  listOrder: [];
 }
 export interface ChatState {
   conversationListState: {
