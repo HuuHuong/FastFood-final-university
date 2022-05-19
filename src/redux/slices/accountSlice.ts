@@ -12,6 +12,7 @@ const initialState = {
   isFirst: true,
   listCart: [],
   listOrder: [],
+  voucher: [],
 } as accountInterface;
 
 const accountSlice = createSlice({
@@ -39,6 +40,9 @@ const accountSlice = createSlice({
     setListOrders(state, action) {
       state.listOrder = action.payload;
     },
+    setVoucher(state, action) {
+      state.voucher = action.payload;
+    },
   },
 });
 
@@ -50,5 +54,6 @@ export const {
   setIsFirst,
   setAddCart,
   setListOrders,
+  setVoucher,
 } = accountSlice.actions;
 export default accountSlice.reducer;

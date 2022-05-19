@@ -36,7 +36,7 @@ export const useFunctions = (props: any) => {
   const onAddCart = () => {
     const newItem = {...itemFood, quantity: quantityFood};
     reactotron.log!({newItem});
-    if (!listCart.length) dispatch(setAddCart([newItem]));
+    if (!listCart?.length) dispatch(setAddCart([newItem]));
     else {
       const indexItem = listCart?.findIndex(
         (item: any) => item?.id === newItem?.id,

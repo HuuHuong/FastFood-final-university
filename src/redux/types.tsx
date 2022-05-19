@@ -7,6 +7,7 @@ export interface accountInterface {
   listTextSearched: any;
   listCart: any;
   listOrder: [];
+  voucher: any;
 }
 export interface ChatState {
   conversationListState: {

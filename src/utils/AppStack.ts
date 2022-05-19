@@ -1,3 +1,4 @@
+import {VoucherScreen} from '@screens/App/CartScreen/VoucherScreen/VoucherScreen';
 import {DetailFood} from '@screens/App/DetailFood/DetailFood';
 import {ListFood} from '@screens/App/ListFood/ListFood';
 import {OrderAgain} from '@screens/App/OrderAgain/OrderAgain';
@@ -23,6 +24,7 @@ const {
   WELCOME,
   MY_LOCATION,
   YOUR_ORDERS,
+  VOUCHER,
 } = SCREEN_ROUTER_APP;
 export const APP_STACK = {
   [SPLASH]: SplashScreen,
@@ -36,4 +38,5 @@ export const APP_STACK = {
   [SETTING]: SettingScreen,
   [LANGUAGE]: LanguageScreen,
   [YOUR_ORDERS]: YourOrders,
+  [VOUCHER]: VoucherScreen,
 };

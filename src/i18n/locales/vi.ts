@@ -52,7 +52,7 @@ export default {
   dinner: 'Bữa tối',
   like_to_taste: 'Đây là những gì bạn có thể muốn nếm thử',
   order_again: 'Đặt hàng lại',
-  your_ordered: 'Bạn đã gọi món từ 17 nhà hàng',
+  your_ordered: 'Các món ăn đã gọi',
   all: 'Tất cả',
   all_restaurant: 'Tất cả nhà hàng',
   restaurant_near_you: 'Nhà hàng gần bạn',
@@ -82,6 +82,8 @@ export default {
   delivery: 'Phí vận chuyển',
   total: 'Tổng số tiền thanh toán',
   dont_have_cart: 'Bạn không có mặt hàng nào',
+  expiration_date: 'Ngày hết hạn',
+  select_voucher: 'Sử dụng Voucher',
   //profile
   personal_detail: 'Thông tin cá nhân',
   edit: 'Chỉnh sửa',
@@ -109,4 +111,5 @@ export default {
   delivered: 'Đã giao',
   delivering: 'Đang giao',
   repeat_order: 'Đặt hàng lại',
+  reject_food: 'Bạn có muốn huỷ đơn hàng không?',
 };

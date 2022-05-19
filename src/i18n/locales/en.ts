@@ -52,7 +52,7 @@ export default {
   dinner: 'Dinner',
   like_to_taste: "Here's what you might like to taste",
   order_again: 'Order Again',
-  your_ordered: 'You Ordered from 1 Restaurants',
+  your_ordered: 'Your Ordered',
   all: 'All',
   all_restaurant: 'All Restaurant',
   restaurant_near_you: 'Restaurant near you',
@@ -81,6 +81,8 @@ export default {
   delivery: 'Delivery',
   total: 'Total',
   dont_have_cart: "You don't have any items",
+  expiration_date: 'Expiration date',
+  select_voucher: 'Select Voucher',
   //profile
   personal_detail: 'Personal detail',
   edit: 'Edit',
@@ -108,4 +110,5 @@ export default {
   delivered: 'Delivered',
   delivering: 'Delivering',
   repeat_order: 'Repeat Order',
+  reject_food: 'Do you want to cancel your order?',
 };

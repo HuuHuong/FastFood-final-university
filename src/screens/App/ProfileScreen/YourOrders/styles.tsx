@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     borderWidth: Spacing.width1,
     borderColor: colors.gray_B2,
     borderRadius: Spacing.width20,
+    marginBottom: Spacing.height16,
   },
   view_header_item: {
     paddingVertical: Spacing.height16,
@@ -62,5 +63,18 @@ export const styles = StyleSheet.create({
     color: colors.black,
     textAlign: 'center',
     marginVertical: Spacing.height20,
+  },
+  view_modal: {
+    backgroundColor: colors.white,
+    borderRadius: Spacing.width20,
+    paddingVertical: Spacing.height16,
+    // alignItems: 'center',
+  },
+  title_modal: {
+    ...commonStyles.commonText400_14,
+    color: colors.black,
+    width: '70%',
+    textAlign: 'center',
+    alignSelf: 'center',
   },
 });

@@ -124,6 +124,7 @@ export const MainButtonApp = React.memo(
             borderWidth: 1,
             backgroundColor: 'transparent',
           },
+          disabled && {backgroundColor: colors.gray_B2},
         ]}
         onPress={onPress}
         disabled={isLoading || disabled}

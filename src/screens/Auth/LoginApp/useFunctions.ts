@@ -37,6 +37,7 @@ import {
 import {useDispatch} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import reactotron from 'reactotron-react-native';
+import {Alert} from 'react-native';
 interface FakeAuthen {
   id: number;
   phone_number: string;
@@ -59,38 +60,39 @@ export const useFunctions = () => {
     initialValues: initialValues,
     validationSchema: validationSchema,
     enableReinitialize: true,
-    onSubmit: values => {
+    onSubmit: async (values: any) => {
       onLogin(values);
+      try {
+        setShowDialog(true);
+        const response = await LoginApi({
+          email: values.email,
+          password: values.password,
+        });
+        console.log({response});
+        AsyncStorageService.putToken(response.data.token);
+        dispatch(setAccountToken(response.data.token));
+        dispatch(setIsFirst(false));
+        dispatch(setDataProfile(response.data.name));
+        NavigationUtils.replace(SCREEN_ROUTER_APP.WELCOME, {
+          name: response.data.name.name,
+        });
+        setShowDialog(false);
+      } catch (error) {
+        setShowDialog(false);
+        console.log({error});
+      }
     },
   });
-  const onLogin = async (values: any) => {
-    try {
-      setShowDialog(true);
-      const response = await LoginApi({
-        email: values.email,
-        password: values.password,
-      });
-      console.log({response});
-      AsyncStorageService.putToken(response.data.token);
-      dispatch(setAccountToken(response.data.token));
-      dispatch(setIsFirst(false));
-      dispatch(setDataProfile(response.data.name));
-      NavigationUtils.replace(SCREEN_ROUTER_APP.WELCOME, {
-        name: response.data.name.name,
-      });
-      setShowDialog(false);
-    } catch (error) {
-      setShowDialog(false);
-      console.log({error});
-    }
-  };
+  const onLogin = async (values: any) => {};
   const onSubmit = async (values: any) => {
     try {
+      console.log(parseInt(values.phone_number));
       setShowDialog(true);
       const response = await SignUpApi({
         name: values.full_name,
         email: values.email,
         password: values.password,
+        phone_number: `+84${parseInt(values.phone_number)}`,
       });
       console.log(response, 'abc');
       setEmail(values?.email);
@@ -103,17 +105,16 @@ export const useFunctions = () => {
   };
   const verifyCode = async (code: number) => {
     try {
+      setShowDialog(true);
       const response = await ConfirmOTPCodeApi({
         code: code,
         email: email,
       });
-      console.log({response});
-      showMessage({
-        type: 'success',
-        message: trans().sign_up_success,
-      });
+      setShowDialog(false);
+      Alert.alert(trans().notification, trans().sign_up_success);
     } catch (error) {
       console.log('Invalid code');
+      setShowDialog(false);
     }
   };
   const signInGoogle = async () => {

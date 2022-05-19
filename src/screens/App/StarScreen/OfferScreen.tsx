@@ -95,14 +95,14 @@ export const OfferScreen = () => {
           backgroundColor: colors.gray_F3,
           height: Spacing.height2,
         }}></View>
-      <View
+      {/* <View
         style={{
           marginHorizontal: Spacing.width20,
           marginTop: Spacing.height28,
         }}>
         <AppText style={styles.content_header}>{trans().best_offers}</AppText>
         <AppText style={styles.title_header}>{trans().just_for_you}</AppText>
-      </View>
+      </View> */}
     </ScreenWrapper>
   );
 };

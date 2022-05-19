@@ -11,10 +11,19 @@ import {VirtualList} from '@components/Flatlist';
 import FastImage from 'react-native-fast-image';
 import {NavigationUtils} from '@navigation';
 import {SCREEN_ROUTER_APP} from '@utils';
-
+import Modal from 'react-native-modal';
 export const YourOrders = () => {
-  const {listOrders, showDialog, onStartOrder, onDetailFood, statusItem} =
-    useFunction();
+  const {
+    listOrders,
+    showDialog,
+    onStartOrder,
+    onDetailFood,
+    statusItem,
+    rejectProduct,
+    setIsVisible,
+    isVisible,
+    onRemoveItem,
+  } = useFunction();
   reactotron.log!({listOrders});
   const renderItem = ({item, index}: any) => (
     <View key={index} style={styles.view_item}>
@@ -72,16 +81,15 @@ export const YourOrders = () => {
         <DebounceButton>
           <AppText style={styles.status_item}>{statusItem(2)}</AppText>
         </DebounceButton>
-        <DebounceButton>
-          <AppText style={styles.repeat_order}>
-            {item?.status === 2 ? trans().reject : trans().repeat_order}
-          </AppText>
+        <DebounceButton onPress={() => rejectProduct(item)}>
+          <AppText style={styles.repeat_order}>{trans().reject}</AppText>
         </DebounceButton>
       </View>
     </View>
   );
   const ListOrders = () => {
     return <VirtualList data={listOrders} renderItem={renderItem} />;
+    // return
   };
   const NoListOrders = () => {
     return (
@@ -108,6 +116,32 @@ export const YourOrders = () => {
         <AppText style={styles.heading_txt}>{trans().your_orders}</AppText>
       </View>
       {!!listOrders?.length ? <ListOrders /> : <NoListOrders />}
+      <Modal
+        onBackdropPress={() => setIsVisible(false)}
+        isVisible={isVisible}
+        animationIn={'zoomIn'}
+        animationOut={'fadeOut'}>
+        <View style={styles.view_modal}>
+          <AppText style={styles.title_modal}>{trans().reject_food}</AppText>
+          <View
+            style={{
+              ...commonStyles.row_align_center,
+              justifyContent: 'space-around',
+              marginTop: Spacing.height20,
+            }}>
+            <MainButtonApp
+              onPress={() => setIsVisible(false)}
+              title={trans().cancel}
+              titleStyle={{paddingHorizontal: Spacing.width32}}
+            />
+            <MainButtonApp
+              onPress={onRemoveItem}
+              title={trans().confirm}
+              titleStyle={{paddingHorizontal: Spacing.width32}}
+            />
+          </View>
+        </View>
+      </Modal>
     </ScreenWrapper>
   );
 };

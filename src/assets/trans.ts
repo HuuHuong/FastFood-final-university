@@ -83,7 +83,8 @@ function trans() {
     delivery: I18n.t('delivery', {defaultValue: ''}),
     total: I18n.t('total', {defaultValue: ''}),
     dont_have_cart: I18n.t('dont_have_cart', {defaultValue: ''}),
-
+    expiration_date: I18n.t('expiration_date', {defaultValue: ''}),
+    select_voucher: I18n.t('select_voucher', {defaultValue: ''}),
     //Profile
     personal_detail: I18n.t('personal_detail', {defaultValue: ''}),
     edit: I18n.t('edit', {defaultValue: ''}),
@@ -111,6 +112,7 @@ function trans() {
     delivered: I18n.t('delivered', {defaultValue: ''}),
     delivering: I18n.t('delivering', {defaultValue: ''}),
     repeat_order: I18n.t('repeat_order', {defaultValue: ''}),
+    reject_food: I18n.t('reject_food', {defaultValue: ''}),
   };
 }
 export default trans;

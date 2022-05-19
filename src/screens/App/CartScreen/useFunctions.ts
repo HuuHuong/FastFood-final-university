@@ -9,6 +9,7 @@ import reactotron from 'reactotron-react-native';
 export const useFunctions = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const listCart = useSelector((state: any) => state.accountSlice?.listCart);
+  const voucher = useSelector((state: any) => state.accountSlice?.voucher);
   const [listFoodCart, setListFoodCart] = useState<any>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [itemSelect, setItemSelect] = useState<any>([]);
@@ -66,8 +67,11 @@ export const useFunctions = () => {
   };
   useEffect(() => {
     calculationPrice();
-    setCountShip(listFoodCart.length ? 15000 : 0);
+    // setCountShip(0);
   }, [onEditQuantity]);
+  const onVoucher = () => {
+    NavigationUtils.navigate(SCREEN_ROUTER_APP.VOUCHER, {voucher});
+  };
   const onPayment = () => {
     dispatch(setAddCart([]));
     dispatch(setListOrders(listCart));
@@ -85,5 +89,7 @@ export const useFunctions = () => {
     countShip,
     itemSelect,
     onPayment,
+    onVoucher,
+    voucher,
   };
 };

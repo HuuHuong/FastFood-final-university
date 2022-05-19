@@ -41,6 +41,7 @@ export const useFunctions = (props: any) => {
           dispacth(setItemSearch([textSearch, ...listTextSearched]));
       } else dispacth(setItemSearch([textSearch]));
     setFocusSearch(false);
+    setText(textSearch);
   };
   useEffect(() => {
     getListData(page);

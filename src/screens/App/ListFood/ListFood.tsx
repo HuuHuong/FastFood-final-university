@@ -99,7 +99,13 @@ export const ListFood = (props: any) => {
           {trans().recent_search}
         </AppText>
         {listTextSearched?.map((item: any, index: number) => (
-          <View key={index} style={styles.item_recent}>
+          <DebounceButton
+            onPress={() => {
+              setText(item);
+              setFocusSearch(false);
+            }}
+            key={index}
+            viewStyle={styles.item_recent}>
             <View style={{...commonStyles.row_align_center}}>
               <IconSearch />
               <AppText style={styles.text_search}>{item}</AppText>
@@ -107,7 +113,7 @@ export const ListFood = (props: any) => {
             <DebounceButton onPress={() => onDeleteTextSearch(item)}>
               <IconDelete />
             </DebounceButton>
-          </View>
+          </DebounceButton>
         ))}
       </View>
     );
@@ -162,9 +168,6 @@ export const ListFood = (props: any) => {
               <IconSearch />
             </DebounceButton>
           </View>
-          {/* <DebounceButton onPress={onFilter} viewStyle={styles.filter}>
-            <IconFilter />
-          </DebounceButton> */}
         </View>
       </TouchableOpacity>
       {focusSearch ? (

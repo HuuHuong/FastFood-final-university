@@ -6,5 +6,5 @@ I18n.translations = {
   vi,
   en,
 };
-I18n.locale = 'vi';
+// I18n.locale = 'vi';
 export default I18n;

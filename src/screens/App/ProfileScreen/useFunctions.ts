@@ -89,6 +89,7 @@ export const useFunctions = () => {
       setShowDialog(false);
     }
   };
+  console.log({dataUser});
   return {
     OPTION_SETTING,
     OPTION_MENU,

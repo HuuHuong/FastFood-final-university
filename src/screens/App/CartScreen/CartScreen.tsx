@@ -14,6 +14,8 @@ import {styles} from './styles';
 import {useFunctions} from './useFunctions';
 import FastImage from 'react-native-fast-image';
 import Modal from 'react-native-modal';
+import {NavigationUtils} from '@navigation';
+import {SCREEN_ROUTER_APP} from '@utils';
 export const CartScreen = () => {
   const {
     listFoodCart,
@@ -27,19 +29,74 @@ export const CartScreen = () => {
     countShip,
     itemSelect,
     onPayment,
+    onVoucher,
+    voucher,
   } = useFunctions();
   const renderItemCart = (item: any) => {
     return (
-      <DebounceButton
-        onPress={() => onDetailFood(item?.id)}
-        viewStyle={{
+      // <View
+      // style={{
+      //   ...commonStyles.row_center_space_between,
+      //   marginBottom: Spacing.height20,
+      // }}>
+      //   <DebounceButton
+      //     onPress={() => onDetailFood(item?.id)}
+      //     viewStyle={{
+      //       ...commonStyles.row_align_center,
+      //       // width: '70%',
+      //     }}>
+      //     <View style={styles.view_img}>
+      //       <FastImage
+      //         source={{uri: item?.image}}
+      //         style={styles.img_food}
+      //         resizeMode={'cover'}
+      //       />
+      //     </View>
+      //     <View
+      //       style={{
+      //         // marginLeft: Spacing.width12,
+      //         width: '60%',
+      //         backgroundColor: 'yellow',
+      //       }}>
+      //       <AppText numberOfLines={2} style={styles.name_food}>
+      //         {item?.name}
+      //       </AppText>
+      //       <AppText numberOfLines={2} style={styles.name_restaurant}>
+      //         {item?.store?.name}
+      //       </AppText>
+      //     </View>
+      //   </DebounceButton>
+      //   <View style={{alignItems: 'center'}}>
+      //     <View style={styles.view_quantity}>
+      //       <DebounceButton
+      //         onPress={() =>
+      //           onEditQuantity({item, type_edit: TYPE_QUANTITY.REDUCTION})
+      //         }>
+      //         <AppText style={styles.edit_quantity}>{'-'}</AppText>
+      //       </DebounceButton>
+      //       <AppText style={styles.edit_quantity}>{item?.quantity}</AppText>
+      //       <DebounceButton
+      //         onPress={() =>
+      //           onEditQuantity({item, type_edit: TYPE_QUANTITY.INCREASE})
+      //         }>
+      //         <AppText style={styles.edit_quantity}>{'+'}</AppText>
+      //       </DebounceButton>
+      //     </View>
+      //     <AppText style={styles.money_food}>{`${
+      //       item?.quantity * item?.price
+      //     } VND`}</AppText>
+      //   </View>
+      // </View>
+      <View
+        style={{
           ...commonStyles.row_center_space_between,
           marginBottom: Spacing.height20,
         }}>
-        <View
-          style={{
+        <DebounceButton
+          onPress={() => onDetailFood(item?.id)}
+          viewStyle={{
             ...commonStyles.row_align_center,
-            width: '70%',
+            width: '90%',
           }}>
           <View style={styles.view_img}>
             <FastImage
@@ -48,7 +105,7 @@ export const CartScreen = () => {
               resizeMode={'cover'}
             />
           </View>
-          <View style={{marginLeft: Spacing.width12}}>
+          <View style={{marginLeft: Spacing.width12, width: '50%'}}>
             <AppText numberOfLines={2} style={styles.name_food}>
               {item?.name}
             </AppText>
@@ -56,8 +113,8 @@ export const CartScreen = () => {
               {item?.store?.name}
             </AppText>
           </View>
-        </View>
-        <View style={{alignItems: 'center'}}>
+        </DebounceButton>
+        <View style={{}}>
           <View style={styles.view_quantity}>
             <DebounceButton
               onPress={() =>
@@ -77,7 +134,7 @@ export const CartScreen = () => {
             item?.quantity * item?.price
           } VND`}</AppText>
         </View>
-      </DebounceButton>
+      </View>
     );
   };
   const CountMoney = React.memo(
@@ -106,7 +163,14 @@ export const CartScreen = () => {
   const NoFoodCard = () => (
     <View style={{marginTop: Spacing.height40}}>
       <AppText style={styles.no_cart}>{trans().dont_have_cart}</AppText>
-      <MainButtonApp title={trans().start_order} />
+      <MainButtonApp
+        onPress={() =>
+          NavigationUtils.navigate(SCREEN_ROUTER_APP.LIST_FOOD, {
+            autoFocus: false,
+          })
+        }
+        title={trans().start_order}
+      />
     </View>
   );
   const ListFoodCart = () => (
@@ -115,12 +179,14 @@ export const CartScreen = () => {
         {listFoodCart?.map((item: any, index: number) => renderItemCart(item))}
       </View>
       <DebounceButton
-        onPress={() => {}}
+        onPress={onVoucher}
         activeOpacity={0.5}
         viewStyle={styles.view_voucher}>
         <View style={{...commonStyles.row_align_center}}>
           <IconTicket />
-          <AppText style={styles.txt_voucher}>{trans().voucher}</AppText>
+          <AppText style={styles.txt_voucher}>
+            {!!voucher ? 'FastFood Free Ship' : trans().voucher}
+          </AppText>
         </View>
         <IconNext strokeColor={colors.black} />
       </DebounceButton>
@@ -165,7 +231,7 @@ export const CartScreen = () => {
         </DebounceButton>
       </View>
 
-      {!!listFoodCart.length ? <ListFoodCart /> : <NoFoodCard />}
+      {!!listFoodCart?.length ? <ListFoodCart /> : <NoFoodCard />}
 
       <Modal
         onBackdropPress={() => setIsVisible(false)}

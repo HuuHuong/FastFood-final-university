@@ -39,12 +39,10 @@ export const styles = StyleSheet.create({
   name_food: {
     ...commonStyles.commonText600_14,
     color: colors.black,
-    width: '70%',
   },
   name_restaurant: {
     ...commonStyles.commonText400_14,
     color: colors.black,
-    width: '70%',
   },
   view_quantity: {
     ...commonStyles.row_center_space_between,
