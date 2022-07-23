@@ -22,6 +22,7 @@
 		87ECC06E5C0941EFBF4359CD /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1783DB8FBE8043A6B75AA856 /* Poppins-Bold.ttf */; };
 		B635088121664D999DC51A65 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83C774763BA046989B5BE596 /* Poppins-BoldItalic.ttf */; };
 		C4583624502E4B96919DD59F /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 036A2EEB8A154610B26BA4AC /* Poppins-ExtraBold.ttf */; };
+		CC4AFFD52848C9900022D0A4 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = CC4AFFD42848C9900022D0A4 /* main.jsbundle */; };
 		CC6BA87928166C3B00DCE321 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC6BA87828166C3B00DCE321 /* GoogleService-Info.plist */; };
 		D66010A290C549738FA943C2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40CE294BC1CD406590B5A18B /* Poppins-Italic.ttf */; };
 		D9EEDDC7ABAE432895F9E369 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54786696856A48DFAA62C7E7 /* Nunito-ExtraBold.ttf */; };
@@ -63,6 +64,7 @@
 		ABFE59519B596E51CEFDCCC0 /* libPods-FastFood-FastFoodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FastFood-FastFoodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA9BB44BB6146AD9594DD06 /* Nunito-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Italic.ttf"; path = "../src/assets/fonts/Nunito-Italic.ttf"; sourceTree = "<group>"; };
 		C0A881CF5CF3F2B244570E2A /* Pods-FastFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FastFood.debug.xcconfig"; path = "Target Support Files/Pods-FastFood/Pods-FastFood.debug.xcconfig"; sourceTree = "<group>"; };
+		CC4AFFD42848C9900022D0A4 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		CC6BA87828166C3B00DCE321 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "FastFood/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CDF9764BC256477BA61F6A35 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-FastFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FastFood.release.xcconfig"; path = "Target Support Files/Pods-FastFood/Pods-FastFood.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		13B07FAE1A68108700A75B9A /* FastFood */ = {
 			isa = PBXGroup;
 			children = (
+				CC4AFFD42848C9900022D0A4 /* main.jsbundle */,
 				CC6BA87828166C3B00DCE321 /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -300,6 +303,7 @@
 				666AF08A56CD4EB3838EA98F /* Nunito-Bold.ttf in Resources */,
 				D9EEDDC7ABAE432895F9E369 /* Nunito-ExtraBold.ttf in Resources */,
 				6FA987EC533D4C0D89068C25 /* Nunito-Italic.ttf in Resources */,
+				CC4AFFD52848C9900022D0A4 /* main.jsbundle in Resources */,
 				8770FA493B524FD3A1F51B75 /* Nunito-Regular.ttf in Resources */,
 				CC6BA87928166C3B00DCE321 /* GoogleService-Info.plist in Resources */,
 			);
